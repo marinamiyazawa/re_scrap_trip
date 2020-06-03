@@ -1,24 +1,27 @@
-# README
+# ScrapTrip
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+旅行の思い出記録、旅行先の発見
 
-Things you may want to cover:
+### サイトテーマ
+旅行の思い出を残す、思い出の共有を通して旅行先の幅を広げる手助けをする
 
-* Ruby version
+### テーマを選んだ理由
+自分自身が旅行をした際にinstagramなどに写真を思い出として残すことが多く、旅行だけの記録ができるサイトがあれば便利だと考えたため。また旅行をする際に行き先を決められないことが多く、いろんな人の旅行の感想や現地の景色を共有することで知らなかった国や旅行先の発見に繋がると考えたため。
 
-* System dependencies
+### ターゲットユーザ
+旅行を控えている全世代、旅行好きの人
 
-* Configuration
+### 主な利用シーン
+旅行を計画するタイミング、旅行後に記録したい時、日頃の癒し
 
-* Database creation
+## 設計書
+・ER図
+・アプリ詳細設計
+・テーブル定義書
+・ワイヤーフレーム
 
-* Database initialization
+### 機能一覧
+https://docs.google.com/spreadsheets/d/18rXGw92yfYptgrNljmGVAm9f__5uK38xR9ZjbgVVHuI/edit#gid=0
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
