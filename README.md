@@ -24,6 +24,7 @@ https://docs.google.com/spreadsheets/d/1MfGpFuj64bsKay8vKvoUR8A4LYnf_NLS/edit#gi
 https://docs.google.com/spreadsheets/d/1qUYZHje4_HkhMDVdI-ulpIb9vInXIOqD/edit#gid=2082066896<br>
 ・ワイヤーフレーム
 https://app.diagrams.net/#G1hdxlLkPZDaXeVUxf5nEfAVHjtltuT0sj<br>
+https://app.diagrams.net/#G1tQZVKu3CnzsWQuUF6-p8ImiNb1IWOFCP<br>
 
 ### 機能一覧
 https://docs.google.com/spreadsheets/d/18rXGw92yfYptgrNljmGVAm9f__5uK38xR9ZjbgVVHuI/edit#gid=0
