@@ -16,10 +16,14 @@
 旅行を計画するタイミング、旅行後に記録したい時、日頃の癒し
 
 ## 設計書
-・ER図	https://app.diagrams.net/#G1POH-FQKXjhyvGq1uKdDy_mDZm4d-lnXe
-・アプリ詳細設計	https://docs.google.com/spreadsheets/d/1MfGpFuj64bsKay8vKvoUR8A4LYnf_NLS/edit#gid=2058948176
-・テーブル定義書	https://docs.google.com/spreadsheets/d/1qUYZHje4_HkhMDVdI-ulpIb9vInXIOqD/edit#gid=2082066896
+・ER図
+https://app.diagrams.net/#G1POH-FQKXjhyvGq1uKdDy_mDZm4d-lnXe
+・アプリ詳細設計
+https://docs.google.com/spreadsheets/d/1MfGpFuj64bsKay8vKvoUR8A4LYnf_NLS/edit#gid=2058948176
+・テーブル定義書
+https://docs.google.com/spreadsheets/d/1qUYZHje4_HkhMDVdI-ulpIb9vInXIOqD/edit#gid=2082066896
 ・ワイヤーフレーム
+https://app.diagrams.net/#G1hdxlLkPZDaXeVUxf5nEfAVHjtltuT0sj
 
 ### 機能一覧
 https://docs.google.com/spreadsheets/d/18rXGw92yfYptgrNljmGVAm9f__5uK38xR9ZjbgVVHuI/edit#gid=0
