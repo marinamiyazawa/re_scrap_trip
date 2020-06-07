@@ -4,10 +4,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  attachment :image
   has_many :posts
   has_many :favorites, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_many :entries, dependent: :destroy
+  has_many :rooms, through: :entries
 
   has_many :relationships
   has_many :followings, through: :relationships, source: :follow
@@ -28,6 +30,15 @@ class User < ApplicationRecord
   def following?(other_user)
     #logger.info(self.followings.include?(other_user))
     self.followings.include?(other_user)
+  end
+
+  devise :omniauthable, omniauth_providers: %i[facebook twitter google_oauth2]
+  # omniauthのコールバック時に呼ばれるメソッド
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0,20]
+    end
   end
 
 end

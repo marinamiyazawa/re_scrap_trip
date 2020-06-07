@@ -1,1 +1,63 @@
-aa
+<div class="container">
+	<div class="row">
+		<div class="col-xs-8 col-xs-offset-2">
+			
+			<div class="row">
+				<div class="col-xs-3">
+					<%= attachment_image_tag(@user, :image, size:'100x100', class: "img-circle", fallback: "no_image.jpg") %>
+				</div>
+				<div class="col-xs-9">
+					<div class="row">
+						<span>
+							<%=link_to edit_user_path, data: {"turbolinks" => false}  do %>
+								<i class="fas fa-user-edit"></i>
+							<% end %>
+						</span>
+						<span>
+							<%=link_to "" do %>
+							<i class="fas fa-plus-circle"></i>
+							<% end %>
+						</span>
+						<span>
+						<% if @user.id == current_user.id %>
+
+						<% else %>
+							<% if @isRoom == true %>
+							    <p><a href="/rooms/<%= @roomId %>"><i class="far fa-envelope"></i></a>
+							<% else %>
+							    <%= form_for @room do |f| %>
+							      <%= fields_for @entry do |e| %>
+							        <%= e.hidden_field :user_id, :value=> @user.id %>
+							      <% end %>
+							    　<%= button_tag :type => "submit", :class =>"btn btn-default btn-s-md" do %>
+							  			<i class="far fa-envelope"></i>
+								　<% end %>
+							    <% end %>
+							<% end %>
+						<% end %>
+						</span>
+					</div>
+					<div class="row">
+						<%= render 'users/stats', user: @user %>
+					</div>
+					<div class="row">
+						<%= render 'relationships/follow_button', user: @user %>
+					</div>
+				</div>
+			</div>
+			<div class="row" style="padding-top: 30px;">
+				<div class="col-xs-4">
+					<strong><%= @user.nick_name %></strong>
+				</div>
+				<div class="col-xs-8">
+					<strong><%= @user.introduction %></strong>
+				</div>
+			</div>
+			<div class="row" style="padding-top: 70px;">
+				<div class="map_image">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
