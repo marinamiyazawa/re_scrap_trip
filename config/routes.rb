@@ -2,14 +2,15 @@ Rails.application.routes.draw do
   devise_for :admins
   devise_for :users, controllers: {
     sessions: 'users/sessions',
-    registrations: 'users/registrations'
+    registrations: 'users/registrations',
+    omniauth_callbacks: 'users/omniauth_callbacks'
   }
-  
+
   root 'homes#top'
   get 'homes/about', to:'homes#about'
 
   resources :relationships, only: [:create, :destroy]
-  resources :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }, only: [:show,:edit,:update] do
+  resources :users, only: [:show,:edit,:update] do
                     	member do
                     		get :hide
                     		patch :hide_update

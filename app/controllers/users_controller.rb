@@ -34,9 +34,14 @@ class UsersController < ApplicationController
 	end
 
 	def hide
+
 	end
 
 	def hide_update
+		@user = current_user
+		@user.update(user_status: true)
+		reset_session
+		redirect_to root_path
 	end
 
 	def following

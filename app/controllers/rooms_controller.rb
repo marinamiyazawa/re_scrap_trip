@@ -18,6 +18,13 @@ class RoomsController < ApplicationController
 	end
 
 	def index
-		@rooms = current_user.rooms
+		@response = []
+		my_entries = Entry.where(user_id: current_user.id)
+		my_entries.each do |entry|
+			room_info_for_response = {}
+			room_info_for_response[:partner] = Entry.where(room_id: entry.room.id).where.not(user_id: current_user.id)[0].user
+			room_info_for_response[:latest_message] = Message.where(room_id: entry.room.id)[-1]
+			@response << room_info_for_response
+		end
 	end
 end

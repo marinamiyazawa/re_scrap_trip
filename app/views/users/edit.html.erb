@@ -21,6 +21,10 @@
 							<%= f.text_field :first_name, class: "first_name" %>
 						</div>
 						<div class="field">
+							<%= f.label :last_name %>
+							<%= f.text_field :last_name, class: "last_name" %>
+						</div>
+						<div class="field">
 							<%= f.label :nick_name %>
 							<%= f.text_field :nick_name, class: "nick_name" %>
 						</div>
@@ -28,8 +32,19 @@
 							<%= f.label :introduction %>
 							<%= f.text_area :introduction, class: "introduction" %>
 						</div>
-						<div class="actions">
-							<%= f.submit %>
+						<div class="field">
+							<%= f.label :email %>
+							<%= f.text_field :email, class: "email" %>
+						</div>
+						<div class="row">
+							<div class="col-xs-12">
+								<div class="pull-left">
+									<%= f.submit '変更を保存する', class: "btn btn-primary" %>
+								</div>
+								<div class="pull-right">
+									<%= link_to '退会する', hide_user_path, class: "btn btn-danger"%>
+								</div>
+							</div>
 						</div>
 					<% end %>
 				</div>

@@ -10,34 +10,37 @@
 					<div class="row">
 						<span>
 							<%=link_to edit_user_path, data: {"turbolinks" => false}  do %>
-								<i class="fas fa-user-edit"></i>
+								<i class="fas fa-user-edit fa-3x"></i>
 							<% end %>
 						</span>
 						<span>
 							<%=link_to "" do %>
-							<i class="fas fa-plus-circle"></i>
+							<i class="fas fa-plus-circle fa-3x"></i>
 							<% end %>
 						</span>
 						<span>
 						<% if @user.id == current_user.id %>
+							<%= link_to rooms_path do %>
+								<i class="far fa-envelope fa-3x"></i>
+							<% end %>
 
 						<% else %>
 							<% if @isRoom == true %>
-							    <p><a href="/rooms/<%= @roomId %>"><i class="far fa-envelope"></i></a>
+							    <p><a href="/rooms/<%= @roomId %>"><i class="fas fa-paper-plane fa-3x"></i></a>
 							<% else %>
 							    <%= form_for @room do |f| %>
 							      <%= fields_for @entry do |e| %>
 							        <%= e.hidden_field :user_id, :value=> @user.id %>
 							      <% end %>
-							    　<%= button_tag :type => "submit", :class =>"btn btn-default btn-s-md" do %>
-							  			<i class="far fa-envelope"></i>
+							    　<%= button_tag :type => "submit" do %>
+							  			<i class="fas fa-paper-plane fa-3x"></i>
 								　<% end %>
 							    <% end %>
 							<% end %>
 						<% end %>
 						</span>
 					</div>
-					<div class="row">
+					<div class="row" style="padding-top: 40px;">
 						<%= render 'users/stats', user: @user %>
 					</div>
 					<div class="row">

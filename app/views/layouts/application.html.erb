@@ -10,36 +10,53 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body style="padding-top: 70px;">
+  <body style="padding-top: 30px;">
     <!--ヘッダーの記述-->
-    <header class="navbar navbar-fixed-top navbar-inverse">
-      <div class="container">
-
-        <nav class="nav navbar-nav navbar-left">
+    <div class="container">
+    <header>
+        <h1 class="headline">
           <%= link_to root_path do %>
-          <span style="color: white;">Scrap_trip</span>
+          <span style="color: #4682b4;">Scrap_trip</span>
           <% end %>
-        </nav>
+        </h1>
+    </header>
+
         <nav>
-          <ul class="nav navbar-nav navbar-right">
-            <!--if文でサインインとアウト時の表示を変更-->
-            <% if user_signed_in? %>
-            <li><%= link_to ' Home', user_path(current_user), class: "fas fa-house-user" %></li>
-            <li><%= link_to ' Posts', "", class: "far fa-clone" %></li>
-            <li><%=link_to "Genres", "", class: "fas fa-plane-departure" %>
-            </li>
-            <li><%= link_to ' logout', destroy_user_session_path, method: :delete, class: "fas fa-sign-out-alt" %></li>
-            <% else %>
-            <li><%= link_to ' Home', root_path, class: "fas fa-house-user" %></li>
-            <li><%= link_to ' About', homes_about_path, class: "fas fa-suitcase-rolling" %></li>
-            <li><%= link_to ' sign up', new_user_registration_path, class: "fas fa-user-plus" %></li>
-            <li><%= link_to ' login', new_user_session_path, class: "fas fa-sign-in-alt" %></li>
-            <% end %>
-          </ul>
+          <div class="container">
+            <ul class="nav-list">
+              <!--if文でサインインとアウト時の表示を変更-->
+              <% if user_signed_in? %>
+                <li class="nav-list-item">
+                  <%= link_to ' Home', user_path(current_user), class: "fas fa-house-user" %>
+                </li>
+                <li class="nav-list-item">
+                  <%= link_to ' Posts', "", class: "far fa-clone" %>
+                </li>
+                <li class="nav-list-item">
+                  <%=link_to "Genres", "", class: "fas fa-plane-departure" %>
+                </li>
+                <li class="nav-list-item">
+                  <%= link_to ' logout', destroy_user_session_path, method: :delete, class: "fas fa-sign-out-alt" %>
+                </li>
+              <% else %>
+                <li class="nav-list-item">
+                  <%= link_to ' Home', root_path, class: "fas fa-house-user" %>
+                </li>
+                <li class="nav-list-item">
+                  <%= link_to ' About', homes_about_path, class: "fas fa-suitcase-rolling" %>
+                </li>
+                <li class="nav-list-item">
+                  <%= link_to ' sign up', new_user_registration_path, class: "fas fa-user-plus" %>
+                </li>
+                <li class="nav-list-item">
+                  <%= link_to ' login', new_user_session_path, class: "fas fa-sign-in-alt" %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
         </nav>
 
       </div>
-    </header>
 
     <%= yield %>
     <!--ヘッダーの記述-->
