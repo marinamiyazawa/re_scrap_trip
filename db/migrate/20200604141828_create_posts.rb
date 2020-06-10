@@ -5,7 +5,6 @@ class CreatePosts < ActiveRecord::Migration[5.2]
     	t.string :title
     	t.text :body
     	t.float :rate
-    	t.string :image_id
     	t.integer :user_id
     	t.integer :genre_id
     	t.integer :favorite_id

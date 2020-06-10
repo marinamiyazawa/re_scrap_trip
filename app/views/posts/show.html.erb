@@ -1,0 +1,45 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-8 col-xs-offset-2">
+				<div class="row" style="margin-top: 30px;">
+					<div class="col-xs-4 col-xs-offset-4">
+						<% if @post.post_images.present? %>
+							<% @post.post_images.each do |image| %>
+								<%= attachment_image_tag(image, :image, :fill, 300, 200, fallback: "no-image-mini.jpg") %>
+							<% end %>
+							<% end %>
+					</div>
+				</div>
+				
+				<!--評価 -->
+				<div class="row">
+					 <h4 class="mb-3">評価：<%= @post.rate %>点</h4>
+					<div id="star-rate-<%= @post.id %>"></div>
+			          <script>
+			          $('#star-rate-<%= @post.id %>').raty({
+			            size: 36,
+			            starOff:  '<%= asset_path('star-off.png') %>',
+			            starOn : '<%= asset_path('star-on.png') %>',
+			            starHalf: '<%= asset_path('star-half.png') %>',
+			            half: true,
+			            readOnly: true,
+			            score: <%= @post.rate %>,
+			          });
+			          </script>
+				</div>
+
+				<table class="table" style="margin-top: 30px;">
+				<tr>
+					<td>
+						<%= link_to (@post.user) do %>
+								<%= attachment_image_tag(@post.user, :image, :fill, 70, 70, fallback: "no-image-mini.jpg") %>
+						<% end %>
+						<%= @user.nick_name %>
+					</td>
+					<td>Title: <%= @post.title %></td>
+					<td>Content: <%= @post.body %></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</div>

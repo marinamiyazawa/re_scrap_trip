@@ -1,0 +1,41 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-8 col-xs-offset-2">
+			<%= form_for(@post) do |f| %>
+				<div class="field">
+					<%= f.label :Image %>
+					<%= f.attachment_field :post_images_images, multiple: true %>
+				</div>
+
+				<div class="field row" id="star">
+				    <%= f.label :rate,'評価 ', class:'col-md-3 col-form-label' %>
+				    <%= f.hidden_field :rate, id: :review_star %>
+				</div>
+
+				<script>
+					$("#star").raty({
+			            size     : 36,
+			            starOff:  '<%= asset_path('star-off.png') %>',
+			            starOn : '<%= asset_path('star-on.png') %>',
+			            starHalf: '<%= asset_path('star-half.png') %>',
+			            scoreName: 'post[rate]',
+			            half: true,
+			      });
+				</script>
+				<div class="field row">
+					<%= f.label :Title %>
+					<%= f.text_field :title, class: "col-xs-12 post_title" %>
+				</div>
+
+				<div class="field row">
+					<%= f.label :Content %> <!-- ここを変更 -->
+					<%= f.text_area :body, class: "col-xs-12 post_body" %>
+				</div>
+
+				<div class="actions row">
+					<%= f.submit class: "btn btn-primary col-xs-12" %>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>

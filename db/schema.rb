@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_07_144515) do
+ActiveRecord::Schema.define(version: 2020_06_09_060446) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -57,11 +57,17 @@ ActiveRecord::Schema.define(version: 2020_06_07_144515) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
+  create_table "post_images", force: :cascade do |t|
+    t.integer "post_id"
+    t.string "image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "body"
     t.float "rate"
-    t.string "image_id"
     t.integer "user_id"
     t.integer "genre_id"
     t.integer "favorite_id"

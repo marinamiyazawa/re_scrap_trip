@@ -14,6 +14,7 @@
 //= require bootstrap-sprockets
 //= require rails-ujs
 //= require turbolinks
+//= require jquery.raty
 //= require_tree .
 $(document).on('turbolinks:load', function () {
   $("#theTarget").skippr({
@@ -39,3 +40,4 @@ $(document).on('turbolinks:load', function () {
       hidePrevious : false
   });
 });
+
