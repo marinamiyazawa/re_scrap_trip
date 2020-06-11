@@ -10,19 +10,21 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body style="padding-top: 30px;">
+  <body>
     <!--ヘッダーの記述-->
-    <div class="container">
-    <header>
-        <h1 class="headline">
-          <%= link_to root_path do %>
-          <span style="color: #4682b4;">Scrap_trip</span>
-          <% end %>
-        </h1>
+    
+    <header class="headline">
+      
+        
+          <h1><%= link_to root_path do %>
+                <span style="color: #4682b4;">Scrap_trip</span>
+              <% end %>
+          </h1>
+       
     </header>
 
         <nav>
-          <div class="container">
+          
             <ul class="nav-list">
               <!--if文でサインインとアウト時の表示を変更-->
               <% if user_signed_in? %>
@@ -53,10 +55,9 @@
                 </li>
               <% end %>
             </ul>
-          </div>
+         
         </nav>
 
-      </div>
 
     <%= yield %>
     <!--ヘッダーの記述-->
