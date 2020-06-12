@@ -1,44 +1,59 @@
 <div class="container">
-	<div class="row">
-		<div class="col-xs-8 col-xs-offset-2">
-				<div class="row" style="margin-top: 30px;">
-					<div class="col-xs-4 col-xs-offset-4">
-						<% if @post.post_images.present? %>
-							<% @post.post_images.each do |image| %>
-								<%= attachment_image_tag(image, :image, :fill, 300, 200, fallback: "no-image-mini.jpg") %>
-							<% end %>
-							<% end %>
-					</div>
-				</div>
-				<div class="row">
-					<% if @post.favorited_by?(current_user) %>
-						<%= link_to post_favorites_path(@post), method: :delete do %>
-							<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-							<%= @post.favorites.count %> likes
-						<% end %>
-					<% else %>
-					<%= link_to post_favorites_path(@post), method: :post do %>
-						<i class="fa fa-heart-o" aria-hidden="true"></i>
-						<%= @post.favorites.count %>likes
-						<% end %>
+	<div class="row" style="margin-top: 30px;">
+		<div class="col-xs-12">
+			<% if @post.post_images.present? %>
+
+				<div id="top">
+				<div id="theTarget">
+					<% @post.post_images.each do |image| %>
+
+						<%= attachment_image_tag(image, :image) %>
+
 					<% end %>
 				</div>
-				
+			</div>
+			<% end %>
+		</div>
+	</div>
+	<div class="row" style="margin-top: 30px;">
+		<div class="col-xs-8 col-xs-offset-2">
+			<!-- いいね　-->
+			<div class="row">
+				<% if @post.favorited_by?(current_user) %>
+					<%= link_to post_favorites_path(@post), method: :delete do %>
+						<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+						<%= @post.favorites.count %> 
+					<% end %>
+				<% else %>
+				<%= link_to post_favorites_path(@post), method: :post do %>
+					<i class="fa fa-heart-o" aria-hidden="true"></i>
+					<%= @post.favorites.count %>likes
+					<% end %>
+				<% end %>
+			</div>
+
 				<!--評価 -->
 				<div class="row">
-					 <h4 class="mb-3">評価：<%= @post.rate %>点</h4>
-					<div id="star-rate-<%= @post.id %>"></div>
-			          <script>
-			          $('#star-rate-<%= @post.id %>').raty({
-			            size: 36,
-			            starOff:  '<%= asset_path('star-off.png') %>',
-			            starOn : '<%= asset_path('star-on.png') %>',
-			            starHalf: '<%= asset_path('star-half.png') %>',
-			            half: true,
-			            readOnly: true,
-			            score: <%= @post.rate %>,
-			          });
-			          </script>
+					<div class="col-xs-11">
+					    <h4 class="mb-3">評価：<%= @post.rate %>点</h4>
+						<div id="star-rate-<%= @post.id %>"></div>
+			            <script>
+			            	$('#star-rate-<%= @post.id %>').raty({
+					            size: 36,
+					            starOff:  '<%= asset_path('star-off.png') %>',
+					            starOn : '<%= asset_path('star-on.png') %>',
+					            starHalf: '<%= asset_path('star-half.png') %>',
+					            half: true,
+					            readOnly: true,
+					            score: <%= @post.rate %>,
+			         		 });
+			            </script>
+		            </div>
+			        <div class="col-xs-1">
+						<%= link_to edit_post_path do %>
+							<i class="far fa-edit fa-2x"></i>
+						<% end %>
+					</div>
 				</div>
 
 				<table class="table" style="margin-top: 30px;">

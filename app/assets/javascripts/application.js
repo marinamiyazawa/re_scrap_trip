@@ -16,6 +16,8 @@
 //= require turbolinks
 //= require jquery.raty
 //= require_tree .
+
+// top スライドショー
 $(document).on('turbolinks:load', function () {
   $("#theTarget").skippr({
       // スライドショーの変化 ("fade" or "slide")
