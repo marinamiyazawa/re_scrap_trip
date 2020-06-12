@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :admins
+  #User
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations',
@@ -20,7 +20,18 @@ Rails.application.routes.draw do
   resources :messages, :only => [:create]
   resources :rooms, :only => [:create, :show, :index]
   resources :posts, only: [:new,:create,:index,:show,:edit,:update] do
+    collection do
+      get 'confirm'
+    end
   	resource :favorites, only: [:create, :destroy]
+  end
+
+  #Admin
+  devise_for :admins
+    namespace :admins do
+    root "homes#top"
+
+    resources :users, only:[:index, :show, :edit, :update]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

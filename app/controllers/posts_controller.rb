@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+	before_action :correct_user, only:[:edit]
 
 	def new
 		@post = Post.new
@@ -14,13 +15,23 @@ class PostsController < ApplicationController
 	end
 
 	def index
-		@posts = Post.all
+		@posts = Post.published.order("created_at DESC")
 		@user = current_user
 	end
 
 	def show
-		@post = Post.find(params[:id])
+		@post = Post.find_by(id: params[:id])
+
+		if @post.nil?
+			redirect_to root_path
+		elsif @post.draft?
+			login_required
+		end
 		@user = @post.user
+	end
+
+	def login_required
+		redirect_to user_session_path unless current_user
 	end
 
 	def edit
@@ -33,8 +44,19 @@ class PostsController < ApplicationController
 		redirect_to @post
 	end
 
+	def confirm
+		@posts = Post.draft.order("created_at DESC")
+	end
+
 	private
 	def post_params
-		params.require(:post).permit(:title, :body, :rate, :genre_id, post_images_images: [])
+		params.require(:post).permit(:title, :body, :rate, :status, :genre_id, post_images_images: [])
+	end
+
+	def correct_user
+		@post = Post.find(params[:id])
+		if @post.user != current_user
+			redirect_to posts_path
+		end
 	end
 end

@@ -67,25 +67,26 @@
 			</div>
 			<!--　ユーザーの投稿 -->
 			<div class="row" style="padding-top: 30px;">
-				<div style="display: flex;">
+				<div class="col-xs-4" style="display: flex;">
 						<% @posts.each do |post| %>
-						
-							<% if post.post_images.present? %>
-								<% post.post_images.each do |image| %>
-								<div class="col-xs-3">
-								<%= attachment_image_tag(image, :image, :fill, 200, 200, fallback: "no-image-mini.jpg") %>
-								<% end %>
-							<% end %>
-						
-							<%= link_to post.title,post, class: "post_#{post.id}" %>
-						
-						</div>
-					
+							<table class="table">
+								<tbody>
+									<tr>
+										<% if post.post_images.present? %>
+											<% post.post_images.each do |image| %>
+												<%= attachment_image_tag(image, :image, size:'50x50', fallback: "no-image-mini.jpg") %>
+											<% end %>
+										<% end %>
+									</tr>
+									<tr>
+										<th><%= link_to post.title,post, class: "post_#{post.id}" %></th>
+										<th><%= post.status %></th>
+									</tr>
+								</tbody>
+							</table>
 						<% end %>
 					</div>
-					
 				</div>
-			</div>
 
 		</div>
 	</div>

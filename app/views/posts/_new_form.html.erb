@@ -29,6 +29,10 @@
 		<%= f.text_area :body, class: "col-xs-12 post_body" %>
 	</div>
 
+	<div class="field row">
+		<%= f.select :status, Post.statuses.keys.map { |k| [t("enums.post.status.#{k}"),k]} %>
+	</div>
+
 	<div class="actions row">
 		<%= f.submit class: "btn btn-primary col-xs-12" %>
 	</div>

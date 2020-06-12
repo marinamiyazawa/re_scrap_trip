@@ -1,0 +1,31 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-8 col-xs-offset-2">
+			<h2>User Show</h2>
+			<table class="table">
+				<tr>
+					<th></th>
+					<th><%= @user.id %></th>
+					<th><%= @user.first_name %>
+					<%= @user.last_name %></th>
+					<th></th>
+					<th>
+						<%if @user.user_status == false %>
+							<p>有効会員</p>
+						<% else %>
+							<p>退会済</p>
+						<% end %>
+					</th>
+				</tr>
+				<tr>
+					<th><%= attachment_image_tag(@user, :image, size:'60x60') %></th>
+					<td><%= @user.nick_name %></td>
+					<td><%= @user.introduction %></td>
+					<td></td>
+					<td><%= @user.email %></td>
+				</tr>
+			</table>
+
+		</div>
+	</div>
+</div>
