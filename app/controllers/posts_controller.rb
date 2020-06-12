@@ -27,7 +27,7 @@ class PostsController < ApplicationController
 		elsif @post.draft?
 			login_required
 		end
-		@user = @post.user
+		
 	end
 
 	def login_required

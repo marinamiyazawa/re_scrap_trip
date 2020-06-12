@@ -21,6 +21,8 @@
 $(document).on('turbolinks:load', function () {
   $("#theTarget").skippr({
       // スライドショーの変化 ("fade" or "slide")
+     
+
       transition : 'slide',
       // 変化に係る時間(ミリ秒)
       speed : 1000,
