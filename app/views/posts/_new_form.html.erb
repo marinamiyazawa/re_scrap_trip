@@ -1,10 +1,12 @@
 <%= form_for(post) do |f| %>
-	<div class="field">
-		<%= f.label :Image %>
+	<div class="field" style="margin-bottom: 20px;">
+		<% post.post_images.each do |image| %>
+			<%= attachment_image_tag(image, :image, size:'220x200', fallback: "no_image.jpg") %>
+		<% end %>
 		<%= f.attachment_field :post_images_images, multiple: true%>
 	</div>
 
-	<div class="field row" id="star">
+	<div class="field row" id="star" style="margin-bottom: 20px;">
 	    <%= f.label :rate,'評価 ', class:'col-md-3 col-form-label' %>
 	    <%= f.hidden_field :rate, id: :review_star %>
 	</div>
@@ -19,21 +21,24 @@
             half: true,
       });
 	</script>
-	<div class="field row">
+	<div class="field row" style="margin-bottom: 20px;">
 		<%= f.label :Title %>
 		<%= f.text_field :title, class: "col-xs-12 post_title" %>
 	</div>
 
-	<div class="field row">
+	<div class="field row" style="margin-bottom: 20px;">
 		<%= f.label :Content %> <!-- ここを変更 -->
 		<%= f.text_area :body, class: "col-xs-12 post_body" %>
 	</div>
 
-	<div class="field row">
-		<%= f.select :status, Post.statuses.keys.map { |k| [t("enums.post.status.#{k}"),k]} %>
+	<div class="field row" style="margin-bottom: 20px;">
+		<select name="post[status]" id="post_status">
+		  <option selected="selected" value="draft">下書き</option>
+		  <option value="published">公開中</option>
+		</select>
 	</div>
 
-	<div class="actions row">
+	<div class="actions row" style="margin-bottom: 20px;">
 		<%= f.submit class: "btn btn-primary col-xs-12" %>
 	</div>
 <% end %>

@@ -2,12 +2,13 @@
 	<div class="row" style="margin-top: 30px;">
 		<div class="col-xs-12">
 			<% if @post.post_images.present? %>
+
 			<!--スライドショー-->
 				<div id="show">
 					<div id="theTarget">
 						<% @post.post_images.each do |image| %>
-							<div style="width: 100%;">
-							<%= attachment_image_tag(image, :image)%>
+							<div style="max-width: 100%;">
+							<%= attachment_image_tag image, :image, class: "post_image" %>
 							</div>
 						<% end %>
 					</div>
@@ -17,6 +18,7 @@
 	</div>
 	<div class="row" style="margin-top: 30px;">
 		<div class="col-xs-12">
+
 			<!-- いいね　-->
 			<% if @post.favorited_by?(current_user) %>
 				<%= link_to post_favorites_path(@post), method: :delete do %>
@@ -26,7 +28,7 @@
 			<% else %>
 				<%= link_to post_favorites_path(@post), method: :post do %>
 					<i class="fa fa-heart-o" aria-hidden="true"></i>
-					<%= @post.favorites.count %>likes
+					<%= @post.favorites.count %>
 				<% end %>
 			<% end %>
 
@@ -34,10 +36,10 @@
 			<div class="row">
 				<div class="col-xs-11">
 					<div class="row">
-						<div class="col-xs-2" style="padding-top: 10px;">
+						<div class="col-xs-2" style="padding-top: 10px; padding-right: 0; margin: 0;">
 							<div id="star-rate-<%= @post.id %>"></div>
 						</div>
-						<div class="col-xs-2" style="color:silver;">
+						<div class="col-xs-2" style="color:silver; padding: 0; margin:0;">
 							<h4 class="mb-3"><%= @post.rate %></h4>
 						</div>
 			            <script>
@@ -54,8 +56,10 @@
 		        	</div>
 		        </div>
 		        <div class="col-xs-1">
-					<%= link_to edit_post_path do %>
-						<i class="far fa-edit fa-2x"></i>
+		        	<% if @post.user ==current_user %>
+						<%= link_to edit_post_path do %>
+							<i class="far fa-edit fa-2x fa-spin"></i>
+						<% end %>
 					<% end %>
 				</div>
 			</div>
@@ -71,6 +75,13 @@
 					</td>
 					<td>Title: <%= @post.title %></td>
 					<td>Content: <%= @post.body %></td>
+					<td>
+						<% if @post.user == current_user %>
+						<%= link_to @post, method: :delete, data: {confirm: "本当に削除してもよろしいですか？"} do%>
+						<i class="far fa-trash-alt fa-2x"></i>
+						<% end %>
+						<% end %>
+					</td>
 				</tr>
 			</table>
 		</div>

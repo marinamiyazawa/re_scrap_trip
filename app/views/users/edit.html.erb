@@ -1,9 +1,11 @@
 <div class="container">
 	<div class="row">
-		<div class="col-xs-8 col-xs-offset-2">
+		<div class="col-xs-10 col-xs-offset-1">
 
-			<div class="row">
+			<div class="row" style="margin-bottom: 50px;">
+				<div class="col-xs-10 col-xs-offset-1">
 				<h2>Mypage Edit</h2>
+			</div>
 			</div>
 
 			<div class="row">
@@ -11,32 +13,32 @@
 					<%= form_for(@user) do |f| %>
 
 						<div class="field">
-							<%= f.label :image %>
+							<%= attachment_image_tag(@user, :image, size:'200x200', fallback: "no_image.jpg") %>
 							<%= f.attachment_field :image, class: "user_image" %>
 						</div>
 				</div>
-				<div class="col-xs-7">
-						<div class="field">
+				<div class="col-xs-5">
+						<div class="field" style="margin-bottom: 15px;">
 							<%= f.label :first_name %>
 							<%= f.text_field :first_name, class: "first_name" %>
 						</div>
-						<div class="field">
+						<div class="field" style="margin-bottom: 15px;">
 							<%= f.label :last_name %>
 							<%= f.text_field :last_name, class: "last_name" %>
 						</div>
-						<div class="field">
+						<div class="field" style="margin-bottom: 15px;">
 							<%= f.label :nick_name %>
 							<%= f.text_field :nick_name, class: "nick_name" %>
 						</div>
-						<div class="field">
+						<div class="field" style="margin-bottom: 15px;">
 							<%= f.label :introduction %>
 							<%= f.text_area :introduction, class: "introduction" %>
 						</div>
-						<div class="field">
+						<div class="field" style="margin-bottom: 15px;">
 							<%= f.label :email %>
 							<%= f.text_field :email, class: "email" %>
 						</div>
-						<div class="row">
+						<div class="row" style="margin-top: 40px;">
 							<div class="col-xs-12">
 								<div class="pull-left">
 									<%= f.submit '変更を保存する', class: "btn btn-primary" %>

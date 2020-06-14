@@ -72,15 +72,16 @@ ul {
 }
 
 .container {
-  padding-top:70px;
+  padding-top:30px;
 }
 
 /* user_show */
 .map_image {
-	background-image: url(world_map.jpg);
-	background-size: cover;
+ border: 1px solid;
+ border-color:silver;
 	height: 300px;
-	width: 600px;
+	max-width: 100%;
+  text-align:center;
 }
 
 /* top_page */
@@ -112,4 +113,7 @@ ul {
 #show{
   height:350px;
   text-align:center;
+}
+.post_image {
+  max-height: 350px;
 }

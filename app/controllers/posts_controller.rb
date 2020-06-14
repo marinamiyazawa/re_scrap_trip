@@ -16,7 +16,6 @@ class PostsController < ApplicationController
 
 	def index
 		@posts = Post.published.order("created_at DESC")
-		@user = current_user
 	end
 
 	def show
@@ -27,7 +26,6 @@ class PostsController < ApplicationController
 		elsif @post.draft?
 			login_required
 		end
-		
 	end
 
 	def login_required
@@ -45,7 +43,13 @@ class PostsController < ApplicationController
 	end
 
 	def confirm
-		@posts = Post.draft.order("created_at DESC")
+		@posts = Post.draft.where(:user_id => current_user.id).order("created_at DESC")
+	end
+
+	def destroy
+		@post = Post.find(params[:id])
+		@post.destroy
+		redirect_to posts_path
 	end
 
 	private

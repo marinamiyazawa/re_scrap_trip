@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   end
   resources :messages, :only => [:create]
   resources :rooms, :only => [:create, :show, :index]
-  resources :posts, only: [:new,:create,:index,:show,:edit,:update] do
+  resources :posts, only: [:new,:create,:index,:show,:edit,:update, :destroy] do
     collection do
       get 'confirm'
     end

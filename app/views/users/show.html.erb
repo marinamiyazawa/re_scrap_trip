@@ -65,32 +65,48 @@
 					<strong><%= @user.introduction %></strong>
 				</div>
 			</div>
+		</div>
+		<div class="col-xs-12">
 
 			<!-- マップの表示 -->
 			<div class="row" style="padding-top: 70px;">
 				<div class="map_image">
+					map
 				</div>
 			</div>
 			<!--　ユーザーの投稿 -->
+			<div class="row" style="padding-top: 50px;">
 			<% @posts.each do |post| %>
-				<div class="row" style="padding-top: 30px;">
-					<div class="col-xs-">
-						<div class="row">
-							<% if post.post_images.present? %>
-								<% post.post_images.each do |image| %>
-									<%= attachment_image_tag(image, :image, size:'50x50', fallback: "no-image-mini.jpg") %>
-								<% end %>
+
+				<div class="col-xs-4">
+
+					<div class="row">
+						<div class="col-xs-12">
+						<% if post.post_images.present? %>
+							<% post.post_images.first(1).each do |image| %>
+								<%= attachment_image_tag image, :image, size:'240x200', fallback: "no-image-mini.jpg", class: "scale-img" %><!--scssで指定 -->
 							<% end %>
-						</div>
-						<div class="row">
-							<%= link_to post.title,post, class: "post_#{post.id}" %>
-						</div>
-						<div class="row">
-							<%= post.status %>
-						</div>
+						<% end %>
+					</div>
+					</div>
+					<div class="row">
+						<div class="col-xs-12">
+						<%= link_to post.title,post, class: "post_#{post.id}" %>
+					</div>
+					</div>
+					<div class="row" style="margin-bottom: 20px;">
+						<div class="col-xs-12">
+						<% if post.status == 1 %>
+						<p>公開中</p>
+						<% else %>
+						<p>下書き</p>
+						<% end %>
+					</div>
 					</div>
 				</div>
+				
 			<% end %>
+			</div>
 		</div>
 	</div>
 </div>
