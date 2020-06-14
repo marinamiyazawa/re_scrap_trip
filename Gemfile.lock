@@ -349,7 +349,7 @@ DEPENDENCIES
   pry-rails
   puma (~> 3.11)
   rails (~> 5.2.4, >= 5.2.4.3)
-  refile!
+  refile (~> 0.6.2)!
   refile-mini_magick!
   sass-rails (~> 5.0)
   selenium-webdriver
