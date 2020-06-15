@@ -1,0 +1,62 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<h2>投稿編集</h2>
+			<div class="row" style="margin-top: 30px;">
+				<div class="col-xs-3">
+					<%= link_to admins_user_path(@post.user.id) do %>
+						<%= attachment_image_tag(@post.user, :image, :fill, 70, 70, fallback: "no-image-mini.jpg") %>
+					<% end %>
+					<%= @post.user.nick_name %>
+				</div>
+			</div>
+			<!-- 投稿内容 -->
+			<div class="row" style="margin-top: 20px;">
+			<%= form_for(@post,url:admins_post_path) do |f| %>
+				<div class="field" style="margin-bottom: 20px;">
+					<% @post.post_images.each do |image| %>
+						<%= attachment_image_tag(image, :image, size:'220x200', fallback: "no_image.jpg") %>
+					<% end %>
+					<%= f.attachment_field :post_images_images, multiple: true%>
+				</div>
+
+				<div class="field row" id="star" style="margin-bottom: 20px;">
+				    <%= f.label :rate,'評価 ', class:'col-md-3 col-form-label' %>
+				    <%= f.hidden_field :rate, id: :review_star %>
+				</div>
+
+				<script>
+					$("#star").raty({
+			            size     : 36,
+			            starOff:  '<%= asset_path('star-off.png') %>',
+			            starOn : '<%= asset_path('star-on.png') %>',
+			            starHalf: '<%= asset_path('star-half.png') %>',
+			            scoreName: 'post[rate]',
+			            half: true,
+			      });
+				</script>
+				<div class="field row" style="margin-bottom: 20px;">
+					<%= f.label :Title %>
+					<%= f.text_field :title, class: "col-xs-12 post_title" %>
+				</div>
+
+				<div class="field row" style="margin-bottom: 20px;">
+					<%= f.label :Content %> <!-- ここを変更 -->
+					<%= f.text_area :body, class: "col-xs-12 post_body" %>
+				</div>
+
+				<div class="field row" style="margin-bottom: 20px;">
+					<select name="post[status]" id="post_status">
+					  <option selected="selected" value="draft">下書き</option>
+					  <option value="published">公開中</option>
+					</select>
+				</div>
+
+				<div class="actions row" style="margin-bottom: 20px;">
+					<%= f.submit '変更を保存する', class: "btn btn-primary col-xs-12" %>
+				</div>
+			<% end %>
+		</div>
+		</div>
+	</div>
+</div>

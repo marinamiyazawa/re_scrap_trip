@@ -1,30 +1,48 @@
 <div class="container">
 	<div class="row">
-		<div class="col-xs-8 col-xs-offset-2">
-			<h2>User Show</h2>
-			<table class="table">
-				<tr>
-					<th></th>
-					<th><%= @user.id %></th>
-					<th><%= @user.first_name %>
-					<%= @user.last_name %></th>
-					<th></th>
-					<th>
+		<div class="col-xs-10 col-xs-offset-1">
+
+			<h2>ユーザー詳細</h2>
+
+				<div class="row" style="margin-top: 30px;">
+					<div class="col-xs-2">
+						ユーザーID : <%= @user.id %>
+					</div>
+					<div class="col-xs-4">
+						<strong><%= @user.first_name %>
+						<%= @user.last_name %></strong>
+					</div>
+					<div class="col-xs-2">
 						<%if @user.user_status == false %>
-							<p>有効会員</p>
+							<p style="border: 1px solid; border-radius: 30px; text-align: center; background-color: skyblue;">有効会員</p>
 						<% else %>
-							<p>退会済</p>
+							<p style="border: 1px solid; border-radius: 30px; text-align: center; background-color: tomato;">退会済</p>
 						<% end %>
-					</th>
-				</tr>
-				<tr>
-					<th><%= attachment_image_tag(@user, :image, size:'60x60') %></th>
-					<td><%= @user.nick_name %></td>
-					<td><%= @user.introduction %></td>
-					<td></td>
-					<td><%= @user.email %></td>
-				</tr>
-			</table>
+					</div>
+				</div>
+
+				<div class="row" style="margin-top: 50px;">
+					<div class="col-xs-4">
+						<%= attachment_image_tag(@user, :image, size:'200x200') %>
+					</div>
+					<div class="col-xs-6 col-xs-offset-2">
+						<div class="row">
+							<h3>user_name </h3> <%= @user.nick_name %>
+						</div>
+						<div class="row">
+							<h3>Introduction </h3> <%= @user.introduction %>
+						</div>
+						<div class="row">
+							<h3>Email </h3> <%= @user.email %>
+						</div>
+					</div>
+				</div>
+				<div class="row" style="margin-top: 30px;">
+					<div class="col-xs-10 col-xs-offset-1">
+						<%= link_to '編集する', edit_admins_user_path, class: "btn btn-primary pull-right", data: {"turbolinks" => false} %>
+					</div>
+				</div>
+
 
 		</div>
 	</div>

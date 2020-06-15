@@ -1,0 +1,48 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-10 col-xs-offset-1">
+			<h2>ユーザー情報編集</h2>
+
+			<%= form_for(@user,url:admins_user_path) do |f| %>
+				<div class="row" style="margin-top: 40px;">
+					<div class="col-xs-3">
+						<div class="field">
+							<%= attachment_image_tag(@user, :image, size:'200x200', fallback: "no_image.jpg") %>
+							<%= f.attachment_field :image, class: "user_image" %>
+						</div>
+					</div>
+
+					<div class="col-xs-6 col-xs-offset-3">
+						<div class="field" style="margin-bottom: 15px;">
+							<%= f.label :first_name %>
+							<%= f.text_field :first_name, class: "first_name" %>
+						</div>
+						<div class="field" style="margin-bottom: 15px;">
+							<%= f.label :last_name %>
+							<%= f.text_field :last_name, class: "last_name" %>
+						</div>
+						<div class="field" style="margin-bottom: 15px;">
+							<%= f.label :nick_name %>
+							<%= f.text_field :nick_name, class: "nick_name" %>
+						</div>
+						<div class="field" style="margin-bottom: 15px;">
+							<%= f.label :introduction %>
+							<%= f.text_area :introduction, class: "introduction" %>
+						</div>
+						<div class="field" style="margin-bottom: 15px;">
+							<%= f.label :email %>
+							<%= f.text_field :email, class: "email" %>
+						</div>
+						<div class="row", style="padding-top: 8px;">	
+						    <%= f.radio_button :user_status, :false %>有効
+			    			<%= f.radio_button :user_status, :true %>退会済み
+		    			</div>
+						<div class="pull-right" style="margin-top: 20px;">
+							<%= f.submit '変更を保存する', class: "btn btn-primary" %>
+						</div>
+					</div>
+					<% end %>
+
+		</div>
+	</div>
+</div>

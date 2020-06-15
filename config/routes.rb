@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   root 'homes#top'
   get 'homes/about', to:'homes#about'
+  get '/post/hashtag/:name', to: "posts#hashtag"
 
   resources :relationships, only: [:create, :destroy]
   resources :users, only: [:show,:edit,:update] do
@@ -32,6 +33,7 @@ Rails.application.routes.draw do
     root "homes#top"
 
     resources :users, only:[:index, :show, :edit, :update]
+    resources :posts, only:[:index, :show, :edit, :update, :destroy]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

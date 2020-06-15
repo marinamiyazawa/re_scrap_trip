@@ -54,25 +54,49 @@ header .headline{
   font-size: 32px;
   margin:0;
 }
-
-ul {
-  border: 1px solid;
-  border-color: silver;
+.container-fluid {
+  background-color: aliceblue;
 }
 
-.nav-list {
-  text-align: center;
-  padding: 10px 0;
-  margin: 0 auto;
-}
 .nav-list-item {
-  list-style: none;
-  display: inline-block;
-  margin: 0 20px;
+  font-size: 1.1em;
 }
 
-.container {
-  padding-top:30px;
+.navbar .navbar-inner {
+padding: 0;
+}
+
+.navbar .nav {
+margin: 0;
+display: table;
+width: 100%;
+}
+
+.navbar .nav li {
+display: table-cell;
+float: none;
+}
+
+.navbar .nav li a {
+font-weight: bold;
+text-align: center;
+border-left: 1px solid rgba(255, 255, 255, .75);
+border-right: 1px solid rgba(0, 0, 0, .1);
+color: #4682b4;
+}
+
+.navbar .nav li:first-child a {
+border-left: 0;
+border-radius: 0 3px 3px 0;
+}
+
+.navbar .nav li:last-child a {
+border-right: 0;
+border-radius: 0 3px 3px 0;
+}
+
+.container{
+  margin-top :40px;
 }
 
 /* user_show */

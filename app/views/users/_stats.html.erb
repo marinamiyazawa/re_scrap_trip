@@ -1,19 +1,20 @@
 <% user ||= current_user %>
-<div class="col-xs-6 col-xs-offset-3">
-  <span>
-    <%=link_to following_user_path(@user) do %>
-      <strong id="followings" class="stat">
-        <%= user.followings.count %>
-      </strong>
-      followings
-    <% end %>
-  </span>
-  <span>
-    <%=link_to followers_user_path(@user) do %>
-      <strong id="followers" class="stat">
-        <%= user.followers.count %>
-      </strong>
-      followers
-    <% end %>
-  </span>
-</div>
+<main style="display: flex;">
+  <div>
+      <%=link_to following_user_path(@user) do %>
+        <h4><strong id="followings" class="stat">
+          <%= user.followings.count %>
+        </strong>
+        followings</h4>
+      <% end %>
+  </div>
+  <div style="padding-left: 10px;">
+      <%=link_to followers_user_path(@user) do %>
+        <h4><strong id="followers" class="stat">
+          <%= user.followers.count %>
+        </strong>
+        followers</h4>
+      <% end %>
+  </div>
+</main>
+

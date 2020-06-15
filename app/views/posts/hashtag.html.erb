@@ -1,0 +1,44 @@
+<% provide(:title, @tag.hashname) %>
+<div class="row">
+	<div class="col-xs-8 col-xs-offset-2">
+		<!-- ハッシュタグ名　-->
+		<div class="row">
+			<div class="col-xs-4">
+				<%= image_tag("hashtag.jpg", size:'100x100') %>
+			</div>
+			<div class="col-xs-4" style="margin-top: 10px;">
+				<h1><%= @tag.hashname %></h1>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-12">
+				<% @posts.each do |post| %>
+					<div class="row">
+						<div class="col-xs-12" style="margin-top: 20px; border-bottom: 1px solid; border-color: silver;">
+
+							<div class="row" style="margin: 10px;">
+								<% post.post_images.each do |image| %>
+									<%= attachment_image_tag(image, :image, size:'220x200') %>
+								<% end %>
+							</div>
+							<div class="row" style="margin: 10px;">
+
+								<%= link_to (post.user) do %>
+									<%= attachment_image_tag(post.user, :image, size:'50x50', fallback:"no_image.jpg") %>
+								<% end %>
+								<%= post.user.nick_name %>
+							</div>
+							<div class="row" style="margin: 10px;">
+								<strong>Title: </strong><%= link_to post.title, post, class: "post_#{post.id}" %>
+								|
+								<strong>Content: </strong><%= post.body %>
+							</div>
+						</div>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>
+

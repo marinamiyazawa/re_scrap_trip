@@ -73,8 +73,8 @@
 						<% end %>
 						<%= @post.user.nick_name %>
 					</td>
-					<td>Title: <%= @post.title %></td>
-					<td>Content: <%= @post.body %></td>
+					<td style="padding-top: 30px;"><strong>Title: </strong><%= @post.title %></td>
+					<td style="padding-top: 30px;"><strong>Content: </strong><%= render_with_hashtags(@post.body) %></td>
 					<td>
 						<% if @post.user == current_user %>
 						<%= link_to @post, method: :delete, data: {confirm: "本当に削除してもよろしいですか？"} do%>

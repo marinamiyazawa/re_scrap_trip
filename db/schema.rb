@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_12_091226) do
+ActiveRecord::Schema.define(version: 2020_06_15_045303) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -49,6 +49,13 @@ ActiveRecord::Schema.define(version: 2020_06_12_091226) do
     t.index ["ancestry"], name: "index_genres_on_ancestry"
   end
 
+  create_table "hashtags", force: :cascade do |t|
+    t.string "hashname"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["hashname"], name: "index_hashtags_on_hashname", unique: true
+  end
+
   create_table "messages", force: :cascade do |t|
     t.integer "user_id"
     t.integer "room_id"
@@ -57,6 +64,13 @@ ActiveRecord::Schema.define(version: 2020_06_12_091226) do
     t.datetime "updated_at", null: false
     t.index ["room_id"], name: "index_messages_on_room_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "post_hashtags", id: false, force: :cascade do |t|
+    t.integer "post_id"
+    t.integer "hashtag_id"
+    t.index ["hashtag_id"], name: "index_post_hashtags_on_hashtag_id"
+    t.index ["post_id"], name: "index_post_hashtags_on_post_id"
   end
 
   create_table "post_images", force: :cascade do |t|

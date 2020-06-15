@@ -14,6 +14,15 @@ class PostsController < ApplicationController
 		redirect_to post_path(@post)
 	end
 
+	def hashtag
+		@user = current_user
+		@tag = Hashtag.find_by(hashname: params[:name])
+		@posts = []
+		PostHashtags.where(hashtag_id: @tag.id).includes(:posts).each do |post_hashtag|
+			@posts << post_hashtag.post
+		end
+	end
+
 	def index
 		@posts = Post.published.order("created_at DESC")
 	end
