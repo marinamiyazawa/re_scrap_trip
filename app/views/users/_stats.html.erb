@@ -2,18 +2,18 @@
 <main style="display: flex;">
   <div>
       <%=link_to following_user_path(@user) do %>
-        <h4><strong id="followings" class="stat">
+        <h5><strong id="followings" class="stat">
           <%= user.followings.count %>
         </strong>
-        followings</h4>
+        followings</h5>
       <% end %>
   </div>
   <div style="padding-left: 10px;">
       <%=link_to followers_user_path(@user) do %>
-        <h4><strong id="followers" class="stat">
+        <h5><strong id="followers" class="stat">
           <%= user.followers.count %>
         </strong>
-        followers</h4>
+        followers</h5>
       <% end %>
   </div>
 </main>

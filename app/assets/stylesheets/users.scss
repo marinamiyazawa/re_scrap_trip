@@ -14,6 +14,14 @@
 	-ms-filter: “alpha( opacity=50 )”;
 }
 
+.map_image {
+ border: 1px solid;
+ border-color:silver;
+	height: 200px;
+	max-width: 100%;
+  text-align:center;
+}
+
 /* user_edit */
 .user_image {
 	margin-top: 30px;
