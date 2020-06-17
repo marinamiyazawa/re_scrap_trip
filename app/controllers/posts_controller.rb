@@ -1,9 +1,13 @@
 class PostsController < ApplicationController
 	before_action :correct_user, only:[:edit]
+	before_action :set_genre_parent, only:[:new, :create, :edit, :update]
 
 	def new
 		@post = Post.new
 		@post.post_images.build
+	end
+	def get_genre_children #親カテゴリーが選択された後に動くアクション
+		@genre_children = Genre.find_by(id: "#{params[:parent_name]}", ancestry: nil).children
 	end
 
 	def create
@@ -18,13 +22,14 @@ class PostsController < ApplicationController
 		@user = current_user
 		@tag = Hashtag.find_by(hashname: params[:name])
 		@posts = []
-		PostHashtags.where(hashtag_id: @tag.id).includes(:posts).each do |post_hashtag|
+		PostHashtag.where(hashtag_id: @tag.id).includes(:post).each do |post_hashtag|
 			@posts << post_hashtag.post
 		end
 	end
 
 	def index
 		@posts = Post.published.order("created_at DESC")
+		@parents = Genre.where(ancestry: nil)
 	end
 
 	def show
@@ -57,9 +62,14 @@ class PostsController < ApplicationController
 
 	def destroy
 		@post = Post.find(params[:id])
-		@post.destroy
-		redirect_to posts_path
+		if @post.destroy
+			redirect_to posts_path
+		else
+			flash[:error_messages] = @product.errors.full_messages
+			render 'show'
+		end
 	end
+
 
 	private
 	def post_params
@@ -72,4 +82,12 @@ class PostsController < ApplicationController
 			redirect_to posts_path
 		end
 	end
+
+	def set_genre_parent
+		@genre_parent_array = [{ name: "--", id: "--"}] #親カテゴリーのみ抽出、配列
+			Genre.where(ancestry: nil).each do |parent|
+				@genre_parent_array << { name: parent.name, id: parent.id}
+			end
+	end
+
 end

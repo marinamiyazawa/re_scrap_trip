@@ -1,13 +1,33 @@
 <%= form_for(post) do |f| %>
 	<div class="field" style="margin-bottom: 20px;">
 		<% post.post_images.each do |image| %>
-			<%= attachment_image_tag(image, :image, size:'220x200', fallback: "no_image.jpg") %>
+			<%= attachment_image_tag(image, :image, id: "preview", size:'220x200', fallback: "no_image.jpg") %>
 		<% end %>
-		<%= f.attachment_field :post_images_images, multiple: true%>
+		<%= f.attachment_field :post_images_images, id: :item_img, multiple: true%>
 	</div>
 
+
+<!--ジャンル選択　-->
+	<div class="field row" style="margin-bottom: 20px;">
+		<div class="listing-form-box">
+  			<div class="listing-post-detail__genre">
+    			<%= f.label 'ジャンル', class: 'listing-default__label' %>
+    			<span class="listing-default--require">必須</span>
+    			<div class="listing-select-wrapper">
+      				<div class="listing-select-wrapper__box">
+        				<%= f.select :genre_id, options_for_select(@genre_parent_array.map { |genre| [genre[:name], genre[:id]] }), {}, {class: 'listing-select-wrapper__box--select', id: 'parent_genre' } %>
+        				<i class="fas fa-chevron-down listing-select-wrapper__box--arrow-down"></i>
+        				
+      				</div>
+    			</div>
+			</div>
+		</div>
+	</div>
+
+
+
 	<div class="field row" id="star" style="margin-bottom: 20px;">
-	    <%= f.label :rate,'評価 ', class:'col-md-3 col-form-label' %>
+	    <%= f.label :rate,'評価 ' %>
 	    <%= f.hidden_field :rate, id: :review_star %>
 	</div>
 
@@ -33,7 +53,7 @@
 
 	<div class="field row" style="margin-bottom: 20px;">
 		<select name="post[status]" id="post_status">
-		  <option selected="selected" value="draft">下書き</option>
+		  <option value="draft">下書き</option>
 		  <option value="published">公開中</option>
 		</select>
 	</div>

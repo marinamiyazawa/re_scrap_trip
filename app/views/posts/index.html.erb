@@ -1,7 +1,23 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-3">
-			<h2 style="border-bottom: 1px solid silver;">Genre</h2>
+			<h2 style="border-bottom: 1px solid silver; margin-bottom: 10px;">Genre</h2>
+			<div class="row">
+				<% @parents.each do |parent| %>
+					<div class="row" style="margin-left: 10px; padding-bottom: 5px;">
+						<%= link_to genre_path(parent.id) do %>
+							<h3><%= parent.name %> >></h3>
+						<% end %>
+					</div>
+						<% parent.children.each do |child| %>
+							<div class="row" style="margin-left: 10px; padding-left: 50px;">
+								<%= link_to genre_path(child.id) do %>
+									<h5><%= child.name %></h5>
+								<% end %>
+							</div>
+						<% end %>
+				<% end %>
+			</div>
 		</div>
 		<div class="col-xs-9">
 			<h2>Posts</h2>

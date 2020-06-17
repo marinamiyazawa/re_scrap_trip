@@ -65,14 +65,23 @@
 			</div>
 
 			<!-- 投稿内容　-->
+			<% if @post.errors.any? %>
+			<h3><%= @post.errors.count %>error occurrence</h3>
+			<ul>
+				<% @post.errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+				<% end %>
+			</ul>
+			<% end %>
 			<table class="table" style="margin-top: 30px;">
 				<tr>
 					<td>
 						<%= link_to (@post.user) do %>
-							<%= attachment_image_tag(@post.user, :image, :fill, 70, 70, fallback: "no-image-mini.jpg") %>
+							<%= attachment_image_tag(@post.user, :image, :fill, 70, 70) %>
 						<% end %>
 						<%= @post.user.nick_name %>
 					</td>
+					<td style="padding-top: 30px;"><strong>Genre: </strong><%= @post.genre.name %></td>
 					<td style="padding-top: 30px;"><strong>Title: </strong><%= @post.title %></td>
 					<td style="padding-top: 30px;"><strong>Content: </strong><%= render_with_hashtags(@post.body) %></td>
 					<td>

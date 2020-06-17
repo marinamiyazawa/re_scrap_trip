@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   root 'homes#top'
   get 'homes/about', to:'homes#about'
   get '/post/hashtag/:name', to: "posts#hashtag"
+  get 'searchs/search', to:'searches#search'
 
   resources :relationships, only: [:create, :destroy]
   resources :users, only: [:show,:edit,:update] do
@@ -18,11 +19,13 @@ Rails.application.routes.draw do
                     		get :following, :followers
                     	end
   end
+  resources :genres, only:[:index, :show]
   resources :messages, :only => [:create]
   resources :rooms, :only => [:create, :show, :index]
   resources :posts, only: [:new,:create,:index,:show,:edit,:update, :destroy] do
     collection do
       get 'confirm'
+      get 'get_genre_children', defaults: { format: 'json' }
     end
   	resource :favorites, only: [:create, :destroy]
   end

@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 2020_06_15_045303) do
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
-  create_table "post_hashtags", id: false, force: :cascade do |t|
+  create_table "post_hashtags", force: :cascade do |t|
     t.integer "post_id"
     t.integer "hashtag_id"
     t.index ["hashtag_id"], name: "index_post_hashtags_on_hashtag_id"
@@ -104,15 +104,6 @@ ActiveRecord::Schema.define(version: 2020_06_15_045303) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "sns_credentials", force: :cascade do |t|
-    t.string "provider"
-    t.string "uid"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_sns_credentials_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

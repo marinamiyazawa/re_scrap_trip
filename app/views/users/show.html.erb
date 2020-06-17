@@ -73,7 +73,9 @@
 							<div class="col-xs-12">
 								<% if post.post_images.present? %>
 									<% post.post_images.first(1).each do |image| %>
-										<%= attachment_image_tag image, :image, size:'240x200', fallback: "no-image-mini.jpg", class: "scale-img" %><!--scssで指定 -->
+										<%= link_to post_path(post.id) do %>
+											<%= attachment_image_tag image, :image, size:'240x200', fallback: "no_image.jpg", class: "scale-img" %>
+										<% end %><!--scssで指定 -->
 									<% end %>
 								<% end %>
 							</div>
@@ -85,10 +87,10 @@
 						</div>
 						<div class="row" style="margin-bottom: 20px;">
 							<div class="col-xs-12">
-								<% if post.status == 1 %>
-									<p>公開中</p>
-								<% else %>
+								<% if post.status == 0 %>
 									<p>下書き</p>
+								<% else %>
+									<p>公開中</p>
 								<% end %>
 							</div>
 						</div>
