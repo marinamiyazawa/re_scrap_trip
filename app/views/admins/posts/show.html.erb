@@ -18,6 +18,9 @@
 						<h3><strong>Content </strong></h3><%= @post.body %>
 				</div>
 				<div class="col-xs-2">
+					<h3><strong>Genre </strong></h3><%= @post.genre.name %>
+				</div>
+				<div class="col-xs-2">
 						<h3><strong>Status </strong></h3><%= @post.status %>
 				</div>
 			</div>
@@ -28,7 +31,7 @@
 					<% @post.post_images.each do |image| %>
 						<!--post/scss記述 -->
 						<%= attachment_image_tag image, :image, size:'200x200', class: "admins_post_show" %>
-					<% end %>		
+					<% end %>
 				<% end %>
 			<div class="row" style="margin-top: 20px;">
 				<div class="col-xs-8">

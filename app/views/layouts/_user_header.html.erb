@@ -5,7 +5,7 @@
   <%= link_to ' Posts', posts_path, data: {"turbolinks" => false}, class: "far fa-clone" %>
 </li>
 <li class="nav-list-item">
-  <%=link_to "Ranking", "", data: {"turbolinks" => false}, class: "fas fa-plane-departure" %>
+  <%=link_to "Ranking", ranking_posts_path, data: {"turbolinks" => false}, class: "fas fa-crown" %>
 </li>
 <li class="nav-list-item">
   <%= link_to ' logout', destroy_user_session_path, method: :delete, data: {"turbolinks" => false}, class: "fas fa-sign-out-alt" %>

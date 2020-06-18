@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   resources :rooms, :only => [:create, :show, :index]
   resources :posts, only: [:new,:create,:index,:show,:edit,:update, :destroy] do
     collection do
+      get 'ranking'
       get 'confirm'
       get 'get_genre_children', defaults: { format: 'json' }
     end

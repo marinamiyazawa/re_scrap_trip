@@ -76,3 +76,5 @@ group :production do
   gem 'mysql2'
 end
 gem 'ancestry'
+gem 'gmaps4rails'
+gem 'geocoder'

@@ -32,6 +32,11 @@ class PostsController < ApplicationController
 		@parents = Genre.where(ancestry: nil)
 	end
 
+	def ranking
+		@all_ranks = Post.find(Favorite.group(:post_id).order('count(post_id) desc').limit(10).pluck(:post_id))
+		@parents = Genre.where(ancestry: nil)
+	end
+
 	def show
 		@post = Post.find_by(id: params[:id])
 
@@ -73,7 +78,7 @@ class PostsController < ApplicationController
 
 	private
 	def post_params
-		params.require(:post).permit(:title, :body, :rate, :status, :genre_id, post_images_images: [])
+		params.require(:post).permit(:title, :body, :rate, :status, :latitude, :longitude, :genre_id, post_images_images: [])
 	end
 
 	def correct_user

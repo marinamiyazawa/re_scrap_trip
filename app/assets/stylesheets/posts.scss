@@ -6,3 +6,22 @@
 .admins_post_show{
 	margin-right: 20px;
 }
+
+/* ジャンル　プルダウン*/
+select::-ms-expand {
+	display: none;
+}
+select {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	margin-bottom: 20px;
+	padding: 7px 30px 7px 10px;
+	font-size: 70%;
+	line-height: 1em;
+	border-radius: 5px;
+	background-repeat: no-repeat;
+	background-size: 10px 8px;
+	background-position: right 10px center;
+	background-color: aliceblue;
+}

@@ -26,13 +26,13 @@
 						<% end %>
 					</span>
 
-					<span style="margin-left: 18px;">
+					<span style="margin-left: 5px;">
 						<%=link_to new_post_path, data: {"turbolinks" => false} do %>
 						<i class="fas fa-plus-circle fa-2x"></i>
 						<% end %>
 					</span>
 
-					<span style="margin-left: 18px;">
+					<span style="margin-left: 5px;">
 						<% if @user.id == current_user.id %>
 							<%= link_to rooms_path do %>
 								<i class="far fa-envelope fa-2x"></i>
@@ -54,15 +54,39 @@
 							<% end %>
 						<% end %>
 					</span>
+
+					<span style="margin-left: 5px;">
+						<%=link_to "", data: {"turbolinks" => false} do %>
+						<i class="far fa-heart fa-2x"></i>
+						<% end %>
+					</span>
+					
 				</div>
 			</div>
 		</div>
 
 		<div class="col-xs-9">
 			<div class="row">
-				<div class="map_image">
-					map
+				<div style="width: 100%;">
+					<!-- Google Map -->
+  					<div id="map" style="width: 100%; height: 300px;"></div>
 				</div>
+				<script>
+				  handler = Gmaps.build('Google');
+				  handler.buildMap({
+				    provider: {mapTypeId: 'roadmap'},
+				    internal: {id: 'map'}
+				    },
+				    function(){
+				    //markers = handler.addMarkers(#{raw @hash.to_json})
+				    markers = handler.addMarkers(<%=raw @hash.to_json %>)
+				    handler.bounds.extendWith(markers);
+				    handler.fitMapToBounds();
+				    handler.getMap().setCenter(new google.maps.LatLng(35.681298, 139.7640582));
+				    handler.getMap().setZoom(1);
+				  });
+				</script>
+
 			</div>
 			<div class="row" style="padding-top: 50px;">
 				<% @posts.each do |post| %>

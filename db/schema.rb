@@ -87,6 +87,8 @@ ActiveRecord::Schema.define(version: 2020_06_15_045303) do
     t.integer "user_id"
     t.integer "genre_id"
     t.integer "favorite_id"
+    t.float "latitude"
+    t.float "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "status", default: 0, null: false

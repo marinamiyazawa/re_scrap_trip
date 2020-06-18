@@ -12,8 +12,7 @@ $('turbolinks:load', function(){
                           <select class="listing-select-wrapper__box--select" id="child_genre" name="post[genre_id]">
                             <option value="---" data-genre="---">---</option>
                             ${insertHTML}
-                          <select>
-                          <i class='fas fa-chevron-down listing-select-wrapper__box--arrow-down'></i>
+                          </select>
                         </div>
                       </div>`;
     $('.listing-post-detail__genre').append(childSelectHtml);

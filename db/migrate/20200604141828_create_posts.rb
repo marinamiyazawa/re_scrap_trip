@@ -8,6 +8,8 @@ class CreatePosts < ActiveRecord::Migration[5.2]
     	t.integer :user_id
     	t.integer :genre_id
     	t.integer :favorite_id
+      t.float :latitude
+      t.float :longitude
 
       t.timestamps
     end
