@@ -32,7 +32,7 @@ a {
   clear: both;
 }
 
-header, nav, h2{
+header, nav, h1, h2, .logo {
   font-family:'Permanent Marker', cursive, Chalkduster, "Bradley Hand", Courier, "Segoe Print", sans-serif;
   margin: 0;
 }
@@ -109,34 +109,36 @@ border-radius: 0 3px 3px 0;
 
 /* top_page */
 .image1 {
-	background-image: image-url("top_image1.jpg");
-	opacity: 0.7;
+	background-image: image-url("header3.jpg");
 }
 .image2 {
-	background-image: image-url("top_image2.jpg");
-	opacity: 0.7;
+	background-image: image-url("top2.jpg");
 }
 .image3 {
 	background-image: image-url("top_image3.jpg");
-	opacity: 0.7;
 }
 .image4 {
 	background-image: image-url("top_image4.jpg");
-	opacity: 0.7;
 }
-.image5 {
-	background-image: image-url("top_image5.jpg");
-	opacity: 0.7;
-}
+
 #top{
 	height: 300px;
 }
-
-/* post_show */
-#show{
-  height:350px;
-  text-align:center;
+.logo {
+  color:#71aee2;
+  position: absolute;
+  top:200px;
+  left:180px;
 }
+
+.body {
+  color:#174a75;
+  position: absolute;
+  top:300px;
+  left:180px;
+  font-family: 'Permanent Marker', cursive;
+}
+
 .post_image {
   max-height: 350px;
 }

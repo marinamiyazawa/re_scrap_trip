@@ -1,17 +1,123 @@
-<div class="container">
-	<div class="row">
-		<div class="col-xs-12">
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ScrapTrip</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
-			<div id="top">
-				<div id="theTarget">
-					<div class="image1"></div>
-					<div class="image2"></div>
-					<div class="image3"></div>
-					<div class="image4"></div>
-					<div class="image5"></div>
-				</div>
-			</div>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+  </head>
+<!-- navbar -->
+  <div class="navbar navbar-default" role="navigation" style="margin-bottom: 0;">
+      <div class="container-fluid" style="fixed-top">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <!--if文でサインインとアウト時の表示を変更-->
+              <% if user_signed_in? %>
+                <%= render "layouts/user_header" %>
+              <% elsif admin_signed_in? %>
+                <%= render "layouts/admins_header" %>
+              <% else %>
+                <li class="nav-list-item">
+                  <%= link_to ' Home', root_path, class: "fas fa-house-user" %>
+                </li>
+                <li class="nav-list-item">
+                  <%= link_to ' About', homes_about_path, class: "fas fa-suitcase-rolling" %>
+                </li>
+                <li class="nav-list-item">
+                  <%= link_to ' sign up', new_user_registration_path, class: "fas fa-user-plus" %>
+                </li>
+                <li class="nav-list-item">
+                  <%= link_to ' login', new_user_session_path, class: "fas fa-sign-in-alt" %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+<!-- top -->
 
-		</div>
-	</div>
-</div>
+    <div class="container" style="margin: 0; padding: 0;width: 100%;">
+        <div class="row" style="height: 300px;">
+            <div class="col-xs-12" style="position: relative;">
+                <!-- スライドショー -->
+                <div class="row">
+                    <div class="col-xs-5">
+                        <div id="contain" style="height: 660px; width: 100%;">
+                            <div id="theTarget">
+                                <div class="image1" style="position: absolute; background-size: cover; background-position: center; z-index: 1;"></div>
+                                <div class="image2" style="position: absolute; background-size: cover; background-position: center; z-index: 1;"></div>
+                                <div class="image3" style="position: absolute; background-size: cover; background-position: center; z-index: 1;"></div>
+                                <div class="image4" style="position: absolute; background-size: cover; background-position: center; z-index: 1;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-6">
+                        <div class="logo" style="font-size: 5em;">Scrap Trip</div>
+                            <div class="body" style="font-size: 1.5em;">
+                                Record the memories of your trip.<br>
+                                You can discover new destinations from photos, records of places and posts of others.
+                            </div>
+                        </div>
+                    </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-3">
+                <h1 style="margin-bottom: 10px;">Posts</h1>
+            </div>
+        </div>
+        <div class="row">
+            <% @posts.each do |post| %>
+                <div class="col-xs-3">
+
+                    <div class="row">
+                        <div class="col-xs-12" style="margin-bottom: 20px;">
+                            <% if post.post_images.present? %>
+                                <% post.post_images.first(1).each do |image| %>
+                                    <%= link_to post_path(post.id) do %>
+                                        <%= attachment_image_tag image, :image, size:'220x200', fallback: "no_image.jpg", class: "scale-img" %>
+                                    <% end %><!--scssで指定 -->
+                                <% end %>
+                                <div class="row" style="margin-bottom: 20px;">
+                                    <div class="col-xs-5" style="padding-top: 10px; padding-right: 0; margin: 0;">
+                                        <div id="star-rate-<%= post.id %>"></div>
+                                    </div>
+                                    <div class="col-xs-2" style="color:silver; padding: 0; margin:0;">
+                                        <h4 class="mb-3"><%= post.rate %></h4>
+                                    </div>
+                                    <script>
+                                        $('#star-rate-<%= post.id %>').raty({
+                                            size: 36,
+                                            starOff:  '<%= asset_path('star-off.png') %>',
+                                            starOn : '<%= asset_path('star-on.png') %>',
+                                            starHalf: '<%= asset_path('star-half.png') %>',
+                                            half: true,
+                                            readOnly: true,
+                                            score: <%= post.rate %>,
+                                         });
+                                    </script>
+                                </div>
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </div>
+
