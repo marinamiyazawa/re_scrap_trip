@@ -11,7 +11,7 @@
   </head>
 
     <!-- top -->
-    <div class="container" style="position: relative; margin: 0; padding: 0;width: 100%;">
+    <div class="container" style="position: relative; margin: 0; padding: 0;width: 100%; height: 780px;">
 
         <!-- nav -->
         <div class="navbar navbar-fixed-top" role="navigation" style="margin-bottom: 0;">
@@ -50,7 +50,7 @@
             </div>
         </div>
 
-        <!-- スライド -->
+        <!-- TOPスライド -->
         <div id="slide">
             <div id="theTarget">
                 <div class="image1">
@@ -63,55 +63,87 @@
                 </div>
             </div>
         </div>
-        <div class="board">
+        <div class="text-shadow">
+            Scrap Trip
+        </div>
+        <div class="text-shadow2">
+            世界で一つだけの旅をしよう。
         </div>
     </div>
 
     <!-- 新着投稿 -->
-    <div class="container" style="position: relative; width: 100%;">
-        <div class="row" style="padding-top: 100px; margin:0 auto; width: 80%;">
+    <div class="container" style="position: relative; width: 100%; margin: 0; padding: 0; height: 650px;">
+        <div class="row" style="margin:0 auto; width: 80%;">
             <div class="title">New Posts</div>
         </div>
-            <div class="board2">
-            </div>
-            <div class="row" style="margin: auto; width: 80%; ">
-                <% @posts.each do |post| %>
-                    <div class="col-xs-3">
+        <div class="board2">
+        </div>
+        <div class="row" style="margin: auto; width: 90%; ">
+            <% @posts.each do |post| %>
+                <div class="col-xs-3">
 
-                        <div class="row">
-                            <div class="col-xs-12" style="margin-bottom: 20px;">
-                                <% if post.post_images.present? %>
-                                    <% post.post_images.first(1).each do |image| %>
-                                        <%= link_to post_path(post.id) do %>
-                                            <%= attachment_image_tag image, :image, size:'220x200', fallback: "no_image.jpg", class: "scale-img" %>
-                                        <% end %><!--scssで指定 -->
-                                    <% end %>
-                                    <div class="row" style="margin-bottom: 20px;">
-                                        <div class="col-xs-5" style="padding-top: 10px; padding-right: 0; margin: 0;">
-                                            <div id="star-rate-<%= post.id %>"></div>
-                                        </div>
-                                        <div class="col-xs-2" style="color:silver; padding: 0; margin:0;">
-                                            <h4 class="mb-3"><%= post.rate %></h4>
-                                        </div>
-                                        <script>
-                                            $('#star-rate-<%= post.id %>').raty({
-                                                size: 36,
-                                                starOff:  '<%= asset_path('star-off.png') %>',
-                                                starOn : '<%= asset_path('star-on.png') %>',
-                                                starHalf: '<%= asset_path('star-half.png') %>',
-                                                half: true,
-                                                readOnly: true,
-                                                score: <%= post.rate %>,
-                                             });
-                                        </script>
-                                    </div>
+                    <div class="row">
+                        <div class="col-xs-12" style="margin-bottom: 20px;">
+                            <% if post.post_images.present? %>
+                                <% post.post_images.first(1).each do |image| %>
+                                    <%= link_to post_path(post.id) do %>
+                                        <%= attachment_image_tag image, :image, size:'220x200', fallback: "no_image.jpg", class: "scale-img" %>
+                                    <% end %><!--scssで指定 -->
                                 <% end %>
-                            </div>
+                                <div class="row" style="margin-bottom: 20px;">
+                                    <div class="col-xs-5" style="padding-top: 10px; padding-right: 0; margin: 0;">
+                                        <div id="star-rate-<%= post.id %>"></div>
+                                    </div>
+                                    <div class="col-xs-2" style="color:silver; padding: 0; margin:0;">
+                                        <h4 class="mb-3"><%= post.rate %></h4>
+                                    </div>
+                                    <script>
+                                        $('#star-rate-<%= post.id %>').raty({
+                                            size: 36,
+                                            starOff:  '<%= asset_path('star-off.png') %>',
+                                            starOn : '<%= asset_path('star-on.png') %>',
+                                            starHalf: '<%= asset_path('star-half.png') %>',
+                                            half: true,
+                                            readOnly: true,
+                                            score: <%= post.rate %>,
+                                         });
+                                    </script>
+                                </div>
+                            <% end %>
                         </div>
                     </div>
-                <% end %>
-            </div>
+                </div>
+            <% end %>
+           <%= link_to 'もっと見る >>', posts_path, class: "link-post-index pull-right" %>
         </div>
     </div>
 
+    <div class="container" style="position: relative; margin: 0; padding: 0;width: 100%; height: 650px;">
+        <div class="row" style="width: 100%; margin:0 auto;">
+            <div class="col-xs-6" style="margin-top: 150px; padding: 0 60px;">
+                <div class="row">
+                    <div class="about">
+                        ABOUT US
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="concept">
+                        <strong>旅のぬくもりと共に記録する。</strong>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="body">
+                        旅をした時の感情、匂い、人との出会いなど様々な思いを記録したいという思いから開発したwebアプリ。
+                    </div>
+                </div>
+                <div class="row">
+                    <%= link_to 'もっと見る >>', homes_about_path, class: "link-about pull-right" %>
+                </div>
+            </div>
+            <div class="col-xs-6" style="padding-right: 0;">
+                <div class="about-img">
+                </div>
+            </div>
+        </div>
+    </div>
 

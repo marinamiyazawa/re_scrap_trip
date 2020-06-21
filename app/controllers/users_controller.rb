@@ -4,6 +4,10 @@ class UsersController < ApplicationController
 	def show
 		@user = User.find(params[:id])
 		@posts = @user.posts
+			 if @user != current_user
+				@posts = @user.posts.published.order("created_at DESC")
+			end
+	
 		@hash = Gmaps4rails.build_markers(@posts) do |post, marker|#google_map
 		      marker.lat post.latitude
 		      marker.lng post.longitude

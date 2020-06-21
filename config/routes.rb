@@ -21,7 +21,7 @@ Rails.application.routes.draw do
                     		get :following, :followers
                     	end
   end
-  resources :genres, only:[:index, :show]
+  resources :genres, only:[:show]
   resources :messages, :only => [:create]
   resources :rooms, :only => [:create, :show, :index]
   resources :posts, only: [:new,:create,:index,:show,:edit,:update, :destroy] do
