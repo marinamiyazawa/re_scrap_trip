@@ -5,6 +5,7 @@ class PostsController < ApplicationController
 	def new
 		@post = Post.new
 		@post.post_images.build
+		@posts = Post.draft.where(:user_id => current_user.id).order("created_at DESC")#下書き一覧
 	end
 	def get_genre_children #親カテゴリーが選択された後に動くアクション
 		@genre_children = Genre.find_by(id: "#{params[:parent_name]}", ancestry: nil).children
@@ -18,7 +19,7 @@ class PostsController < ApplicationController
 		redirect_to post_path(@post)
 	end
 
-	def hashtag
+	def hashtag #ハッシュタグ
 		@user = current_user
 		@tag = Hashtag.find_by(hashname: params[:name])
 		@posts = []
@@ -28,13 +29,17 @@ class PostsController < ApplicationController
 	end
 
 	def index
-		@posts = Post.published.order("created_at DESC")
+		@posts = Post.published.order("created_at DESC").includes(:user)
 		@parents = Genre.where(ancestry: nil)
 	end
 
-	def ranking
+	def ranking #ランキング
 		@all_ranks = Post.find(Favorite.group(:post_id).order('count(post_id) desc').limit(10).pluck(:post_id))
 		@parents = Genre.where(ancestry: nil)
+	end
+
+	def clips #ブックマーク
+		@posts = current_user.clip_posts.includes(:user)
 	end
 
 	def show
@@ -59,10 +64,6 @@ class PostsController < ApplicationController
 		@post = Post.find(params[:id])
 		@post.update(post_params)
 		redirect_to @post
-	end
-
-	def confirm
-		@posts = Post.draft.where(:user_id => current_user.id).order("created_at DESC")
 	end
 
 	def destroy

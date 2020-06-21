@@ -2,9 +2,83 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+/* topページ */
 
 .container {
-	height: 660px;
-	z-index: 10;
+	height: 780px;
 }
 
+.nav {
+	background-color: #00000000!important;
+}
+.navbar .nav li a {
+	color: #696969!important;
+	border-right: none!important;
+	border-left: none!important;
+}
+.icon-bar {
+   background-color:#696969 !important;
+}
+
+.image1 {
+	background-image: image-url("header1.jpg");
+  position: absolute;
+  z-index: 1;
+  background-size: cover;
+  background-position: center;
+}
+.image2 {
+	background-image: image-url("top2.jpg");
+  position: absolute;
+  z-index: 1;
+  background-size: cover;
+  background-position: center;
+}
+.image3 {
+	background-image: image-url("top_image3.jpg");
+  position: absolute;
+  z-index: 1;
+  background-size: cover;
+  background-position: center;
+}
+.image4 {
+  background-image: image-url("top_image4.jpg");
+  position: absolute;
+  z-index: 1;
+  background-size: cover;
+  background-position: center;
+}
+
+#slide {
+  height: 630px;
+  width: 90%;
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  top:100px;
+}
+
+.board {
+  position: absolute;
+  width: 90%;
+  height: 600px;
+  z-index: -1;
+  background-color: aliceblue;
+  top:370px;
+  left: 300px;
+}
+
+/* 新規投稿 */
+.title {
+	margin-bottom: 40px!important;
+	font-size: 3.5em;
+}
+
+.board2 {
+  position: absolute;
+  width: 90%;
+  height: 600px;
+  z-index: -1;
+  background-color: aliceblue;
+  top:370px;
+}

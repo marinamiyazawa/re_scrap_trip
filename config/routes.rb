@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'clips/create'
+  get 'clips/destroy'
   #User
   devise_for :users, controllers: {
     sessions: 'users/sessions',
@@ -23,9 +25,10 @@ Rails.application.routes.draw do
   resources :messages, :only => [:create]
   resources :rooms, :only => [:create, :show, :index]
   resources :posts, only: [:new,:create,:index,:show,:edit,:update, :destroy] do
+    resource :clips, only: [:create, :destroy,]
     collection do
+      get 'clips'
       get 'ranking'
-      get 'confirm'
       get 'get_genre_children', defaults: { format: 'json' }
     end
   	resource :favorites, only: [:create, :destroy]

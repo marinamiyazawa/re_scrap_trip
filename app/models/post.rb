@@ -13,11 +13,14 @@ class Post < ApplicationRecord
 	#google_map
 	geocoded_by :title
 	after_validation :geocode
+	#clip(ブックマーク)
+	has_many :clips, dependent: :destroy
 
 	def favorited_by?(user)
 		favorites.where(user_id: user.id).exists?
 	end
 
+	#ハッシュタグ
 	after_create do
 		post = Post.find_by(id: self.id)
 		hashtags = self.body.scan(/[#＃][\w\p{Han}ぁ-ヶｦ-ﾟー]+/)
@@ -35,6 +38,11 @@ class Post < ApplicationRecord
 			tag = Hashtag.find_or_create_by(hashname: hashtag.downcase.delete('#'))
 			PostHashtag.create(post_id: self.id, hashtag_id: tag.id)
 		end
+	end
+
+	#ブックマーク
+	def clip_by?(user)
+		clips.where(user_id: user.id).exists?
 	end
 
 end

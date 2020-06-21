@@ -5,14 +5,18 @@
 				<div class="col-xs-3">
 					<h2 style="margin-bottom: 30px;">New Posts</h2>
 				</div>
-				<div class="col-xs-3">
-					<%= link_to confirm_posts_path do %>
-						下書き<i class="fab fa-firstdraft fa-2x"></i>
-					<% end %>
-				</div>
 			</div>
 
-			<%= render 'posts/new_form', post: @post %> 
+			<%= render 'posts/new_form', post: @post %>
+
+			<div class="row" style="margin-top: 60px;">
+				<div class="col-xs-3">
+					<h2 style="margin-bottom: 10px;">Draft Posts</h2>
+				</div>
+				<div class="col-xs-12">
+					<%= render 'posts/confirm', posts: @posts %>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

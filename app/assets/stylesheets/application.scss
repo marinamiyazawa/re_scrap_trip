@@ -32,7 +32,7 @@ a {
   clear: both;
 }
 
-header, nav, h1, h2, .logo {
+header, nav, h1, h2, .title, .logo, li, a {
   font-family:'Permanent Marker', cursive, Chalkduster, "Bradley Hand", Courier, "Segoe Print", sans-serif;
   margin: 0;
 }
@@ -57,9 +57,7 @@ header .headline{
   font-size: 20px;
   margin:0;
 }
-.container-fluid {
-  background-color: #1871bd;
-}
+
 
 .nav-list-item {
   font-size: 1.1em;
@@ -106,39 +104,3 @@ border-radius: 0 3px 3px 0;
   margin-top :40px;
 }
 
-
-/* top_page */
-.image1 {
-	background-image: image-url("header3.jpg");
-}
-.image2 {
-	background-image: image-url("top2.jpg");
-}
-.image3 {
-	background-image: image-url("top_image3.jpg");
-}
-.image4 {
-	background-image: image-url("top_image4.jpg");
-}
-
-#top{
-	height: 300px;
-}
-.logo {
-  color:#71aee2;
-  position: absolute;
-  top:200px;
-  left:180px;
-}
-
-.body {
-  color:#174a75;
-  position: absolute;
-  top:300px;
-  left:180px;
-  font-family: 'Permanent Marker', cursive;
-}
-
-.post_image {
-  max-height: 350px;
-}
