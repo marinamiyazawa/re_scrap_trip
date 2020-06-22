@@ -19,10 +19,16 @@ class User < ApplicationRecord
   has_many :clips, dependent: :destroy
   has_many :clip_posts, through: :clips, source: :post
 
+  #バリデーション
+  validates :last_name, presence: true
+  validates :first_name, presence: true
+  validates :nick_name, presence: true
+
   def active_for_authentication?
     super && (self.user_status == false)
   end
 
+  #フォロー機能
   def follow(other_user)
     unless self == other_user
       self.relationships.find_or_create_by(follow_id: other_user.id)
@@ -39,6 +45,7 @@ class User < ApplicationRecord
     self.followings.include?(other_user)
   end
 
+  #SNS認証googleログイン
   devise :omniauthable, omniauth_providers: %i[facebook twitter google_oauth2]
   # omniauthのコールバック時に呼ばれるメソッド
   def self.from_omniauth(auth)

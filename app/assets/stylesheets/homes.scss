@@ -15,6 +15,44 @@
 	border-left: none!important;
 }
 
+.nav-list-item {
+  font-size: 1.1em;
+}
+
+.navbar .navbar-inner {
+padding: 0;
+}
+
+.navbar .nav {
+margin: 0;
+display: table;
+width: 100%;
+}
+
+.navbar .nav li {
+display: table-cell;
+float: none;
+}
+
+.navbar .nav li a {
+font-weight: bold;
+text-align: center;
+border-left: 1px solid rgba(255, 255, 255, .75);
+border-right: 1px solid rgba(0, 0, 0, .1);
+color: white;
+}
+
+.navbar .nav li:first-child a {
+border-left: 0;
+border-radius: 0 3px 3px 0;
+}
+
+.navbar .nav li:last-child a {
+border-right: 0;
+border-radius: 0 3px 3px 0;
+}
+
+
 
 .icon-bar {
    background-color:#696969 !important;
@@ -82,10 +120,12 @@
 }
 
 /* 新規投稿 */
-.title {
+.title-top {
 	margin-bottom: 40px!important;
 	font-size: 3.5em;
   margin-top: 100px!important;
+  color: #6c6b6b;
+  font-family:'Permanent Marker', cursive
 }
 
 .board2 {

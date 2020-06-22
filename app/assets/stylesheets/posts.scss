@@ -26,6 +26,29 @@ select {
 	background-color: aliceblue;
 }
 
+/* post_index */
+
+
+.index-img {
+	transition-duration: 0.5s;/*変化の時間*/
+}
+.index-img:hover {
+	transform: scale(1.2,1.2); /*画像の拡大*/
+	cursor: pointer; /*カーソルをポインターにする*/
+	opacity:0.6;
+	filter:alpha(opacity=50);
+	-ms-filter: “alpha( opacity=50 )”;
+}
+
+.post-box {
+	padding: 0.5em 0.3em;
+    margin: 2em 0;
+    color: #5d627b;
+    background: white;
+    border-top: solid 5px #75b2ff;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+}
+
 /* post_show */
 #post-show{
   height:550px;

@@ -16,6 +16,13 @@ class Post < ApplicationRecord
 	#clip(ブックマーク)
 	has_many :clips, dependent: :destroy
 
+	#バリデーション
+	validates :title, presence: true
+	validates :body, presence: true
+	validates :rate, presence: true
+	validates :genre_id, presence: true
+  	validates :genre, presence: true, if: -> { genre_id.present? }
+  	
 	def favorited_by?(user)
 		favorites.where(user_id: user.id).exists?
 	end

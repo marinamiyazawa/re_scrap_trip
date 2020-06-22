@@ -32,7 +32,7 @@ a {
   clear: both;
 }
 
-header, nav, h1, h2, .title, .logo, li, a, .text-shadow {
+header, .navbar, nav, h1, h2, .title, .logo, li, a, .text-shadow {
   font-family:'Permanent Marker', cursive, Chalkduster, "Bradley Hand", Courier, "Segoe Print", sans-serif;
   margin: 0;
 }
@@ -59,30 +59,35 @@ header .headline{
 }
 
 span, .title {
-  color: #1871bd; margin-top: 70px; font-size: 50px;
+  color: #1871bd;
+  margin-top: 70px;
+  font-size: 50px;
 }
 
+.nav nav-app2 {
+  background-color: #1871bd;
+}
 
 .nav-list-item {
   font-size: 1.1em;
 }
 
-.navbar .navbar-inner {
+.navbar navbar-default nav-app .navbar-inner {
 padding: 0;
 }
 
-.navbar .nav {
+.navbar navbar-default nav-app .nav nav-app2 {
 margin: 0;
 display: table;
 width: 100%;
 }
 
-.navbar .nav li {
+.navbar navbar-default nav-app .nav nav-app2 li {
 display: table-cell;
 float: none;
 }
 
-.navbar .nav li a {
+.navbar navbar-default nav-app .nav nav-app2 li a {
 font-weight: bold;
 text-align: center;
 border-left: 1px solid rgba(255, 255, 255, .75);
@@ -90,14 +95,15 @@ border-right: 1px solid rgba(0, 0, 0, .1);
 color: white;
 }
 
-.navbar .nav li:first-child a {
+.navbar navbar-default nav-app .nav nav-app2 li:first-child a {
 border-left: 0;
 border-radius: 0 3px 3px 0;
 }
 
-.navbar .nav li:last-child a {
+.navbar navbar-default nav-app .nav-app2 li:last-child a {
 border-right: 0;
 border-radius: 0 3px 3px 0;
+color: white;
 }
 
 
@@ -108,7 +114,10 @@ border-radius: 0 3px 3px 0;
   width:70%;
 }
 span, .glyphicon glyphicon-search {
-  font-size:20px; margin-top: 3px;padding: 3px 13px; color: white;
+  font-size:20px;
+  margin-top: 3px;
+  padding: 3px 13px;
+  color: white;
 }
 .container{
   margin-top :40px;

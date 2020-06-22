@@ -4,18 +4,18 @@ class RelationshipsController < ApplicationController
 	def create
 		following = current_user.follow(@user)
 		if following.save
-			redirect_to @user
+			redirect_to request.referer
 		else
-			redirect_to @user
+			redirect_to request.referer
 		end
 	end
 
 	def destroy
 		following = current_user.unfollow(@user)
 		if following.destroy
-			redirect_to @user
+			redirect_to request.referer
 		else
-			redirect_to @user
+			redirect_to request.referer
 		end
 	end
 

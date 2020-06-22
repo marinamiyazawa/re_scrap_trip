@@ -5,7 +5,8 @@ class PostsController < ApplicationController
 	def new
 		@post = Post.new
 		@post.post_images.build
-		@posts = Post.draft.where(:user_id => current_user.id).order("created_at DESC")#下書き一覧
+		#下書き一覧
+		@posts = Post.draft.where(:user_id => current_user.id).order("created_at DESC")
 	end
 	def get_genre_children #親カテゴリーが選択された後に動くアクション
 		@genre_children = Genre.find_by(id: "#{params[:parent_name]}", ancestry: nil).children
@@ -15,8 +16,13 @@ class PostsController < ApplicationController
 		@post = Post.new(post_params)
 		@post.user_id = current_user.id
 		@user = current_user
-		@post.save
-		redirect_to post_path(@post)
+		if @post.save
+			redirect_to post_path(@post)
+		else
+			@post.post_images.build
+			@posts = Post.draft.where(:user_id => current_user.id).order("created_at DESC")
+			render :new
+		end
 	end
 
 	def hashtag #ハッシュタグ
@@ -62,8 +68,11 @@ class PostsController < ApplicationController
 
 	def update
 		@post = Post.find(params[:id])
-		@post.update(post_params)
-		redirect_to @post
+		if  @post.update(post_params)
+		    redirect_to @post
+		else
+			render :edit
+		end
 	end
 
 	def destroy

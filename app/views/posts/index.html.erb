@@ -1,54 +1,64 @@
 <div class="container">
 	<div class="row">
-		<div class="col-xs-3">
-			<h2 style="border-bottom: 1px solid silver; margin-bottom: 10px;">Genre</h2>
-			<div class="row">
-				<% @parents.each do |parent| %>
-					<div class="row" style="margin-left: 10px; padding-bottom: 5px;">
-						<%= link_to genre_path(parent.id) do %>
-							<h3><%= parent.name %> >></h3>
-						<% end %>
-					</div>
-						<% parent.children.each do |child| %>
-							<div class="row" style="margin-left: 10px; padding-left: 50px;">
-								<%= link_to genre_path(child.id) do %>
-									<h5><%= child.name %></h5>
-								<% end %>
+
+		<div class="col-xs-9">
+			<h1>Posts</h1>
+			<div class="row" style="margin-top: 40px;">
+				<% @posts.each do |post| %>
+						<div class="col-xs-4">
+
+							<div class="post-box">
+								<div class="row" style="margin: 10px;">
+									<% post.post_images.first(1).each do |image| %>
+										<%= link_to post_path(post.id) do %>
+											<%= attachment_image_tag(image, :image, size:'220x200', class: "index-img") %>
+										<% end %>
+									<% end %>
+								</div>
+								<div class="row" style="margin: 10px;">
+
+									<%= link_to (post.user) do %>
+										<%= attachment_image_tag(post.user, :image, size:'40x40', fallback:"no_image.jpg") %>
+									<% end %>
+									<%= post.user.nick_name %>
+								</div>
+								<div class="row" style="margin: 10px;">
+								<strong>Title: </strong><%= link_to post.title, post, class: "post_#{post.id}" %>
+								|
+								<strong>Content: </strong><%= post.body %>
+								</div>
 							</div>
-						<% end %>
+
+						</div>
 				<% end %>
 			</div>
 		</div>
-		<div class="col-xs-9">
-			<h2>Posts</h2>
-
-			<% @posts.each do |post| %>
-				<div class="row">
-					<div class="col-xs-12" style="margin-top: 20px; border-bottom: 1px solid; border-color: silver;">
-
-						<div class="row" style="margin: 10px;">
-							<% post.post_images.each do |image| %>
-							<div class="col-xs-4">
-								<%= attachment_image_tag(image, :image, size:'220x200', class: "index-image") %>
-							</div>
+		<div class="col-xs-3" style="padding-left: 50px;">
+			<h1>Genres</h1>
+			<div class="row" style="margin-top: 40px;">
+				<% @parents.each do |parent| %>
+					<div class="row" style="margin-left: 10px; padding-bottom: 10px; padding-left: 50px;">
+						<div class="col-xs-8" style="border-bottom: 1px solid silver;">
+							<%= link_to genre_path(parent.id) do %>
+								<h3><%= parent.name %> </h3>
 							<% end %>
-						</div>
-						<div class="row" style="margin: 10px;">
-
-							<%= link_to (post.user) do %>
-								<%= attachment_image_tag(post.user, :image, size:'20x20', fallback:"no_image.jpg") %>
-							<% end %>
-							<%= post.user.nick_name %>
-						</div>
-						<div class="row" style="margin: 10px;">
-						<strong>Title: </strong><%= link_to post.title, post, class: "post_#{post.id}" %>
-						|
-						<strong>Content: </strong><%= post.body %>
 						</div>
 					</div>
-				</div>
-			<% end %>
-
+					<div class="row" style="margin-left: 10px; padding-left: 50px; margin-bottom: 40px;">
+						<% parent.children.each do |child| %>
+							<div class="col-xs-6">
+								<%= link_to genre_path(child.id) do %>
+									<h5><%= child.name %>(<%= child.posts.count %>)</h5>
+								<% end %>
+							</div>
+						<% end %>
+					</div>
+				<% end %>
+			</div>
 		</div>
+
+
+
+
 	</div>
 </div>
