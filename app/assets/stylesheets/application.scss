@@ -58,6 +58,10 @@ header .headline{
   margin:0;
 }
 
+span, .title {
+  color: #1871bd; margin-top: 70px; font-size: 50px;
+}
+
 
 .nav-list-item {
   font-size: 1.1em;
@@ -96,9 +100,15 @@ border-right: 0;
 border-radius: 0 3px 3px 0;
 }
 
+
+/* search */
 .class_submit{
   background-color: #1871bd;
   border-radius: 10px;
+  width:70%;
+}
+span, .glyphicon glyphicon-search {
+  font-size:20px; margin-top: 3px;padding: 3px 13px; color: white;
 }
 .container{
   margin-top :40px;

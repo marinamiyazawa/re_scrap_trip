@@ -127,7 +127,7 @@
   height: 600px;
   z-index: -1;
   background-color: aliceblue;
-  top:240px;
+  top:80px;
   left: 400px;
 }
 
@@ -176,13 +176,23 @@
   left: 170px;
 }
 .how-number{
-  position: absolute; left: 150px; font-size: 60px; color: #2793e2;
+  position: absolute;
+  left: 150px;
+  font-size: 60px;
+  color: #2793e2;
 }
 .how-to-use{
-  position: absolute; left: 230px; top:40px; font-size: 20px;
+  position: absolute;
+  left: 230px;
+  top:40px;
+  font-size: 20px;
 }
 .ex-use{
-  position: absolute; top: 125px; left:300px; width: 280px; line-height: 2;
+  position: absolute;
+  top: 125px;
+  left:300px;
+  width: 280px;
+  line-height: 2;
 }
 
 /* ログイン誘導ページ */
@@ -195,4 +205,19 @@
   height: 200px;
   width:100%;
   opacity: 0.8;
+}
+.log-in {
+  position: absolute;
+  left: 500px;
+}
+.sign-up{
+  position: absolute;
+  left: 700px;
+}
+.footer {
+  position: absolute;
+  width: 400px;
+  z-index: 2;
+  left: 1100px;
+  top: 280px;
 }
