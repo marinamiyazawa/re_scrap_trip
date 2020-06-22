@@ -118,7 +118,7 @@
         </div>
     </div>
 
-    <div class="container" style="position: relative; margin: 0; padding: 0;width: 100%; height: 650px;">
+    <div class="container" style="position: relative; margin: 0; padding: 0;width: 100%; height: 750px;">
         <div class="row" style="width: 100%; margin:0 auto;">
             <div class="col-xs-6" style="margin-top: 150px; padding: 0 60px;">
                 <div class="row">
@@ -128,12 +128,12 @@
                 </div>
                 <div class="row">
                     <div class="concept">
-                        <strong>旅のぬくもりと共に記録する。</strong>
+                        <strong>旅のぬくもりを記録する。</strong>
                     </div>
                 </div>
                 <div class="row">
                     <div class="body">
-                        旅をした時の感情、匂い、人との出会いなど様々な思いを記録したいという思いから開発したwebアプリ。
+                        旅をした時の感情、匂い、人との出会いなど様々な思いを記録に残したいという思いから開発したwebアプリ。このアプリを通してもっと旅が楽しくなり、新たな旅先の発見にも繋がる。
                     </div>
                 </div>
                 <div class="row">
@@ -141,9 +141,69 @@
                 </div>
             </div>
             <div class="col-xs-6" style="padding-right: 0;">
-                <div class="about-img">
+                <div class="about-img pull-right">
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="container" style="position: relative; margin: 0; padding: 0;width: 100%; height: 760px;">
+        <div class="board3">
+        </div>
+        <div class="row" style="margin-top: 50px;">
+            <div class="col-xs-6">
+                <div class="how-number">
+                    <strong style="color: #2793e2;">01</strong>
+                </div>
+                <div class="how-to-use">旅の記録をする。</div>
+                <div class="how-icon"></div>
+                <div class="ex-use">
+                    複数の旅の画像や内容を投稿できます。ジャンル選択を通して、エリアからの投稿検索も可能です。
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="how-number">
+                    <strong style="color: #2793e2;">02</strong>
+                </div>
+                <div class="how-to-use">検索をする。</div>
+                <div class="how-icon2"></div>
+                <div class="ex-use">
+                    気になる場所やお気に入りのユーザーを検索でき、新たな旅先の発見に繋げることができます。
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 300px;">
+            <div class="col-xs-6">
+                <div class="how-number">
+                    <strong style="color: #2793e2;">03</strong>
+                </div>
+                <div class="how-to-use">マップにマーカーをつける。</div>
+                <div class="how-icon3"></div>
+                <div class="ex-use">
+                    投稿した国名や都市名に紐づいてGoogleMapにピンが立ちます。マップを通して今まで行った場所の確認もできます。
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="how-number">
+                    <strong style="color: #2793e2;">04</strong>
+                </div>
+                <div class="how-to-use">旅の共有ができる。</div>
+                <div class="how-icon4">
+                </div>
+                <div class="ex-use">
+                    自分以外のユーザーの投稿の閲覧、ブックマーク、ユーザーのフォローができます。メッセージ機能を通して、コミュニケーションをとることも可能です。
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container" style="position: relative; margin: 0; padding: 0;width: 100%; height: 300px;">
+        <div class="login-img"></div>
+        <div class="row" style="position: absolute; top: 180px;">
+                <div class="log-in" style="position: absolute; left: 500px;">
+                <%= link_to 'Log In', new_user_session_path, class: "btn btn-lg btn-info"%>
+                </div>
+                <div class="sign-up" style="position: absolute; left: 700px;">
+                <%= link_to 'Sign Up', new_user_registration_path, class: "btn btn-lg btn-info"%>
+                </div>
         </div>
     </div>
 

@@ -103,7 +103,7 @@
   background-image: image-url("about3.jpg");
   background-size: cover;
   background-position: center;
-  width: 100%;
+  width: 90%;
   height: 600px;
 }
 .about {
@@ -118,4 +118,81 @@
 .body {
   font-size: 15px;
   line-height: 2.7;
+}
+
+/* ex-site */
+.board3 {
+  position: absolute;
+  width: 100%;
+  height: 600px;
+  z-index: -1;
+  background-color: aliceblue;
+  top:240px;
+  left: 400px;
+}
+
+.how-icon{
+  background-image: image-url("memory-icon.jpg");
+  width: 100px;
+  height:100px;
+  background-size:cover;
+  background-position:center;
+  opacity:0.6;
+  position: absolute;
+  top: 100px;
+  left: 170px;
+}
+.how-icon2{
+  background-image: image-url("search-icon.jpg");
+  width: 100px;
+  height:100px;
+  background-size:cover;
+  background-position:center;
+  opacity:0.6;
+  position: absolute;
+  top: 100px;
+  left: 170px;
+}
+.how-icon3{
+  background-image: image-url("map-icon.jpg");
+  width: 100px;
+  height:100px;
+  background-size:cover;
+  background-position:center;
+  opacity:0.6;
+  position: absolute;
+  top: 100px;
+  left: 170px;
+}
+.how-icon4{
+  background-image: image-url("follow-icon.jpg");
+  width: 100px;
+  height:100px;
+  background-size:cover;
+  background-position:center;
+  opacity:0.6;
+  position: absolute;
+  top: 100px;
+  left: 170px;
+}
+.how-number{
+  position: absolute; left: 150px; font-size: 60px; color: #2793e2;
+}
+.how-to-use{
+  position: absolute; left: 230px; top:40px; font-size: 20px;
+}
+.ex-use{
+  position: absolute; top: 125px; left:300px; width: 280px; line-height: 2;
+}
+
+/* ログイン誘導ページ */
+.login-img {
+  background-image: image-url("header2.jpg");
+  background-size:cover;
+  backgrount-position: center;
+  position: absolute;
+  top:100px;
+  height: 200px;
+  width:100%;
+  opacity: 0.8;
 }
