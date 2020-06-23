@@ -46,6 +46,12 @@ class PostsController < ApplicationController
 
 	def clips #ブックマーク
 		@posts = current_user.clip_posts.includes(:user)
+		#google_map
+		@hash = Gmaps4rails.build_markers(@posts) do |post, marker|
+		      marker.lat post.latitude
+		      marker.lng post.longitude
+		      marker.infowindow post.title
+		    end
 	end
 
 	def show

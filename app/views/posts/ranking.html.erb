@@ -1,55 +1,79 @@
 <div class="container">
 	<div class="row">
-		<div class="col-xs-3">
-			<h2 style="border-bottom: 1px solid silver; margin-bottom: 10px;">Genre</h2>
-			<div class="row">
-				<% @parents.each do |parent| %>
-					<div class="row" style="margin-left: 10px; padding-bottom: 5px;">
-						<%= link_to genre_path(parent.id) do %>
-							<h3><%= parent.name %> >></h3>
-						<% end %>
-					</div>
-						<% parent.children.each do |child| %>
-							<div class="row" style="margin-left: 10px; padding-left: 50px;">
-								<%= link_to genre_path(child.id) do %>
-									<h5><%= child.name %></h5>
-								<% end %>
-							</div>
-						<% end %>
-				<% end %>
-			</div>
-		</div>
-		<div class="col-xs-9">
-			<h2>Posts Ranking<i class="fas fa-crown" style="margin-left:10px;"></i></h2>
+
+		<div class="col-xs-8">
+			<h2>👑 Posts Ranking 👑</h2>
 
 			<% @all_ranks.each.with_index(1) do |post, i| %>
-				<div class="row">
-					<div class="col-xs-12" style="margin-top: 20px; border-bottom: 1px solid; border-color: silver;">
-						<div class="row" style="margin: 10px;">
-							<h4>No.<%= i %></h4>
-						</div>
+				<div class="rank-box">
 
-						<div class="row" style="margin: 10px;">
-							<% post.post_images.each do |image| %>
-								<%= attachment_image_tag(image, :image, size:'220x200') %>
-							<% end %>
-						</div>
-						<div class="row" style="margin: 10px;">
+					<div class="row">
+						<div class="col-xs-12">
 
-							<%= link_to (post.user) do %>
-								<%= attachment_image_tag(post.user, :image, size:'50x50', fallback:"no_image.jpg") %>
-							<% end %>
-							<%= post.user.nick_name %>
-						</div>
-						<div class="row" style="margin: 10px;">
-						<strong>Title: </strong><%= link_to post.title, post, class: "post_#{post.id}" %>
-						|
-						<strong>Content: </strong><%= post.body %>
+							<div class="row" style="margin: 10px;">
+								<h4 style="color: #ff7a91;">\ No.<%= i %> /</h4>
+							</div>
+
+							<div class="row" style="margin: 10px;">
+								<div class="col-xs-6">
+									<% post.post_images.first(1).each do |image| %>
+										<%= attachment_image_tag(image, :image, size:'350x250') %>
+									<% end %>
+								</div>
+
+								<div class="col-xs-6" style="padding-left: 30px;">
+									<div class="row" style="margin: 10px;">
+										<div class="content">
+											<strong>Title: </strong><%= link_to post.title, post, class: "post_#{post.id}" %>
+										</div>
+									</div>
+									<div class="row" style="margin: 10px;">
+										<div class="content">
+											<strong>Content: </strong><%= post.body %>
+										</div>
+									</div>
+									<div class="row" style="margin: 10px;">
+										<div class="content">
+											<strong>Genre: </strong><%= post.genre.name %>
+										</div>
+									</div>
+									<div class="row" style="margin: 10px;">
+										<%= link_to (post.user) do %>
+											<%= attachment_image_tag(post.user, :image, size:'50x50', fallback:"no_image.jpg") %>
+										<% end %>
+										<%= post.user.nick_name %>
+									</div>
+								</div>
+
+							</div>
 						</div>
 					</div>
 				</div>
 			<% end %>
+		</div>
 
+		<div class="col-xs-4" style="padding-left: 50px;">
+			<h1 style="margin-left: 50px;">Genres</h1>
+			<div class="row" style="margin-top: 40px;">
+				<% @parents.each do |parent| %>
+					<div class="row" style="margin-left: 10px; padding-bottom: 10px; padding-left: 50px;">
+						<div class="col-xs-8" style="border-bottom: 1px solid silver;">
+							<%= link_to genre_path(parent.id) do %>
+								<h3><%= parent.name %> </h3>
+							<% end %>
+						</div>
+					</div>
+					<div class="row" style="margin-left: 10px; padding-left: 50px; margin-bottom: 40px;">
+						<% parent.children.each do |child| %>
+							<div class="col-xs-6">
+								<%= link_to genre_path(child.id) do %>
+									<h5><%= child.name %>(<%= child.posts.count %>)</h5>
+								<% end %>
+							</div>
+						<% end %>
+					</div>
+				<% end %>
+			</div>
 		</div>
 	</div>
 </div>

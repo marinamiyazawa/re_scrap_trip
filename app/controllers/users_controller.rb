@@ -7,13 +7,14 @@ class UsersController < ApplicationController
 			 if @user != current_user
 				@posts = @user.posts.published.order("created_at DESC")
 			end
-	
-		@hash = Gmaps4rails.build_markers(@posts) do |post, marker|#google_map
+		#google_map
+		@hash = Gmaps4rails.build_markers(@posts) do |post, marker|
 		      marker.lat post.latitude
 		      marker.lng post.longitude
 		      marker.infowindow post.title
 		    end
-		@currentUserEntry = Entry.where(user_id: current_user.id) #DMページ
+		#DMページ
+		@currentUserEntry = Entry.where(user_id: current_user.id)
 		@userEntry = Entry.where(user_id: @user.id)
 		if @user.id == current_user.id
 		else

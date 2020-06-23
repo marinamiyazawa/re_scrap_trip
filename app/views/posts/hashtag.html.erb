@@ -4,17 +4,14 @@
 	<div class="col-xs-8 col-xs-offset-2">
 		<!-- ハッシュタグ名　-->
 		<div class="row">
-			<div class="col-xs-2">
-				<%= image_tag("hashtag.jpg", size:'100x100') %>
-			</div>
-			<div class="col-xs-10 pull-left" style="margin-top: 10px;">
+			<div class="col-xs-8 col-xs-offset-2">
 				<h1><%= @tag.hashname %> : <%= @posts.count %>posts</h1>
 			</div>
 		</div>
 	</div>
 
 	<div class="col-xs-10 col-xs-offset-1">
-		<div class="row" style="margin-top: 20px;">
+		<div class="row" style="margin-top: 40px;">
 				<% @posts.each do |post| %>
 					<div class="col-xs-4">
 

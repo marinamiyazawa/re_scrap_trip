@@ -1,23 +1,23 @@
 <div class="container" style="width: 100%;">
-	<div class="row" style="margin-top: 30px;">
+	<div class="row">
 		<div class="col-xs-10 col-xs-offset-1">
 
 			<% if @post.post_images.present? %>
 
 			<!--スライドショー-->
-				<div id="post-show">
-					<div id="theTarget">
-						<% @post.post_images.each do |image| %>
-							<div style="width: 100%; background-size: cover; background-position: center;">
-							<%= attachment_image_tag image, :image, class: "post_image" %>
-							</div>
-						<% end %>
+					<div id="post-show">
+						<div id="postShow">
+							<% @post.post_images.each do |image| %>
+								<div>
+								<%= attachment_image_tag image, :image, class: "show-img" %>
+								</div>
+							<% end %>
+						</div>
 					</div>
-				</div>
 			<% end %>
 		</div>
 	</div>
-	<div class="row" style="margin-top: 30px;">
+	<div class="row">
 		<div class="col-xs-8 col-xs-offset-2">
 
 			<!-- いいね　-->
