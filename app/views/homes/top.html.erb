@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>ScrapTrip</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+    <head>
+        <title>ScrapTrip</title>
+        <%= csrf_meta_tags %>
+        <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
-  </head>
+        <script src="https://kit.fontawesome.com/0d02a0d965.js" crossorigin="anonymous"></script>
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+        <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+    </head>
 
     <!-- top -->
     <div class="container" style="position: relative; margin: 0; padding: 0;width: 100%; height: 780px;">
@@ -37,6 +38,12 @@
                         </li>
                         <li class="nav-list-item">
                           <%= link_to ' About', homes_about_path, class: "fas fa-suitcase-rolling" %>
+                        </li>
+                        <li class="nav-list-item">
+                          <%= link_to ' Posts', posts_path, class: "far fa-images" %>
+                        </li>
+                        <li class="nav-list-item">
+                          <%= link_to ' Ranking', ranking_posts_path, class: "fas fa-crown" %>
                         </li>
                         <li class="nav-list-item">
                           <%= link_to ' sign up', new_user_registration_path, class: "fas fa-user-plus" %>
@@ -209,4 +216,6 @@
             Scrap_Trip/ポートフォリオ/202006
         </div>
     </div>
+</html>
+
 

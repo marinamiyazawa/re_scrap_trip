@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
 	before_action :correct_user, only:[:edit]
 	before_action :set_genre_parent, only:[:new, :create, :edit, :update]
+	before_action :authenticate_user!, only: [:new, :get_genre_children, :create, :clips, :edit, :update, :destroy]
 
 	def new
 		@post = Post.new
@@ -90,7 +91,6 @@ class PostsController < ApplicationController
 			render 'show'
 		end
 	end
-
 
 	private
 	def post_params

@@ -2,9 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-/* topページ */
-
-
+/* topページ nav */
 .nav {
 	background-color: #00000000!important;
   opacity:0.7;
@@ -14,26 +12,21 @@
 	border-right: none!important;
 	border-left: none!important;
 }
-
 .nav-list-item {
   font-size: 1.1em;
 }
-
 .navbar .navbar-inner {
 padding: 0;
 }
-
 .navbar .nav {
 margin: 0;
 display: table;
 width: 100%;
 }
-
 .navbar .nav li {
 display: table-cell;
 float: none;
 }
-
 .navbar .nav li a {
 font-weight: bold;
 text-align: center;
@@ -41,23 +34,19 @@ border-left: 1px solid rgba(255, 255, 255, .75);
 border-right: 1px solid rgba(0, 0, 0, .1);
 color: white;
 }
-
 .navbar .nav li:first-child a {
 border-left: 0;
 border-radius: 0 3px 3px 0;
 }
-
 .navbar .nav li:last-child a {
 border-right: 0;
 border-radius: 0 3px 3px 0;
 }
-
-
-
 .icon-bar {
    background-color:#696969 !important;
 }
 
+/* top */
 .image1 {
 	background-image: image-url("top9.jpg");
   position: absolute;
@@ -86,7 +75,6 @@ border-radius: 0 3px 3px 0;
   background-size: cover;
   background-position: center;
 }
-
 #slide {
   height: 710px;
   width: 100%;
@@ -94,7 +82,6 @@ border-radius: 0 3px 3px 0;
   margin: 0;
   padding: 0;
 }
-
 .text-shadow{
   z-index: 2;
   font-size: 80px;
@@ -105,7 +92,6 @@ border-radius: 0 3px 3px 0;
   top: 260px;
   left: 530px;
   opacity: 0.9;
-
 }
 .text-shadow2{
   z-index: 2;
@@ -116,7 +102,6 @@ border-radius: 0 3px 3px 0;
   position: absolute;
   top: 380px;
   left: 580px;
-
 }
 
 /* 新規投稿 */
@@ -127,7 +112,6 @@ border-radius: 0 3px 3px 0;
   color: #6c6b6b;
   font-family:'Permanent Marker', cursive
 }
-
 .board2 {
   position: absolute;
   width: 94%;
@@ -137,8 +121,7 @@ border-radius: 0 3px 3px 0;
   top:240px;
 }
 
-/* アバウト */
-
+/* アバウト紹介 */
 .about-img {
   background-image: image-url("about3.jpg");
   background-size: cover;
@@ -170,7 +153,6 @@ border-radius: 0 3px 3px 0;
   top:80px;
   left: 400px;
 }
-
 .how-icon{
   background-image: image-url("memory-icon.jpg");
   width: 100px;
@@ -235,7 +217,7 @@ border-radius: 0 3px 3px 0;
   line-height: 2;
 }
 
-/* ログイン誘導ページ */
+/* フッター */
 .login-img {
   background-image: image-url("header2.jpg");
   background-size:cover;
@@ -260,4 +242,97 @@ border-radius: 0 3px 3px 0;
   z-index: 2;
   left: 1100px;
   top: 280px;
+}
+
+
+/* アバウトページ */
+#slide-about {
+  position: absolute;
+  top: 200px;
+  left: 80px;
+  height: 450px;
+  width: 550px;
+  z-index:0;
+}
+.about-top-img {
+  background-size: cover;
+  background-position: center;
+  left: 80px;
+  background-image: image-url("about-img2.jpg")
+}
+.about-top-img2 {
+  background-size: cover;
+  background-position: center;
+  left: 80px;
+  background-image: image-url("top_image5.jpg")
+}
+.about-top-img3 {
+  background-size: cover;
+  background-position: center;
+  left: 80px;
+  background-image: image-url("top_image4.jpg")
+}
+.board4 {
+  position: absolute;
+  height: 710px;
+  width: 40%;
+  background-color: aliceblue;
+  z-index: -1;
+}
+.about-content {
+  font-size: 25px;
+  position: absolute;
+  top:250px;
+  left: 60%;
+  font-family:'Permanent Marker', cursive;
+  color: #808080;
+}
+.about-title {
+  font-size: 60px;
+  font-family:'Permanent Marker', cursive;
+  position: absolute;
+  top:30px;
+  color: #3ba2fd;
+  text-shadow: 2px 2px 3px #757171;
+}
+.about-body {
+  width: 450px;
+  position: absolute;
+  top: 400px;
+  left: 55%;
+  font-size: 15px;
+  line-height: 2;
+}
+.about-map{
+  position: absolute;
+  left:10%;
+  top:100px;
+  height: 150px;
+  width: 150px;
+  opacity: 0.6;
+  background-position: center;
+  background-size: cover;
+  background-image: image-url("about-map2.jpg")
+}
+.board5 {
+  position: absolute;
+  top:300px;
+  height: 400px;
+  width: 100%;
+  background-color: aliceblue;
+  z-index: -1;
+}
+.foot {
+  position: absolute;
+  top: 500px;
+  left: 50px;
+  font-size: 25px;
+  font-family:'Permanent Marker', cursive;
+}
+.foot2 {
+  position: absolute;
+  top: 500px;
+  left: 400px;
+  font-size: 20px;
+  font-family:'Permanent Marker', cursive;
 }

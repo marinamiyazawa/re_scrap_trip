@@ -1,1 +1,86 @@
-aaaa
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>ScrapTrip</title>
+		<%= csrf_meta_tags %>
+		<%= csp_meta_tag %>
+
+		<script src="https://kit.fontawesome.com/0d02a0d965.js" crossorigin="anonymous"></script>
+		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+		<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+		<link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+	</head>
+<!-- nav -->
+	<div class="navbar navbar-fixed-top" role="navigation" style="margin-bottom: 0;">
+	    <div class="nav">
+	        <div class="navbar-header">
+	          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+	            <span class="sr-only">Toggle navigation</span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	            <span class="icon-bar"></span>
+	          </button>
+	        </div>
+	        <div class="navbar-collapse collapse">
+	            <ul class="nav navbar-nav">
+	              <!--if文でサインインとアウト時の表示を変更-->
+	              <% if user_signed_in? %>
+	                <%= render "layouts/user_header" %>
+	              <% elsif admin_signed_in? %>
+	                <%= render "layouts/admins_header" %>
+	              <% else %>
+	                <li class="nav-list-item">
+	                  <%= link_to ' Home', root_path, class: "fas fa-house-user" %>
+	                </li>
+	                <li class="nav-list-item">
+	                  <%= link_to ' About', homes_about_path, class: "fas fa-suitcase-rolling" %>
+	                </li>
+	                <li class="nav-list-item">
+	                  <%= link_to ' Posts', posts_path, class: "far fa-images" %>
+	                </li>
+	                <li class="nav-list-item">
+	                  <%= link_to ' Ranking', ranking_posts_path, class: "fas fa-crown" %>
+	                </li>
+	                <li class="nav-list-item">
+	                  <%= link_to ' sign up', new_user_registration_path, class: "fas fa-user-plus" %>
+	                </li>
+	                <li class="nav-list-item">
+	                  <%= link_to ' login', new_user_session_path, class: "fas fa-sign-in-alt" %>
+	                </li>
+	              <% end %>
+	            </ul>
+	        </div>
+	    </div>
+	</div>
+	<div class="container-fluid" style="position: relative; padding: 0; height: 750px;">
+		<div id="slide-about">
+			<div id="theTarget">
+				<div class="about-top-img">
+				</div>
+				<div class="about-top-img2">
+				</div>
+				<div class="about-top-img3">
+				</div>
+			</div>
+		</div>
+		<div class="board4">
+		</div>
+		<div class="about-content">
+			About
+			<div class="about-title">ScrapTrip</div>
+		</div>
+		<div class="about-body">
+			空気や人との出会い、初めて知る文化などを通して、旅は私たちに非日常を与えてくれます。このサイトでは、旅が終わった後も旅中のような非日常を感じたい、癒されたいという思いから作成しました。ユーザー登録後の投稿機能を通して、訪れた場所や写真など思い出を記録し、投稿に紐づいたgooglemapにマーカーでは、今まで訪れた場所を確認できます。また他のユーザーの投稿やランキング、いいね機能やDM機能を通してコミュニケーションを取ることで、新しい旅先の発見ができます。
+		</div>
+	</div>
+	<div class="container-fluid" style="position: relative; padding: 0; height: 600px;">
+		<div class="board5">
+		</div>
+		<div class="foot">
+			©Scrap Trip
+		</div>
+		<div class="foot2">
+			2020.06/DMMWEBCAMP/portforio
+		</div>
+	</div>
+</html>
