@@ -54,6 +54,16 @@
 					</div>
 				<% end %>
 			</div>
+			<h1>Hashtags</h1>
+			<div class="row" style="margin-top: 40px; margin-left: 40px;">
+				<% @tag.each do |tag| %>
+					<div class="col-xs-6" style="padding-right: 0;">
+						<%= link_to "" do %>
+						<h4>#<%= tag.hashname %></h4>
+						<% end %>
+					</div>
+				<% end %>
+			</div>
 		</div>
 	</div>
 </div>

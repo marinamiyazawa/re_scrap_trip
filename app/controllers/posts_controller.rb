@@ -38,6 +38,7 @@ class PostsController < ApplicationController
 	def index
 		@posts = Post.published.order("created_at DESC").includes(:user)
 		@parents = Genre.where(ancestry: nil)
+		@tag = Hashtag.all
 	end
 
 	def ranking #ランキング
