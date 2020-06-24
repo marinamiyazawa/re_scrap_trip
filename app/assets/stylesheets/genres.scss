@@ -1,3 +1,20 @@
 // Place all the styles related to the genres controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.genre-post-box {
+	transition-duration: 0.5s;/*変化の時間*/
+	padding: 0.5em 1em;
+    margin: 2em 0;
+    color: #5d627b;
+    background: white;
+    border-top: solid 5px #75b2ff;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+}
+.genre-post-box:hover {
+	transform: scale(1.2,1.2); /*画像の拡大*/
+	cursor: pointer; /*カーソルをポインターにする*/
+	opacity:0.8;
+	filter:alpha(opacity=50);
+	-ms-filter: “alpha( opacity=50 )”;
+}

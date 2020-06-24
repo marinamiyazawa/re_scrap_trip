@@ -1,33 +1,79 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-8 col-xs-offset-2">
-
-      <h4>参加者</h4>
-        <% @entries.each do |e| %>
-          <h5><strong><a href="/users/<%= e.user.id %>">
-            <%= attachment_image_tag(e.user, :image, :fill, 50, 50, fallback: "no-image-mini.jpg") %><%= e.user.nick_name%></a></strong></h5>
-        <% end %>
-
-    <hr>
-      <% if @messages.present? %>
-        <% @messages.each do |m| %>
-          <strong><%= m.content %></strong>
-          <strong><a href="/users/<%= m.user_id %>"><%= attachment_image_tag(m.user, :image, :fill, 50, 50, fallback: "no-image-mini.jpg") %></a></strong></small>
-          <hr>
-        <% end %>
-      <% else %>
-        <h3 class="text-center">メッセージはまだありません</h3>
-      <% end %>
-
-      <%= form_for @message do |f| %>
-        <%= f.text_field :content, :placeholder => "メッセージを入力して下さい" , :size => 70 %>
-        <%= f.hidden_field :room_id, :value => @room.id %>
-        <br>
-        <%= button_tag :type => "submit" do %>
-          <i class="fas fa-paper-plane"></i>
+    <div class="col-xs-12">
+      <div class="row">
+        <div class="col-xs-4">
+          <% @entries.each do |e| %>
+              <% if e.user.nick_name != current_user.nick_name %>
+                <div class="user-box">
+                  <div class="user-box-title">
+                    <%= link_to user_path(e.user.id) do %>
+                    <%= e.user.nick_name%>さん
+                    <% end %>とのメッセージ
+                  </div>
+                  <div class="user-box-body">
+                    <div class="row">
+                      <%= attachment_image_tag(e.user, :image, size:'100x100', class: "img-circle", fallback: "no-image-mini.jpg") %>
+                    </div>
+                    <div class="row" style="margin-top: 10px;">
+                      <strong>nick_name : </strong><%= e.user.nick_name %>
+                    </div>
+                    <div class="row" style="margin-top: 10px;">
+                      <strong>introduction : </strong><%= e.user.introduction %>
+                    </div>
+                    <div class="row" style="margin-top: 15px;"><!--フォロー情報-->
+                      <%= render 'users/stats', user: @user %>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
           <% end %>
-      <% end %>
-      
+        </div>
+        <div class="col-xs-1">
+        </div>
+        <div class="col-xs-6">
+          <% if @messages.present? %>
+              <% @messages.each do |m| %>
+                <% if m.user.nick_name == current_user.nick_name %>
+                    <div class="row">
+                      <div class="message pull-right">
+                        <div class="mycomment">
+                            <h5><%= m.content %></h5>
+                        </div>
+                      </div>
+                    </div>
+                <% else %>
+                    <div class="row">
+                      <div class="balloon">
+                        <div class="faceicon">
+                          <%= link_to user_path(m.user.id) do %>
+                            <%= attachment_image_tag(m.user, :image, size:'40x40', class: "img-circle", fallback: "no-image-mini.jpg") %>
+                          <% end %>
+                        </div>
+                        <div class="chat">
+                          <div class="says">
+                            <h5><%= m.content %></h5>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                <% end %>
+              <% end %>
+          <% else %>
+              <h3 class="text-center">メッセージはまだありません</h3>
+          <% end %>
+          <%= render 'layouts/errors', model: @message %>
+          <div class="row" style="margin-top: 70px;">
+            <%= form_for @message do |f| %>
+              <%= f.text_area :content, :placeholder => "-- メッセージを入力して下さい --", class: "col-xs-12 dm-body" %>
+              <%= f.hidden_field :room_id, :value => @room.id %>
+              <%= button_tag '', :type => "submit", class: "dm-submit pull-right" do %>
+               <i class="fas fa-paper-plane" style="color: #fff;"></i>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

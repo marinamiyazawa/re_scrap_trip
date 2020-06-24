@@ -11,7 +11,7 @@ class SearchesController < ApplicationController
 	end
 	def User.search(search)
 		if search
-			User.where(['first_name LIKE ? OR last_name LIKE ? OR email LIKE ? OR nick_name LIKE ?',"%#{search}%","%#{search}%","%#{search}%","%#{search}%"])
+			User.where(['introduction LIKE ? OR nick_name LIKE ?',"%#{search}%","%#{search}%"])
 		end
 	end
 end

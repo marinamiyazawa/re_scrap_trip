@@ -21,14 +21,14 @@
     <% end %>
     <div class="row">
       <div class="col-xs-11 search" style="margin: 0; padding: 0;">
-        <span><%= form_tag(searchs_search_path, :method => 'get', class: "navbar-form  navbar-right") do %>
+        <span><%= form_tag(searchs_search_path, :method => 'get', class: "navbar-form  navbar-right", data: {"turbolinks" => false}) do %>
               <%= text_field_tag :search, "", placeholder: "Search", class: "form-control" %>
-              <% end %>
         </span>
       </div>
       <div class="col-xs-1" style="margin-top: 5px; padding: 0; margin-top: 8px;">
         <%= button_tag '', :type => "submit", class: "class_submit" do %>
           <span class="glyphicon glyphicon-search"></span>
+        <% end %>
         <% end %>
       </div>
     </div>

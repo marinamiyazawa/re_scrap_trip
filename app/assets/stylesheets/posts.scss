@@ -25,21 +25,13 @@ select {
 	background-position: right 10px center;
 	background-color: aliceblue;
 }
-
+.post_body {
+	height: 150px;
+}
 
 /* post_index */
-.index-img {
-	transition-duration: 0.5s;/*変化の時間*/
-}
-.index-img:hover {
-	transform: scale(1.2,1.2); /*画像の拡大*/
-	cursor: pointer; /*カーソルをポインターにする*/
-	opacity:0.6;
-	filter:alpha(opacity=50);
-	-ms-filter: “alpha( opacity=50 )”;
-}
-
 .post-box {
+	transition-duration: 0.5s;/*変化の時間*/
 	padding: 0.5em 0.3em;
     margin: 2em 0;
     color: #5d627b;
@@ -47,7 +39,13 @@ select {
     border-top: solid 5px #75b2ff;
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
 }
-
+.post-box:hover {
+	transform: scale(1.2,1.2); /*画像の拡大*/
+	cursor: pointer; /*カーソルをポインターにする*/
+	opacity:0.8;
+	filter:alpha(opacity=50);
+	-ms-filter: “alpha( opacity=50 )”;
+}
 
 /* post_show */
 #post-show{
@@ -59,7 +57,6 @@ select {
 	width : 90vw ;
 	height: 580px;
 }
-
 
 /* post_rank */
 .content {
@@ -74,13 +71,38 @@ select {
     box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.33);
 }
 
-
 /* post_clip */
 .post-clip-box {
+	transition-duration: 0.5s;/*変化の時間*/
 	padding: 0.5em 0.3em;
     margin: 2em 0;
     color: #5d627b;
     background: white;
     border-top: solid 5px #75b2ff;
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+}
+.post-clip-box:hover {
+	transform: scale(1.2,1.2); /*画像の拡大*/
+	cursor: pointer; /*カーソルをポインターにする*/
+	opacity:0.8;
+	filter:alpha(opacity=50);
+	-ms-filter: “alpha( opacity=50 )”;
+}
+
+/* post-hash */
+.hash-box {
+	transition-duration: 0.5s;/*変化の時間*/
+	padding: 0.5em 1em;
+    margin: 2em 0;
+    color: #5d627b;
+    background: white;
+    border-top: solid 5px #75b2ff;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+}
+.hash-box:hover {
+	transform: scale(1.2,1.2); /*画像の拡大*/
+	cursor: pointer; /*カーソルをポインターにする*/
+	opacity:0.8;
+	filter:alpha(opacity=50);
+	-ms-filter: “alpha( opacity=50 )”;
 }

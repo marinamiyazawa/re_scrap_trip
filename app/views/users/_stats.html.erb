@@ -1,7 +1,7 @@
 <% user ||= current_user %>
 <main style="display: flex;">
   <div>
-      <%=link_to following_user_path(@user) do %>
+      <%=link_to following_user_path(user) do %>
         <h5><strong id="followings" class="stat">
           <%= user.followings.count %>
         </strong>
@@ -9,7 +9,7 @@
       <% end %>
   </div>
   <div style="padding-left: 10px;">
-      <%=link_to followers_user_path(@user) do %>
+      <%=link_to followers_user_path(user) do %>
         <h5><strong id="followers" class="stat">
           <%= user.followers.count %>
         </strong>

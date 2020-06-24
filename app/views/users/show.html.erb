@@ -25,7 +25,6 @@
 							<%= link_to rooms_path do %>
 								<i class="far fa-envelope fa-x"></i> DM一覧
 							<% end %>
-
 						<% else %>
 							<% if @isRoom == true %>
 							    <a href="/rooms/<%= @roomId %>">
@@ -38,12 +37,10 @@
 							      <% end %>
 							    　<button type="submit" style="background-color: transparent;border: none;cursor: pointer;outline: none;padding: 0;appearance: none;"><i class="fas fa-paper-plane fa-x"></i> DMを送る
 							      </button>
-
 								<% end %>
 							<% end %>
 						<% end %>
 					</div>
-
 					<!-- 表示の制限 -->
 					<% if @user == current_user %>
 					<div class="row">
@@ -51,13 +48,11 @@
 							<i class="fas fa-user-edit fa-x"></i> マイページ編集
 						<% end %>
 					</div>
-
 					<div class="row">
 						<%=link_to new_post_path, data: {"turbolinks" => false} do %>
 						<i class="fas fa-plus-circle fa-x"></i> 新規投稿
 						<% end %>
 					</div>
-
 					<div class="row">
 						<%=link_to clips_posts_path, data: {"turbolinks" => false} do %>
 						<i class="far fa-bookmark fa-x"></i> お気に入り一覧
@@ -95,13 +90,12 @@
 				<% @posts.each do |post| %>
 					<div class="col-xs-4">
 						<div class="user-post-box">
-
 							<div class="row" style="margin-top: 20px;">
 								<div class="col-xs-12">
 									<% if post.post_images.present? %>
 										<% post.post_images.first(1).each do |image| %>
 											<%= link_to post_path(post.id) do %>
-												<%= attachment_image_tag image, :image, size:'250x200', fallback: "no_image.jpg", class: "scale-img" %>
+												<%= attachment_image_tag image, :image, size:'250x200', fallback: "no_image.jpg", class: "user-post-img" %>
 											<% end %><!--scssで指定 -->
 										<% end %>
 									<% end %>
@@ -109,7 +103,7 @@
 							</div>
 							<div class="row" style="margin-top: 20px;">
 								<div class="col-xs-12">
-								<h4><%= link_to post.title,post, class: "post_#{post.id}" %></h4>
+									<i class="fas fa-map-marker-alt"></i>  <%= link_to post.title,post, class: "post_#{post.id}" %>
 								</div>
 							</div>
 							<div class="row" style="margin-bottom: 20px;">
@@ -123,7 +117,6 @@
 									<% end %>
 								</div>
 							</div>
-
 						</div>
 					</div>
 				<% end %>

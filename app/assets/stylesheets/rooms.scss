@@ -1,3 +1,93 @@
 // Place all the styles related to the rooms controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* room-show*/
+.user-box {
+    margin: 2em 0;
+    background: #f4faff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.22);
+}
+.user-box .user-box-title {
+    font-size: 1.2em;
+    background: #5fc2f5;
+    padding: 4px;
+    text-align: center;
+    color: #FFF;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+}
+.user-box .user-box-body {
+    padding: 15px 60px;
+    margin: 0;
+}
+.dm-body {
+	height: 150px;
+}
+.dm-submit {
+	background-color: #1871bd;
+	border-radius: 10px;
+	width: 10%;
+	height: 30px;
+}
+.balloon {
+  width: 100%;
+  margin: 10px 0;
+  overflow: hidden;
+}
+.balloon .faceicon {
+  float: left;
+  margin-right: -50px;
+  width: 40px;
+}
+.balloon .faceicon img{
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+}
+.balloon .chat .img-circle {
+  width: 100%;
+  text-align: left;
+}
+.says {
+  display: inline-block;
+  position: relative;
+  margin: 0 0 0 50px;
+  padding: 10px;
+  max-width: 250px;
+  border-radius: 12px;
+  background: #edf1ee;
+}
+.says:after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  top: 3px;
+  left: -19px;
+  border: 8px solid transparent;
+  border-right: 18px solid #edf1ee;
+  -webkit-transform: rotate(35deg);
+  transform: rotate(35deg);
+}
+.mycomment {
+  margin: 10px 0;
+}
+.mycomment {
+  display: inline-block;
+  position: relative;
+  padding: 8px;
+  max-width: 250px;
+  border-radius: 12px;
+  background: #94d8ff;
+  font-size: 15px;
+}
+.mycomment :after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  right: -19px;
+  border: 8px solid transparent;
+  border-left: 18px solid #94d8ff;
+  -webkit-transform: rotate(-35deg);
+  transform: rotate(-35deg);
+}

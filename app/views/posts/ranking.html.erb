@@ -24,12 +24,12 @@
 								<div class="col-xs-6" style="padding-left: 30px;">
 									<div class="row" style="margin: 10px;">
 										<div class="content">
-											<strong>Title: </strong><%= link_to post.title, post, class: "post_#{post.id}" %>
+											<i class="fas fa-map-marker-alt"></i>  <%= link_to post.title, post, class: "post_#{post.id}" %>
 										</div>
 									</div>
 									<div class="row" style="margin: 10px;">
 										<div class="content">
-											<strong>Content: </strong><%= post.body %>
+											<strong>Content: </strong><%= render_with_hashtags(post.body) %>
 										</div>
 									</div>
 									<div class="row" style="margin: 10px;">

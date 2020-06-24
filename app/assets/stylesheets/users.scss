@@ -3,17 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 /* show */
-.scale-img {
-	transition-duration: 0.5s;/*変化の時間*/
-}
-.scale-img:hover {
-	transform: scale(1.2,1.2); /*画像の拡大*/
-	cursor: pointer; /*カーソルをポインターにする*/
-	opacity:0.6;
-	filter:alpha(opacity=50);
-	-ms-filter: “alpha( opacity=50 )”;
-}
-
 .map_image {
  border: 1px solid;
  border-color:silver;
@@ -21,8 +10,8 @@
 	max-width: 100%;
   text-align:center;
 }
-
 .user-post-box{
+	transition-duration: 0.5s;/*変化の時間*/
 	padding: 0.5em 0.3em;
     margin: 2em 0;
     color: #5d627b;
@@ -30,7 +19,13 @@
     border-top: solid 5px #75b2ff;
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
 }
-
+.user-post-box:hover {
+	transform: scale(1.2,1.2); /*画像の拡大*/
+	cursor: pointer; /*カーソルをポインターにする*/
+	opacity:0.6;
+	filter:alpha(opacity=50);
+	-ms-filter: “alpha( opacity=50 )”;
+}
 
 /* user_edit */
 .user_image {

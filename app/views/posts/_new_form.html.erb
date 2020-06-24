@@ -25,7 +25,6 @@
 		<div class="listing-form-box">
   			<div class="listing-post-detail__genre">
     			<%= f.label 'Genre', class: 'listing-default__label' %>
-    			<span class="listing-default--require" style="color: red;">必須</span>
     			<div class="listing-select-wrapper">
       				<div class="listing-select-wrapper__box">
         				<%= f.select :genre_id, options_for_select(@genre_parent_array.map { |genre| [genre[:name], genre[:id]] }), {}, {class: 'listing-select-wrapper__box--select', id: 'parent_genre' } %>

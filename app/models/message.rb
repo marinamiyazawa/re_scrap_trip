@@ -3,4 +3,6 @@ class Message < ApplicationRecord
 	belongs_to :room
 
 	attachment :image
+
+	validates :content, presence: true
 end
