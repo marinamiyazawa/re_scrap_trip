@@ -4,6 +4,7 @@ class HomesController < ApplicationController
 		render layout: false #application.html.erb
 	end
 	def about
+		@posts = Post.published.order("created_at DESC").limit(3)
 		render layout: false #application.html.erb
 	end
 end

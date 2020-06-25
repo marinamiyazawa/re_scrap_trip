@@ -71,8 +71,7 @@ $(document).on('turbolinks:load', function () {
   });
 });
 
-
-
+//form画像プレビュー
 $(function() {
   $(document).on('turbolinks:load',() => {
     function readURL(input) {
@@ -89,4 +88,3 @@ $(function() {
     });
   });
   });
-

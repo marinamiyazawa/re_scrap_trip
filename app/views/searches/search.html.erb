@@ -9,72 +9,88 @@
 		</div>
 		<!-- 投稿の検索結果 -->
 		<div class="row" style="margin-top: 70px;">
+			<div class="col-xs-10 col-xs-offset-1" style="margin-bottom: 30px;">
+	    		<h2> Hit Posts </h2>
+	    	</div>
 			<div class="col-xs-10 col-xs-offset-1">
-				<% @posts.each do |post| %>
-					<div class="col-xs-4">
-						<div class="search-post-box">
-							<div class="row">
-								<div class="col-xs-12">
-									<% post.post_images.first(1).each do |image| %>
-										<%= link_to post_path(post.id) do %>
-											<%= attachment_image_tag(image, :image, size:'260x200', class: "search-post-img") %>
+				<% if @posts.exists? %>
+					<% @posts.each do |post| %>
+						<div class="col-xs-4">
+							<div class="search-post-box">
+								<div class="row">
+									<div class="col-xs-12">
+										<% post.post_images.first(1).each do |image| %>
+											<%= link_to post_path(post.id) do %>
+												<%= attachment_image_tag(image, :image, size:'260x200', class: "search-post-img") %>
+											<% end %>
 										<% end %>
-									<% end %>
+									</div>
 								</div>
-							</div>
-							<div class="row" style="margin-top: 10px;">
-								<div class="col-xs-12">
-									<%= post.title %>
+								<div class="row" style="margin-top: 10px;">
+									<div class="col-xs-12">
+										<%= post.title %>
+									</div>
 								</div>
-							</div>
-							<div class="row">
-								<div class="col-xs-12">
-									<%= render_with_hashtags(post.body) %>
+								<div class="row">
+									<div class="col-xs-12">
+										<%= render_with_hashtags(post.body) %>
+									</div>
 								</div>
-							</div>
-							<div class="row" style="margin-bottom: 20px;">
-								<div class="col-xs-5" style="padding-top: 10px; padding-right: 0; margin: 0;">
-									<div id="star-rate-<%= post.id %>"></div>
-								</div>
-								<div class="col-xs-2" style="color:silver; padding: 0; margin:0;">
-									<h4 class="mb-3"><%= post.rate %></h4>
-								</div>
-					            <script>
-					            	$('#star-rate-<%= post.id %>').raty({
-							            size: 36,
-							            starOff:  '<%= asset_path('star-off.png') %>',
-							            starOn : '<%= asset_path('star-on.png') %>',
-							            starHalf: '<%= asset_path('star-half.png') %>',
-							            half: true,
-							            readOnly: true,
-							            score: <%= post.rate %>,
-					         		 });
-					            </script>
-				    		</div>
+								<div class="row" style="margin-bottom: 20px;">
+									<div class="col-xs-5" style="padding-top: 10px; padding-right: 0; margin: 0;">
+										<div id="star-rate-<%= post.id %>"></div>
+									</div>
+									<div class="col-xs-2" style="color:silver; padding: 0; margin:0;">
+										<h4 class="mb-3"><%= post.rate %></h4>
+									</div>
+						            <script>
+						            	$('#star-rate-<%= post.id %>').raty({
+								            size: 36,
+								            starOff:  '<%= asset_path('star-off.png') %>',
+								            starOn : '<%= asset_path('star-on.png') %>',
+								            starHalf: '<%= asset_path('star-half.png') %>',
+								            half: true,
+								            readOnly: true,
+								            score: <%= post.rate %>,
+						         		 });
+						            </script>
+					    		</div>
+					    	</div>
 				    	</div>
-			    	</div>
-		    	<% end %>
+			    	<% end %>
+		    	<% else %>
+		    		<h4> >> No Posts </h4>
+	    		<% end %>
 	    	</div>
 	    </div>
 	    <!-- ユーザーの検索結果 -->
 	    <div class="row" style="margin-top: 50px;">
-	    	<% @users.each do |user| %>
-				<div class="col-xs-10 col-xs-offset-1">
-					<div class="row" style="margin-bottom: 30px;">
-						<div class="col-xs-3">
-							<%= attachment_image_tag(user, :image, size:'100x100', class: "img-circle", fallback: "no_image.jpg") %>
+	    	<div class="col-xs-10 col-xs-offset-1" style="margin-bottom: 30px;">
+	    		<h2> Hit Users </h2>
+	    	</div>
+	    </div>
+	    <div class="row">
+	    	<div class="col-xs-10 col-xs-offset-1">
+	    		<% if @users.exists? %>
+		    		<% @users.each do |user| %>
+						<div class="row" style="padding-bottom: 10px; margin-bottom: 20px; border-bottom: 1px solid silver;">
+							<div class="col-xs-3">
+								<%= attachment_image_tag(user, :image, size:'100x100', class: "img-circle", fallback: "no_image.jpg") %>
+							</div>
+							<div class="col-xs-3">
+								<strong>Name : </strong>
+									<%= link_to user.nick_name, user_path(user.id) %>
+							</div>
+							<div class="col-xs-3">
+								<strong>Introduction : </strong>
+									<%= user.introduction %>
+							</div>
 						</div>
-						<div class="col-xs-3">
-							<strong>Name : </strong>
-								<%= link_to user.nick_name, user_path(user.id) %>
-						</div>
-						<div class="col-xs-3">
-							<strong>Introduction : </strong>
-								<%= user.introduction %>
-						</div>
-					</div>
-				</div>
-			<% end %>
+					<% end %>
+				<% else %>
+					<h4> >> No Users </h4>
+				<% end %>
+			</div>
 		</div>
 	</div>
 </div>

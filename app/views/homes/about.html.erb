@@ -76,6 +76,41 @@
 	<div class="container-fluid" style="position: relative; padding: 0; height: 600px;">
 		<div class="board5">
 		</div>
+		<div class="about-posts" style="position: absolute; left: 30%; width: 70%; top: 50px;">
+			<% @posts.each do |post| %>
+                <div class="col-xs-4">
+                    <div class="top-box">
+                        <div class="row">
+                            <div class="col-xs-12" style="margin-bottom: 20px;">
+                                <% if post.post_images.present? %>
+                                    <% post.post_images.first(1).each do |image| %>
+                                        <%= link_to post_path(post.id) do %>
+                                            <%= attachment_image_tag image, :image, size:'250x200', fallback: "no_image.jpg", class: "scale-img" %>
+                                        <% end %><!--scssで指定 -->
+                                    <% end %>
+                                    <div class="row">
+                                        <div class="col-xs-5" style="padding-top: 10px; padding-right: 0; margin: 0;">
+                                            <div id="star-rate-<%= post.id %>"></div>
+                                        </div>
+                                        <script>
+                                            $('#star-rate-<%= post.id %>').raty({
+                                                size: 36,
+                                                starOff:  '<%= asset_path('star-off.png') %>',
+                                                starOn : '<%= asset_path('star-on.png') %>',
+                                                starHalf: '<%= asset_path('star-half.png') %>',
+                                                half: true,
+                                                readOnly: true,
+                                                score: <%= post.rate %>,
+                                             });
+                                        </script>
+                                    </div>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+        </div>
 		<div class="foot">
 			©Scrap Trip
 		</div>
