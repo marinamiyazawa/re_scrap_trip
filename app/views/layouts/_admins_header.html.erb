@@ -5,7 +5,7 @@
   <%= link_to ' Users', admins_users_path, class: "far fa-clone" %>
 </li>
 <li class="nav-list-item">
-  <%=link_to 'Posts', "", class: "fas fa-plane-departure" %>
+  <%=link_to 'Posts', admins_posts_path, class: "fas fa-plane-departure" %>
 </li>
 <li class="nav-list-item">
   <%= link_to ' logout', destroy_admin_session_path, method: :delete, class: "fas fa-sign-out-alt" %>
