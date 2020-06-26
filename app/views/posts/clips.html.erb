@@ -3,7 +3,7 @@
 		<div class="col-xs-12" style="padding: 0;">
 
 			<div class="row" style="padding-left: 100px;">
-				<h2>🌟 Your Bookmark Posts</h2>
+				<h2> Your Bookmark Posts</h2>
 			</div>
 			<!-- google map -->
 			<div class="row" style="margin-top: 20px;">
@@ -55,6 +55,9 @@
 						</div>
 					</div>
 				<% end %>
+			</div>
+			<div class="row pull-right">
+			<%= paginate @posts %>
 			</div>
 		</div>
 	</div>

@@ -3,9 +3,9 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
-		@posts = @user.posts
+		@posts = @user.posts.page(params[:page]).per(6)
 			 if @user != current_user
-				@posts = @user.posts.published.order("created_at DESC")
+				@posts = @user.posts.published.order("created_at DESC").page(params[:page]).per(6)
 			end
 		#google_map
 		@hash = Gmaps4rails.build_markers(@posts) do |post, marker|

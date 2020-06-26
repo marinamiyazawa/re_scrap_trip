@@ -36,7 +36,7 @@ class PostsController < ApplicationController
 	end
 
 	def index
-		@posts = Post.published.order("created_at DESC").includes(:user)
+		@posts = Post.published.order("created_at DESC").includes(:user).page(params[:page]).per(6)
 		@parents = Genre.where(ancestry: nil)
 		@tag = Hashtag.all
 	end
@@ -47,7 +47,7 @@ class PostsController < ApplicationController
 	end
 
 	def clips #ブックマーク
-		@posts = current_user.clip_posts.includes(:user)
+		@posts = current_user.clip_posts.includes(:user).page(params[:page]).per(6)
 		#google_map
 		@hash = Gmaps4rails.build_markers(@posts) do |post, marker|
 		      marker.lat post.latitude
