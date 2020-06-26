@@ -1,0 +1,20 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        first_name: 名字
+        last_name: 名前
+        nick_name: ニックネーム
+        email: Eメール
+        password: パスワード
+      post:
+        title: 国/都市名
+        body: 本文
+        rate: 評価
+        status: 記事ステータス
+        genre: ジャンル
+        post_images_images: 画像を１枚以上
+      genre:
+        name: ジャンル
+      massage:
+        content: メッセージ

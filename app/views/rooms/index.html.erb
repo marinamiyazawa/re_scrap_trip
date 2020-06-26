@@ -1,24 +1,30 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-8 col-xs-offset-2">
-
-			<% @response.each do |response| %>
-				<table class="table">
-				  	<tbody>
+			<table class="table">
+			  	<thead>
+			  		<tr>
+			  			<td><strong>icon</strong></td>
+			  			<td><strong>User name</strong></td>
+			  			<td><strong>Latest message</strong></td>
+			  		</tr>
+			  	</thead>
+			  	<tbody>
+					<% @response.each do |response| %>
 				  		<tr>
 				  			<td>
 				  				<%= link_to room_path(response[:room]) do %>
 		  							<%= attachment_image_tag(response[:partner], :image, size:'50x50', class: "img-circle", fallback: "no_image.jpg") %>
 		  						<% end %>
 		  					</td>
-						  	<td><strong>User:</strong> <%= response[:partner].nick_name %></td>
-
-						  	<td><strong>Message:</strong> <%= response[:latest_message].content %></td>
+						  	<td><strong>User:</strong> <%= response[:partner].nick_name %>
+						  	</td>
+						  	<td><strong>Message:</strong> <%= response[:latest_message].content %>
+						  	</td>
 					    </tr>
-					</tbody>
-				</table>
-			<% end %>
-
+					<% end %>
+				</tbody>
+			</table>
 		</div>
 	</div>
 </div>

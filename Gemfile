@@ -78,3 +78,4 @@ end
 gem 'ancestry'
 gem 'gmaps4rails'
 gem 'geocoder'
+gem 'rails-i18n'

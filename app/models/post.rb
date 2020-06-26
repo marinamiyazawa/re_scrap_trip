@@ -22,6 +22,7 @@ class Post < ApplicationRecord
 	validates :rate, presence: true
 	validates :genre_id, presence: true
   	validates :genre, presence: true, if: -> { genre_id.present? }
+  	validates :post_images_images, presence: true
 
 	def favorited_by?(user)
 		favorites.where(user_id: user.id).exists?
