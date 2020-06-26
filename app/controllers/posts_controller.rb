@@ -18,6 +18,7 @@ class PostsController < ApplicationController
 		@post.user_id = current_user.id
 		@user = current_user
 		if @post.save
+			flash[:notice]= 'created post successfully.'
 			redirect_to post_path(@post)
 		else
 			@post.post_images.build
@@ -77,6 +78,7 @@ class PostsController < ApplicationController
 	def update
 		@post = Post.find(params[:id])
 		if  @post.update(post_params)
+			flash[:notice]= 'edited post successfully.'
 		    redirect_to @post
 		else
 			render :edit
@@ -88,7 +90,7 @@ class PostsController < ApplicationController
 		if @post.destroy
 			redirect_to posts_path
 		else
-			flash[:error_messages] = @product.errors.full_messages
+			flash[:notice]= 'deleted post successfully.'
 			render 'show'
 		end
 	end

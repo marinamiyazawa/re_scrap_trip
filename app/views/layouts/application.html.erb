@@ -76,12 +76,14 @@
         </div>
       </div>
 
-
-
+      <%if flash[:notice] %>
+        <p class="text-center alert alert-info" style="color:#1871bd;"><%= flash[:notice] %></p>
+      <% end %>
+<!--デバイスでnotice設定されているので呼び出してるだけ-->
     <%= yield %>
     <!--ヘッダーの記述-->
     <div class="container">
-      <p id="notice"><%= notice %></p> <!--デバイスでnotice設定されているので呼び出してるだけ-->
+     
 
     </div>
   </body>
