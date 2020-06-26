@@ -55,7 +55,7 @@ header .headline{
   font-size: 20px;
   margin:0;
 }
-span, .title {
+.title {
   color: #1871bd;
   margin-top: 70px;
   font-size: 50px;
@@ -97,15 +97,16 @@ color: white;
 
 /* search */
 .class_submit{
-  background-color: #1871bd;
+  background-color: #a9e3ff;
   border-radius: 10px;
+  border-color: #1871bd;
   width:70%;
 }
 span, .glyphicon glyphicon-search {
   font-size:20px;
   margin-top: 3px;
   padding: 3px 13px;
-  color: white;
+  color: #1871bd;
 }
 .container{
   margin-top :40px;

@@ -2,7 +2,7 @@ class Admins::PostsController < ApplicationController
 	before_action :set_genre_parent, only:[:new, :create, :edit, :update]
 
 	def index
-		@posts = Post.all
+		@posts = Post.all.page(params[:page]).per(9)
 	end
 	def show
 		@post = Post.find(params[:id])
