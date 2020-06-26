@@ -5,8 +5,6 @@ ja:
         first_name: 名字
         last_name: 名前
         nick_name: ニックネーム
-        email: Eメール
-        password: パスワード
       post:
         title: 国/都市名
         body: 本文
