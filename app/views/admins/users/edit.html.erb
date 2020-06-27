@@ -7,38 +7,43 @@
 				<div class="row" style="margin-top: 40px;">
 					<div class="col-xs-3">
 						<div class="field">
-							<%= attachment_image_tag(@user, :image, size:'200x200', fallback: "no_image.jpg") %>
-							<%= f.attachment_field :image, class: "user_image" %>
+							<%= attachment_image_tag(@user, :image, id: "preview", size:'200x200', fallback: "no_image.jpg") %>
+							<%= f.attachment_field :image, id: :item_img, class: "user_image" %>
 						</div>
 					</div>
 
 					<div class="col-xs-6 col-xs-offset-3">
-						<div class="field" style="margin-bottom: 15px;">
-							<%= f.label :first_name %>
-							<%= f.text_field :first_name, class: "first_name" %>
+						<div class="field row" style="margin-bottom: 15px;">
+							<%= f.label :first_name, class: "col-xs-4" %>
+							<%= f.text_field :first_name, class: "col-xs-5 first_name" %>
 						</div>
-						<div class="field" style="margin-bottom: 15px;">
-							<%= f.label :last_name %>
-							<%= f.text_field :last_name, class: "last_name" %>
+						<div class="field row" style="margin-bottom: 15px;">
+							<%= f.label :last_name, class: "col-xs-4" %>
+							<%= f.text_field :last_name, class: "col-xs-5 last_name" %>
 						</div>
-						<div class="field" style="margin-bottom: 15px;">
-							<%= f.label :nick_name %>
-							<%= f.text_field :nick_name, class: "nick_name" %>
+						<div class="field row" style="margin-bottom: 15px;">
+							<%= f.label :nick_name, class: "col-xs-4" %>
+							<%= f.text_field :nick_name, class: "col-xs-5 nick_name" %>
 						</div>
-						<div class="field" style="margin-bottom: 15px;">
-							<%= f.label :introduction %>
-							<%= f.text_area :introduction, class: "introduction" %>
+						<div class="field row" style="margin-bottom: 15px;">
+							<%= f.label :introduction, class: "col-xs-4" %>
+							<%= f.text_area :introduction, class: "col-xs-5 introduction" %>
 						</div>
-						<div class="field" style="margin-bottom: 15px;">
-							<%= f.label :email %>
-							<%= f.text_field :email, class: "email" %>
+						<div class="field row" style="margin-bottom: 15px;">
+							<%= f.label :email, class: "col-xs-4" %>
+							<%= f.text_field :email, class: "col-xs-5 email" %>
 						</div>
 						<div class="row", style="padding-top: 8px;">	
 						    <%= f.radio_button :user_status, :false %>有効
 			    			<%= f.radio_button :user_status, :true %>退会済み
 		    			</div>
-						<div class="pull-right" style="margin-top: 20px;">
-							<%= f.submit '変更を保存する', class: "btn btn-primary" %>
+						<div class="row" style="margin-top: 20px;">
+							<div class="col-xs-4">
+								<%= f.submit '変更を保存する', class: "btn btn-primary" %>
+							</div>
+							<div class="col-xs-4">
+								<%= link_to 'ユーザー詳細に戻る', admins_user_path, class: "btn btn-info" %>
+							</div>
 						</div>
 					</div>
 					<% end %>

@@ -18,5 +18,4 @@ class Admins::UsersController < ApplicationController
 	def user_params
 		params.require(:user).permit(:image, :first_name, :last_name, :nick_name, :introduction, :email, :user_status)
 	end
-	
 end

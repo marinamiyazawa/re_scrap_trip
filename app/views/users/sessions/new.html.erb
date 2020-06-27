@@ -4,29 +4,35 @@
       <h2>Log in</h2>
 
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-            <div class="field">
+            <div class="field" style="margin: 20px 0;">
               <%= f.label :email %><br />
               <%= f.text_field :email, autofocus: true, class: "email" %>
             </div>
 
-            <div class="field">
+            <div class="field" style="margin: 20px 0;">
               <%= f.label :password %><br />
               <%= f.password_field :password, autocomplete: "current-password" %>
             </div>
 
             <% if devise_mapping.rememberable? %>
-              <div class="field">
+              <div class="field" style="margin: 20px 0;">
                 <%= f.check_box :remember_me %>
                 <%= f.label :remember_me %>
               </div>
             <% end %>
-
-            <div class="actions">
-              <%= f.submit "Log in" %>
+            <div class="row">
+              <div class="col-xs-3">
+                <div class="actions" style="font-family: 'Permanent Marker', cursive">
+                  <%= f.submit "Log in", class: "btn btn-info" %>
+                </div>
+              </div>
+              <div class="col-xs-3">
+                <%= link_to user_google_oauth2_omniauth_authorize_path do %>
+                  <i class="fab fa-google-plus-square fa-2x"></i>
+                <% end %>
+              </div>
             </div>
           <% end %>
-
-          <%= render "users/shared/links" %>
         </div>
       </div>
     </div>
