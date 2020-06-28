@@ -19,11 +19,6 @@ class User < ApplicationRecord
   has_many :clips, dependent: :destroy
   has_many :clip_posts, through: :clips, source: :post
 
-  #バリデーション
-  validates :last_name, presence: true
-  validates :first_name, presence: true
-  validates :nick_name, presence: true
-
   def active_for_authentication?
     super && (self.user_status == false)
   end
