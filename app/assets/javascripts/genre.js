@@ -20,6 +20,7 @@ $('turbolinks:load', function(){
 
   //　親カテゴリー選択後のイベント
   $('#parent_genre').on('change', function(){
+    console.log('親カテゴリー選択')
     var parentGenre = document.getElementById('parent_genre').value; //選択された親カテゴリーの名前を取得
     if (parentGenre != "---"){ //親カテゴリーが初期値でないことを確認
       $.ajax({
@@ -68,11 +69,12 @@ $('turbolinks:load', function(){
   }
 
   //　親カテゴリー選択後のイベント
-  $('#parent_genre').on('change', function(){
-    var parentGenre = document.getElementById('parent_genre').value; //選択された親カテゴリーの名前を取得
+  $('#admins_parent_genre').on('change', function(){
+    console.log('xxx')
+    var parentGenre = document.getElementById('admins_parent_genre').value; //選択された親カテゴリーの名前を取得
     if (parentGenre != "---"){ //親カテゴリーが初期値でないことを確認
       $.ajax({
-        url: 'admins/posts/genre_children',
+        url: '/admins/posts/genre_children',
         type: 'GET',
         data: { parent_name: parentGenre },
         dataType: 'json'

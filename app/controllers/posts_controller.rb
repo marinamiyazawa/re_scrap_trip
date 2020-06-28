@@ -37,13 +37,16 @@ class PostsController < ApplicationController
 	end
 
 	def index
-		@posts = Post.published.order("created_at DESC").includes(:user).page(params[:page]).per(6)
+		@posts = Post.published.order("created_at DESC")
+		             .joins(:user)
+					 .where(users: {user_status: false}).page(params[:page]).per(6)
 		@parents = Genre.where(ancestry: nil)
 		@tag = Hashtag.all
 	end
 
 	def ranking #ランキング
-		@all_ranks = Post.find(Favorite.group(:post_id).order('count(post_id) desc').limit(10).pluck(:post_id))
+		@all_ranks = Post.find(Favorite.group(:post_id).order('count(post_id) desc')
+					 .limit(10).pluck(:post_id))
 		@parents = Genre.where(ancestry: nil)
 	end
 

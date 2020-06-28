@@ -38,7 +38,6 @@ Rails.application.routes.draw do
   devise_for :admins
     namespace :admins do
     root "homes#top"
-
     resources :users, only:[:index, :show, :edit, :update]
     resources :posts, only:[:index, :show, :edit, :update, :destroy] do
       collection do
