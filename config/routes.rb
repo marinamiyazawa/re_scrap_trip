@@ -40,7 +40,11 @@ Rails.application.routes.draw do
     root "homes#top"
 
     resources :users, only:[:index, :show, :edit, :update]
-    resources :posts, only:[:index, :show, :edit, :update, :destroy]
+    resources :posts, only:[:index, :show, :edit, :update, :destroy] do
+      collection do
+        get 'genre_children', defaults: { format: 'json' }
+      end
+    end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

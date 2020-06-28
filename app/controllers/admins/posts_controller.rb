@@ -10,7 +10,7 @@ class Admins::PostsController < ApplicationController
 	def edit
 		@post = Post.find(params[:id])
 	end
-	def get_genre_children #親カテゴリーが選択された後に動くアクション
+	def genre_children #親カテゴリーが選択された後に動くアクション
 		@genre_children = Genre.find_by(id: "#{params[:parent_name]}", ancestry: nil).children
 	end
 	def update

@@ -7,7 +7,7 @@
 			<div class="row" style="margin-top: 30px;">
 				<div class="col-xs-3">
 					<%= link_to admins_user_path(@post.user.id) do %>
-						<%= attachment_image_tag(@post.user, :image, :fill, 70, 70, fallback: "no-image-mini.jpg") %>
+						<%= attachment_image_tag(@post.user, :image, size:'70x70',fallback: "no-image-mini.jpg") %>
 					<% end %>
 					<%= @post.user.nick_name %>
 				</div>
