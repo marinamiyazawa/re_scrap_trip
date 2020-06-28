@@ -19,7 +19,7 @@
 		  					</td>
 						  	<td><strong>User:</strong> <%= response[:partner].nick_name %>
 						  	</td>
-						  	<td><strong>Message:</strong> <%= response[:latest_message].content %>
+						  	<td><strong>Message:</strong> <%= response[:latest_message]&.content %>
 						  	</td>
 					    </tr>
 					<% end %>

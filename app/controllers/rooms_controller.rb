@@ -26,7 +26,7 @@ class RoomsController < ApplicationController
 			room_info_for_response = {}
 			room_info_for_response[:room] = entry.room.id
 			room_info_for_response[:partner] = Entry.where(room_id: entry.room.id).where.not(user_id: current_user.id)[0].user
-			room_info_for_response[:latest_message] = Message.where(room_id: entry.room.id)[-1]
+			room_info_for_response[:latest_message] = Message.where(room_id: entry.room.id).last
 			@response << room_info_for_response
 		end
 	end
