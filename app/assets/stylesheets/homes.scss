@@ -7,8 +7,8 @@
 	background-color: #00000000!important;
   opacity:0.7;
 }
-.navbar .nav li a {
-	color: #000!important;
+.navbar .nav li {
+	color: #fff!important;
 	border-right: none!important;
 	border-left: none!important;
 }
@@ -27,18 +27,18 @@ width: 100%;
 display: table-cell;
 float: none;
 }
-.navbar .nav li a {
+.navbar .nav li {
 font-weight: bold;
 text-align: center;
 border-left: 1px solid rgba(255, 255, 255, .75);
 border-right: 1px solid rgba(0, 0, 0, .1);
 color: white;
 }
-.navbar .nav li:first-child a {
+.navbar .nav li:first-child {
 border-left: 0;
 border-radius: 0 3px 3px 0;
 }
-.navbar .nav li:last-child a {
+.navbar .nav li:last-child {
 border-right: 0;
 border-radius: 0 3px 3px 0;
 }

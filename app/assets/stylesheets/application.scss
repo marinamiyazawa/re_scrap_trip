@@ -23,15 +23,12 @@
   box-sizing: border-box;
   color: #6c6b6b;
 }
-a {
-  text-decoration: none;
-}
 .clearfix::after {
   content: "";
   display: block;
   clear: both;
 }
-header, .navbar, nav, h1, h2, h4, .title, .logo, li, a, .text-shadow {
+header, .navbar, .nav1, h1, h2, h4, .title, .logo, li, a, .text-shadow {
   font-family:'Permanent Marker', cursive, Chalkduster, "Bradley Hand", Courier, "Segoe Print", sans-serif;
   margin: 0;
 }
@@ -60,7 +57,7 @@ header .headline{
   margin-top: 70px;
   font-size: 50px;
 }
-.nav nav-app2 {
+.nav1 nav-app2 {
   background-color: #1871bd;
 }
 .nav-list-item {
@@ -69,27 +66,27 @@ header .headline{
 .navbar navbar-default nav-app .navbar-inner {
 padding: 0;
 }
-.navbar navbar-default nav-app .nav nav-app2 {
+.navbar navbar-default nav-app .nav1 nav-app2 {
 margin: 0;
 display: table;
 width: 100%;
 }
-.navbar navbar-default nav-app .nav nav-app2 li {
+.navbar navbar-default nav-app .nav1 nav-app2 li a {
 display: table-cell;
 float: none;
 }
-.navbar navbar-default nav-app .nav nav-app2 li a {
+.navbar navbar-default nav-app .nav1 nav-app2 li a{
 font-weight: bold;
 text-align: center;
 border-left: 1px solid rgba(255, 255, 255, .75);
 border-right: 1px solid rgba(0, 0, 0, .1);
 color: white;
 }
-.navbar navbar-default nav-app .nav nav-app2 li:first-child a {
+.navbar navbar-default nav-app .nav1 nav-app2 li a:first-child  {
 border-left: 0;
 border-radius: 0 3px 3px 0;
 }
-.navbar navbar-default nav-app .nav-app2 li:last-child a {
+.navbar navbar-default nav-app .nav-app2 li a:last-child {
 border-right: 0;
 border-radius: 0 3px 3px 0;
 color: white;
@@ -115,5 +112,5 @@ span, .glyphicon glyphicon-search {
 /* log in */
 .fa-google-plus-square {
   color: pink;
-  font-size: 2.5em;
+  font-size: 3em;
 }
