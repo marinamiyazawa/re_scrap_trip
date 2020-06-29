@@ -41,7 +41,7 @@ class PostsController < ApplicationController
 		             .joins(:user)
 					 .where(users: {user_status: false}).page(params[:page]).per(6)
 		@parents = Genre.where(ancestry: nil)
-		@tag = Hashtag.all
+		@tag = Hashtag.all.order("created_at DESC")
 	end
 
 	def ranking #ランキング
