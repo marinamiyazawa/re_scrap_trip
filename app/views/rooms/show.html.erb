@@ -3,7 +3,6 @@
     <div class="col-xs-12">
       <div class="row">
         <div class="col-xs-4">
-
           <div class="user-box">
             <div class="user-box-title">
               <%= link_to user_path(@partner.id) do %>
@@ -25,7 +24,6 @@
               </div>
             </div>
           </div>
-            
           <%= link_to 'DM一覧に戻る', rooms_path, class: "btn btn-primary" %>
           <%= link_to 'マイページに戻る', user_path(current_user), class: "btn btn-info" %>
         </div>
@@ -33,37 +31,37 @@
         </div>
         <div class="col-xs-6">
             <% if @messages.present? %>
-                <% @messages.each do |m| %>
-                  <% if m.user.nick_name == current_user.nick_name %>
-                      <div class="row">
-                        <div class="message pull-right">
-                          <div class="mycomment">
-                              <h5><%= m.content %></h5>
+              <% @messages.each do |m| %>
+                <% if m.user.nick_name == current_user.nick_name %>
+                    <div class="row">
+                      <div class="message pull-right">
+                        <div class="mycomment">
+                            <h5><%= m.content %></h5>
+                        </div>
+                      </div>
+                    </div>
+                <% else %>
+                    <div class="row">
+                      <div class="balloon">
+                        <div class="faceicon">
+                          <%= link_to user_path(m.user.id) do %>
+                            <%= attachment_image_tag(m.user, :image, size:'40x40', class: "img-circle", fallback: "no_image.jpg") %>
+                          <% end %>
+                        </div>
+                        <div class="chat">
+                          <div class="says">
+                            <h5><%= m.content %></h5>
                           </div>
                         </div>
                       </div>
-                  <% else %>
-                      <div class="row">
-                        <div class="balloon">
-                          <div class="faceicon">
-                            <%= link_to user_path(m.user.id) do %>
-                              <%= attachment_image_tag(m.user, :image, size:'40x40', class: "img-circle", fallback: "no_image.jpg") %>
-                            <% end %>
-                          </div>
-                          <div class="chat">
-                            <div class="says">
-                              <h5><%= m.content %></h5>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                  <% end %>
+                    </div>
                 <% end %>
+              <% end %>
             <% else %>
-                <h3 class="text-center">メッセージはまだありません</h3>
+              <h3 class="text-center">メッセージはまだありません</h3>
             <% end %>
-          <%= render 'layouts/errors', model: @message %>
-          <div class="row" style="margin-top: 50px;">
+            <%= render 'layouts/errors', model: @message %>
+            <div class="row" style="margin-top: 50px;">
             <%= form_for @message do |f| %>
               <%= f.text_area :content, :placeholder => "-- メッセージを入力して下さい --", class: "col-xs-12 dm-body" %>
               <%= f.hidden_field :room_id, :value => @room.id %>
