@@ -1,102 +1,133 @@
 <div class="container" style="width: 100%;">
 	<div class="row">
-		<div class="col-xs-8 col-xs-offset-2">
-
-			<% if @post.post_images.present? %>
-				<!--スライドショー-->
-				<div id="post-show">
-					<div id="postShow">
-						<% @post.post_images.each do |image| %>
-							<div>
-							<%= attachment_image_tag image, :image, class: "show-img" %>
+		<div class="col-xs-12">
+			<!-- 投稿画像 -->
+			<div class="row" style="padding-left: 30px;">
+				<div class="col-xs-7">
+					<div class="row">
+						<% if @post.post_images.present? %>
+							<!--スライドショー-->
+							<div id="post-show">
+								<div id="postShow">
+									<% @post.post_images.each do |image| %>
+										<div>
+										<%= attachment_image_tag image, :image, class: "show-img" %>
+										</div>
+									<% end %>
+								</div>
 							</div>
 						<% end %>
 					</div>
-				</div>
-			<% end %>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-xs-8 col-xs-offset-2">
-			<!-- いいね　-->
-			<% if user_signed_in? %>
-				<% if @post.favorited_by?(current_user) %>
-					<%= link_to post_favorites_path(@post), method: :delete do %>
-						<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-						<%= @post.favorites.count %>
-					<% end %>
-				<% else %>
-					<%= link_to post_favorites_path(@post), method: :post do %>
-						<i class="fa fa-heart-o" aria-hidden="true"></i>
-						<%= @post.favorites.count %>
-					<% end %>
-				<% end %>
-			<% end %>
-			<!--評価 -->
-			<div class="row">
-				<div class="col-xs-11">
 					<div class="row">
-						<div class="col-xs-2" style="padding-top: 10px; padding-right: 0; margin: 0;">
-							<div id="star-rate-<%= @post.id %>"></div>
-						</div>
-						<div class="col-xs-2" style="color:silver; padding: 0; margin:0;">
-							<h4 class="mb-3"><%= @post.rate %></h4>
-						</div>
-			            <script>
-			            	$('#star-rate-<%= @post.id %>').raty({
-					            size: 36,
-					            starOff:  '<%= asset_path('star-off.png') %>',
-					            starOn : '<%= asset_path('star-on.png') %>',
-					            starHalf: '<%= asset_path('star-half.png') %>',
-					            half: true,
-					            readOnly: true,
-					            score: <%= @post.rate %>,
-			         		 });
-			            </script>
-		        	</div>
-		        </div>
-		        <div class="col-xs-1">
-		        	<% if @post.user ==current_user %>
-						<%= link_to edit_post_path do %>
-							<i class="far fa-edit fa-2x fa-spin"></i>
-						<% end %>
-					<% end %>
-				</div>
-			</div>
-			<!-- 投稿内容　-->
-			<table class="table" style="margin-top: 30px;">
-				<tr>
-					<td>
-						<%= link_to (@post.user) do %>
-							<%= attachment_image_tag(@post.user, :image, size:'70x70') %>
-						<% end %>
-						<%= @post.user.nick_name %>
-					</td>
-					<td style="padding-top: 30px;"><strong>Genre: </strong><%= @post.genre.name %></td>
-					<td style="padding-top: 30px;">
-						<i class="fas fa-map-marker-alt"></i>  <%= @post.title %>
-					</td>
-					<td style="padding-top: 30px;"><strong>Content: </strong><%= render_with_hashtags(@post.body) %></td>
-					<td style="padding-top: 30px;">
-						<% if user_signed_in? %>
-							<% if @post.user != current_user %>
-								<% if @post.clip_by?(current_user) %>
-								  	<%= render 'posts/unclip', post: @post %>
+						<div class="col-xs-1 pull-left">
+							<!-- いいね　-->
+							<% if user_signed_in? %>
+								<% if @post.favorited_by?(current_user) %>
+									<%= link_to post_favorites_path(@post), method: :delete do %>
+										<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+										<%= @post.favorites.count %>
+									<% end %>
 								<% else %>
-							  		<%= render 'posts/clip', post: @post %>
+									<%= link_to post_favorites_path(@post), method: :post do %>
+										<i class="fa fa-heart-o" aria-hidden="true"></i>
+										<%= @post.favorites.count %>
+									<% end %>
 								<% end %>
 							<% end %>
-						<% end %>
-					</td>
-					<td style="padding-top: 30px;">
-						<% if @post.user == current_user %>
-							<%= link_to @post, method: :delete, data: {confirm: "本当に削除してもよろしいですか？"} do%>
-							<i class="far fa-trash-alt fa-2x"></i>
+						</div>
+						<!--　ブックマーク -->
+			            <div class="col-xs-1 pull-left">
+			            	<% if user_signed_in? %>
+								<% if @post.user != current_user %>
+									<% if @post.clip_by?(current_user) %>
+									  	<%= render 'posts/unclip', post: @post %>
+									<% else %>
+								  		<%= render 'posts/clip', post: @post %>
+									<% end %>
+								<% end %>
 							<% end %>
-						<% end %>
-					</td>
-				</tr>
-			</table>
+			            </div>
+						<div class="col-xs-1 pull-right">
+				        	<% if @post.user ==current_user %>
+								<%= link_to edit_post_path do %>
+									<i class="far fa-edit fa-2x fa-spin"></i>
+								<% end %>
+							<% end %>
+						</div>
+						<div class="col-xs-1 pull-right">
+							<% if @post.user == current_user %>
+								<%= link_to @post, method: :delete, data: {confirm: "本当に削除してもよろしいですか？"} do%>
+								<i class="far fa-trash-alt fa-2x"></i>
+								<% end %>
+							<% end %>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-1">
+				</div>
+				<div class="col-xs-3" style="padding-right: 0;">
+					<div class="row">
+						<!-- Google Map -->
+						<div style="width: 100%;">
+		  					<div id="map" style="width: 100%; height: 300px;"></div>
+						</div>
+						<script>
+						  handler = Gmaps.build('Google');
+						  handler.buildMap({
+						    provider: {mapTypeId: 'roadmap'},
+						    internal: {id: 'map'}
+						    },
+						    function(){
+						    //markers = handler.addMarkers(#{raw @hash.to_json})
+						    markers = handler.addMarkers(<%=raw @hash.to_json %>)
+						    handler.bounds.extendWith(markers);
+						    handler.fitMapToBounds();
+						    handler.getMap().setCenter(new google.maps.LatLng(35.681298, 139.7640582));
+						    handler.getMap().setZoom(1);
+						  });
+						</script>
+					</div>
+					<div class="row" style="margin-top: 30px;">
+						<div class="clip-box-a">
+							<div class="row" style="padding:5px 0 10px 20px;">
+								<i class="fas fa-map-marker-alt"></i>  <%= @post.title %>
+							</div>
+							<div class="row" style="padding:5px 0 10px 20px;">
+								<strong>Genre: </strong><%= @post.genre.name %>
+							</div>
+							<div class="row" style="padding:5px 0 10px 20px;">
+								<strong>Content: </strong><%= render_with_hashtags(@post.body) %>
+							</div>
+							<!-- 評価 -->
+							<div class="row" style="padding:3px 0 10px 5px;">
+								<div class="col-xs-5" style="padding-top: 10px; padding-right: 0; margin: 0;">
+									<div id="star-rate-<%= @post.id %>"></div>
+								</div>
+								<div class="col-xs-2" style="color:silver; padding: 10px 0 0 0; margin:0;">
+									<h4 class="mb-3"><%= @post.rate %></h4>
+								</div>
+					            <script>
+					            	$('#star-rate-<%= @post.id %>').raty({
+							            size: 36,
+							            starOff:  '<%= asset_path('star-off.png') %>',
+							            starOn : '<%= asset_path('star-on.png') %>',
+							            starHalf: '<%= asset_path('star-half.png') %>',
+							            half: true,
+							            readOnly: true,
+							            score: <%= @post.rate %>,
+					         		 });
+					            </script>
+					        </div>
+					        <div class="row" style="padding:20px 0 0 20px;">
+								<%= link_to (@post.user) do %>
+									<%= attachment_image_tag(@post.user, :image, size:'50x50') %>
+								<% end %>
+								<%= @post.user.nick_name %>
+							</div>
+					    </div>
+			        </div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>

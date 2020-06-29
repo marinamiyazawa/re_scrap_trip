@@ -62,6 +62,12 @@ class PostsController < ApplicationController
 
 	def show
 		@post = Post.find_by(id: params[:id])
+		#google_map
+		@hash = Gmaps4rails.build_markers(@post) do |post, marker|
+		      marker.lat post.latitude
+		      marker.lng post.longitude
+		      marker.infowindow post.title
+		    end
 
 		if @post.nil?
 			redirect_to root_path
