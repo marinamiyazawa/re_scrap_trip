@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get 'homes/about', to:'homes#about'
   get '/post/hashtag/:name', to: "posts#hashtag"
   get 'searchs/search', to:'searches#search'
-
+  resources :vision_images, only: [:new, :create, :index]
   resources :relationships, only: [:create, :destroy]
   resources :users, only: [:show,:edit,:update] do
                     	member do

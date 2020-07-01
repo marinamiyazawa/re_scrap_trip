@@ -18,10 +18,11 @@ class PostsController < ApplicationController
 		@post.user_id = current_user.id
 		@user = current_user
 		if @post.save
-			flash[:notice]= 'created post successfully.'
+			flash[:notice]= '投稿に成功しました'
 			redirect_to post_path(@post)
 		else
 			@post.post_images.build
+			#下書き保存
 			@posts = Post.draft.where(:user_id => current_user.id).order("created_at DESC")
 			render :new
 		end
@@ -87,7 +88,7 @@ class PostsController < ApplicationController
 	def update
 		@post = Post.find(params[:id])
 		if  @post.update(post_params)
-			flash[:notice]= 'edited post successfully.'
+			flash[:notice]= '投稿を編集しました'
 		    redirect_to @post
 		else
 			render :edit
