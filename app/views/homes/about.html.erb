@@ -30,22 +30,25 @@
 	                <%= render "layouts/admins_header" %>
 	              <% else %>
 	                <li class="nav-list-item">
-	                  <%= link_to ' Home', root_path, class: "fas fa-house-user" %>
+	                  <%= link_to ' トップ', root_path, class: "fas fa-house-user" %>
 	                </li>
 	                <li class="nav-list-item">
-	                  <%= link_to ' About', homes_about_path, class: "fas fa-suitcase-rolling" %>
+	                  <%= link_to ' アバウト', homes_about_path, class: "fas fa-suitcase-rolling" %>
 	                </li>
 	                <li class="nav-list-item">
-	                  <%= link_to ' Posts', posts_path, class: "far fa-images" %>
+	                  <%= link_to ' 投稿', posts_path, class: "far fa-images" %>
 	                </li>
 	                <li class="nav-list-item">
-	                  <%= link_to ' Ranking', ranking_posts_path, class: "fas fa-crown" %>
+	                  <%= link_to ' ランキング', ranking_posts_path, class: "fas fa-crown" %>
 	                </li>
 	                <li class="nav-list-item">
-	                  <%= link_to ' sign up', new_user_registration_path, class: "fas fa-user-plus" %>
+                  		<%= link_to ' 検索', vision_images_path, class: "fas fa-map-marker-alt" %>
+               		</li>
+	                <li class="nav-list-item">
+	                  <%= link_to ' 新規登録', new_user_registration_path, class: "fas fa-user-plus" %>
 	                </li>
 	                <li class="nav-list-item">
-	                  <%= link_to ' login', new_user_session_path, class: "fas fa-sign-in-alt" %>
+	                  <%= link_to ' ログイン', new_user_session_path, class: "fas fa-sign-in-alt" %>
 	                </li>
 	              <% end %>
 	            </ul>
@@ -70,7 +73,7 @@
 			<div class="about-title">ScrapTrip</div>
 		</div>
 		<div class="about-body">
-			空気や人との出会い、初めて知る文化などを通して、旅は私たちに非日常を与えてくれます。このサイトでは、旅が終わった後も旅中のような非日常を感じたい、癒されたいという思いから作成しました。ユーザー登録後の投稿機能を通して、訪れた場所や写真など思い出を記録し、投稿に紐づいたgooglemapにマーカーでは、今まで訪れた場所を確認できます。また他のユーザーの投稿やランキング、いいね機能やDM機能を通してコミュニケーションを取ることで、新しい旅先の発見ができます。
+			空気や人との出会い、文化などを通して、旅は私たちに非日常を与えてくれます。このサイトでは、旅が終わった後も旅中のような非日常を感じたい、癒されたいという思いから作成しました。ユーザー登録後の投稿機能を通して、訪れた場所や写真など思い出を記録し、投稿に紐づいたgooglemapにマーカーでは、今まで訪れた場所を確認できます。また他のユーザーの投稿やランキング、いいね機能やDM機能を通してコミュニケーションを取ることで、新しい旅先の発見ができます。
 		</div>
 	</div>
 	<div class="container-fluid" style="position: relative; padding: 0; height: 600px;">

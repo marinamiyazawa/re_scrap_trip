@@ -28,7 +28,7 @@ module Vision
 			request['Content-Type'] = 'application/json'
 			response = https.request(request, params)
 			# APIレスポンス出力
-			JSON.perse(response.body)['response'][0]['landmarkAnnotations'].pluck('description').take(5)
+			JSON.parse(response.body)['response'][0]['landmarkAnnotations'].pluck('description').take(5)
 		end
 	end
 end

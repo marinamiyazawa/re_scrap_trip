@@ -31,22 +31,25 @@
                         <%= render "layouts/admins_header" %>
                       <% else %>
                         <li class="nav-list-item">
-                          <%= link_to ' Home', root_path, class: "fas fa-house-user" %>
+                          <%= link_to ' トップ', root_path, class: "fas fa-house-user" %>
                         </li>
                         <li class="nav-list-item">
-                          <%= link_to ' About', homes_about_path, class: "fas fa-suitcase-rolling" %>
+                          <%= link_to ' アバウト', homes_about_path, class: "fas fa-suitcase-rolling" %>
                         </li>
                         <li class="nav-list-item">
-                          <%= link_to ' Posts', posts_path, class: "far fa-images" %>
+                          <%= link_to ' 投稿', posts_path, class: "far fa-images" %>
                         </li>
                         <li class="nav-list-item">
-                          <%= link_to ' Ranking', ranking_posts_path, class: "fas fa-crown" %>
+                          <%= link_to ' ランキング', ranking_posts_path, class: "fas fa-crown" %>
                         </li>
                         <li class="nav-list-item">
-                          <%= link_to ' sign up', new_user_registration_path, class: "fas fa-user-plus" %>
+                            <%= link_to ' 検索', vision_images_path, class: "fas fa-map-marker-alt" %>
                         </li>
                         <li class="nav-list-item">
-                          <%= link_to ' login', new_user_session_path, class: "fas fa-sign-in-alt" %>
+                          <%= link_to ' 新規登録', new_user_registration_path, class: "fas fa-user-plus" %>
+                        </li>
+                        <li class="nav-list-item">
+                          <%= link_to ' ログイン', new_user_session_path, class: "fas fa-sign-in-alt" %>
                         </li>
                       <% end %>
                     </ul>

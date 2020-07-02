@@ -6,11 +6,11 @@ class VisionImagesController < ApplicationController
 		#tags.each do |tag|
 			#@vision_image.tags.create(name: tag)
 		#end
-		redirect_to visions_path
+		redirect_to vision_images_path
 	end
 	def index
 		@vision_image = VisionImage.new
-		@vision_images = VisionImage.all
+		@vision_images = VisionImage.order(created_at: "DESC")
 	end
 
 	private

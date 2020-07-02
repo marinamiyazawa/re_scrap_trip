@@ -8,5 +8,8 @@
   <%=link_to "ランキング", ranking_posts_path, data: {"turbolinks" => false}, class: "fas fa-crown" %>
 </li>
 <li class="nav-list-item">
+  <%= link_to ' 検索', vision_images_path, data: {"turbolinks" => false}, class: "fas fa-map-marker-alt" %>
+</li>
+<li class="nav-list-item">
   <%= link_to ' ログアウト', destroy_user_session_path, method: :delete, data: {"turbolinks" => false}, class: "fas fa-sign-out-alt" %>
 </li>
