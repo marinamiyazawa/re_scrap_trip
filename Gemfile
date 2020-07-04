@@ -72,6 +72,7 @@ gem 'jquery-rails'
 gem 'omniauth-twitter'
 gem 'omniauth-google-oauth2'
 gem 'dotenv-rails'
+gem 'whenever', require: false
 group :production do
   gem 'mysql2'
 end

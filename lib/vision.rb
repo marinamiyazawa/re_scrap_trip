@@ -15,6 +15,9 @@ module Vision
 					},
 					features: [
 						{
+							type: 'LABEL_DETECTION'
+						},
+						{
 							type: 'LANDMARK_DETECTION'
 						}
 					]
@@ -28,7 +31,8 @@ module Vision
 			request['Content-Type'] = 'application/json'
 			response = https.request(request, params)
 			# APIレスポンス出力
-			JSON.parse(response.body)['response'][0]['landmarkAnnotations'].pluck('description').take(5)
+			
+			JSON.parse(response.body)['responses'][0]['labelAnnotations'].pluck('description','score')
 		end
 	end
 end
