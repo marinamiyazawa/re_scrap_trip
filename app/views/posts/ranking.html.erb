@@ -2,25 +2,19 @@
 	<div class="row">
 
 		<div class="col-xs-8">
-			<h2> Posts Ranking </h2>
-
 			<% @all_ranks.each.with_index(1) do |post, i| %>
 				<div class="rank-box">
-
 					<div class="row">
 						<div class="col-xs-12">
-
 							<div class="row" style="margin: 10px;">
 								<h4 style="color: #ff7a91;">\ No.<%= i %> /</h4>
 							</div>
-
 							<div class="row" style="margin: 10px;">
 								<div class="col-xs-6">
 									<% post.post_images.first(1).each do |image| %>
 										<%= attachment_image_tag(image, :image, size:'350x250') %>
 									<% end %>
 								</div>
-
 								<div class="col-xs-6" style="padding-left: 30px;">
 									<div class="row" style="margin: 10px;">
 										<div class="content">
@@ -44,7 +38,6 @@
 										<%= post.user.nick_name %>
 									</div>
 								</div>
-
 							</div>
 						</div>
 					</div>
@@ -53,8 +46,8 @@
 		</div>
 
 		<div class="col-xs-4" style="padding-left: 50px;">
-			<h1 style="margin-left: 50px;">Genres</h1>
-			<div class="row" style="margin-top: 40px;">
+			<h2 style="margin-left: 50px;"><strong>ジャンル</strong></h2>
+			<div class="row" style="margin-top: 20px;">
 				<% @parents.each do |parent| %>
 					<div class="row" style="margin-left: 10px; padding-bottom: 10px; padding-left: 50px;">
 						<div class="col-xs-8" style="border-bottom: 1px solid silver;">

@@ -3,11 +3,16 @@ require 'json'
 require 'net/https'
 module Vision
 	class << self
-		def get_image_data(image_file)
+		def get_image_data(image_file,flag)
 			api_url = "https://vision.googleapis.com/v1/images:annotate?key=#{ENV['GOOGLE_VISION_API_KEY']}"
 			#　画像をbase64にエンコード
 			base64_image = Base64.encode64(open("#{Rails.root}/public/uploads/#{image_file.id}").read)
 			# APIリクエスト用のJSONパラメータ
+			if flag == "label"
+				type = 'LABEL_DETECTION'
+			else
+				type = 'LANDMARK_DETECTION'
+			end
 			params = {
 				requests: [{
 					image: {
@@ -15,10 +20,7 @@ module Vision
 					},
 					features: [
 						{
-							type: 'LABEL_DETECTION'
-						},
-						{
-							type: 'LANDMARK_DETECTION'
+							type: type
 						}
 					]
 				}]
@@ -30,9 +32,16 @@ module Vision
 			request = Net::HTTP::Post.new(uri.request_uri)
 			request['Content-Type'] = 'application/json'
 			response = https.request(request, params)
+			if JSON.parse(response.body)['responses'][0].blank?
+				return []
+			end
 			# APIレスポンス出力
-			
-			JSON.parse(response.body)['responses'][0]['labelAnnotations'].pluck('description','score')
+
+			if flag == "label"
+				JSON.parse(response.body)['responses'][0]['labelAnnotations'].pluck('description','score').uniq
+			else
+				JSON.parse(response.body)['responses'][0]['landmarkAnnotations'].pluck('description','score','locations').take(1)
+			end
 		end
 	end
 end

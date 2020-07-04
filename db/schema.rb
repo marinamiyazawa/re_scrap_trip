@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_01_141615) do
+ActiveRecord::Schema.define(version: 2020_07_04_093701) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -64,6 +64,17 @@ ActiveRecord::Schema.define(version: 2020_07_01_141615) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["hashname"], name: "index_hashtags_on_hashname", unique: true
+  end
+
+  create_table "landmarks", force: :cascade do |t|
+    t.string "name"
+    t.decimal "score"
+    t.string "locations"
+    t.string "latitude"
+    t.string "longitude"
+    t.integer "vision_image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "messages", force: :cascade do |t|
@@ -120,6 +131,7 @@ ActiveRecord::Schema.define(version: 2020_07_01_141615) do
 
   create_table "tags", force: :cascade do |t|
     t.string "name"
+    t.decimal "score"
     t.integer "vision_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

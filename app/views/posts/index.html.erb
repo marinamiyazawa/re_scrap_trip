@@ -1,7 +1,6 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-9">
-			<h1>Posts</h1>
 			<div class="row" style="margin-top: 20px;">
 				<% @posts.each do |post| %>
 					<div class="col-xs-4">
@@ -34,7 +33,7 @@
 			</div>
 		</div>
 		<div class="col-xs-3" style="padding-left: 50px;">
-			<h1 class="genres" style="padding-left: 50px;">Genres</h1>
+			<h2 class="genres" style="padding-left: 50px;"><strong>ジャンル</strong></h2>
 			<div class="row" style="margin-top: 20px;">
 				<% @parents.each do |parent| %>
 					<div class="row" style="margin-left: 10px; padding-bottom: 10px; padding-left: 50px;">
@@ -55,7 +54,7 @@
 					</div>
 				<% end %>
 			</div>
-			<h1 class="hashtags" style="padding-left: 50px; margin-top: 40px;">Hashtags</h1>
+			<h2 class="hashtags" style="padding-left: 50px; margin-top: 40px;"><strong>タグ</strong></h2>
 			<div class="row" style="margin-top: 20px; margin-left: 40px;">
 				<% @tag.first(15).sort.reverse.each do |tag| %>
 					<div class="col-xs-6" style="padding-right: 0;">

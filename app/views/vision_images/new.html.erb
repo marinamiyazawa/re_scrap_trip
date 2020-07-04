@@ -1,0 +1,20 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-8 col-xs-offset-2">
+			<div class="row">
+				<h3><i class="fas fa-search-location fa-2x"></i> <strong>画像で検索する</strong></h3>
+			</div>
+			<div class="row">
+				<%= form_for(@vision_image) do |f| %>
+				<div class="field row" style="margin-top: 30px;">
+					<%= attachment_image_tag(@vision_image, :image, id: "preview", class: "vision-new", fallback: "no_image.jpg") %>
+					<%= f.attachment_field :image, id: :item_img, class: "vision_image" %>
+				</div>
+				<div class="actions row" style="margin-top: 30px;">
+					<%= f.submit '調べる', class: "btn btn-primary col-xs-12" %>
+				</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

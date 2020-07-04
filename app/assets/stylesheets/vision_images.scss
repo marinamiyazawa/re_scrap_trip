@@ -3,6 +3,52 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .vision-img {
-	height: 400px;
+	height: 600px;
 	width: 90%;
+}
+.vision-new {
+	width: 100%;
+	height:400px;
+}
+.label-box {
+    position: relative;
+    margin: 2em 0;
+    padding: 0.5em 1em;
+    border: solid 3px #337ab7;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+}
+.label-box .label-box-title {
+    position: absolute;
+    display: inline-block;
+    top: -27px;
+    left: -3px;
+    padding: 0 9px;
+    height: 25px;
+    line-height: 25px;
+    font-size: 17px;
+    background: #337ab7;
+    color: #ffffff;
+    font-weight: bold;
+    border-radius: 5px 5px 0 0;
+}
+.landmark-box {
+    position: relative;
+    margin: 6em 0;
+    padding: 0.5em 1em;
+    border: solid 3px #f0ad4e;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+}
+.landmark-box .landmark-box-title {
+    position: absolute;
+    display: inline-block;
+    top: -27px;
+    left: -3px;
+    padding: 0 9px;
+    height: 25px;
+    line-height: 25px;
+    font-size: 17px;
+    background: #f0ad4e;
+    color: #ffffff;
+    font-weight: bold;
+    border-radius: 5px 5px 0 0;
 }

@@ -1,0 +1,55 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="row" style="margin-bottom: 50px;">
+				<div class="col-xs-8">
+					<%= attachment_image_tag @vision_image, :image, class: "vision-img" %>
+				</div>
+				<div class="col-xs-4">
+					<div class="label-box">
+						<span class="label-box-title">ラベル検出</span>
+						<% @vision_image.tags.each do |tag| %>
+							<div class="row">
+								<div class="col-xs-4">
+									<div class="label label-primary"><%= tag.name %></div>
+								</div>
+								<div class="col-xs-4">
+									<div class="label label-primary">
+										<% tag_score = tag.score.round(3) * 100 %>
+										<%= tag_score %>%</div>
+								</div>
+							</div>
+						<% end %>
+					</div>
+					<div class="landmark-box">
+						<span class="landmark-box-title">ランドマーク検出</span>
+						<% @vision_image.landmarks.each do |landmark| %>
+							<div class="row">
+								<div class="col-xs-4">
+									<div class="label label-warning"><%= landmark.name %></div>
+								</div>
+							</div>
+						<% end %>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12">
+			<div class="row">
+				<div class="col-xs-6 col-xs-offset-1">
+					<%= form_for(@vision_image_new) do |f| %>
+						<div class="field row" style="margin-top: 30px;">
+							<%= attachment_image_tag(@vision_image_new, :image, id: "preview", class: "vision-new", fallback: "no_image.jpg") %>
+							<%= f.attachment_field :image, id: :item_img, class: "vision_image" %>
+						</div>
+						<div class="actions row" style="margin-top: 30px;">
+							<%= f.submit '調べる', class: "btn btn-primary col-xs-12" %>
+						</div>
+					<% end %>
+				</div>
+				<div class="col-xs-4">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

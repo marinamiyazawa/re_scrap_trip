@@ -1,16 +1,29 @@
 class VisionImagesController < ApplicationController
+	def new
+		@vision_image = VisionImage.new
+	end
 	def create
 		@vision_image = VisionImage.new(vision_images_params)
 		@vision_image.save
-		tags = Vision.get_image_data(@vision_image.image)
+		tags = Vision.get_image_data(@vision_image.image,"label")
 		tags.each do |tag|
-			@vision_image.tags.create(name: tag)
+			@vision_image.tags.create(name: tag[0],score: tag[1])
 		end
-		redirect_to vision_images_path
+		landmarks = Vision.get_image_data(@vision_image.image,"landmark")
+		landmarks.each do |landmark|
+			a = @vision_image.landmarks.create(name: landmark[0],score: landmark[1],locations: landmark[2])
+			latlng = a.locations.scan(/[+\-]?\d{1,3}.\d{1,14}/)
+			lat = latlng[0]
+			lng = latlng[1]
+			a.latitude = lat
+			a.longitude = lng
+			a.save
+		end
+		redirect_to vision_image_path(@vision_image)
 	end
-	def index
-		@vision_image = VisionImage.new
-		@vision_images = VisionImage.order(created_at: "DESC")
+	def show
+		@vision_image_new = VisionImage.new
+		@vision_image = VisionImage.find(params[:id])
 	end
 
 	private
