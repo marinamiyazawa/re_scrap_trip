@@ -36,12 +36,21 @@ module Vision
 				return []
 			end
 			# APIレスポンス出力
+			puts response.body
 
 			if flag == "label"
-				JSON.parse(response.body)['responses'][0]['labelAnnotations'].pluck('description','score').uniq
+			 	JSON.parse(response.body)['responses'][0]['labelAnnotations'].pluck('description','score').uniq
 			else
-				JSON.parse(response.body)['responses'][0]['landmarkAnnotations'].pluck('description','score','locations').take(1)
+				if JSON.parse(response.body)['responses'][0]['landmarkAnnotations'].present?
+					JSON.parse(response.body)['responses'][0]['landmarkAnnotations'].pluck('description','score','locations').take(1)
+				else
+					return[]
+				end
 			end
 		end
+
+		#def self.res(response)
+			#JSON.parse reponse
+		#end
 	end
 end
