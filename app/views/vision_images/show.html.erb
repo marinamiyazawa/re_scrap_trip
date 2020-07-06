@@ -6,27 +6,37 @@
 					<%= attachment_image_tag @vision_image, :image, class: "vision-img" %>
 				</div>
 				<div class="col-xs-5">
-					<div class="label-box">
-						<span class="label-box-title">ラベル検出</span>
-						<% @vision_image.tags.each do |tag| %>
-							<div class="row">
-								<div class="col-xs-6" style="margin-bottom: 8px;">
-									<div class="label label-primary" style="font-size: 1em;"><%= tag.name %></div>
-								</div>
-								<div class="col-xs-4">
-									<div class="label label-primary" style="font-size: 1.1em;">
-										<% tag_score = tag.score.round(3) * 100 %>
-										<%= tag_score %>%</div>
-								</div>
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="label-box">
+								<span class="label-box-title">ラベル検出</span>
+								<% @vision_image.tags.each do |tag| %>
+									<div class="row">
+										<div class="col-xs-6">
+											<strong><%= tag.name %></strong>
+										</div>
+										<div class="col-xs-4">
+											<% tag_score = tag.score.round(3) * 100 %>
+											<strong><%= tag_score %>%</strong>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-12">
+											<div class="progress">
+											  <div class="progress-bar bg-info" role="progressbar" style="width: <%= tag.score * 100 %>%;" aria-valuemin="0" aria-valuemax="100"></div>
+											</div>
+										</div>
+									</div>
+								<% end %>
 							</div>
-						<% end %>
+						</div>
 					</div>
 					<div class="landmark-box">
 						<span class="landmark-box-title">ランドマーク検出</span>
 						<% @vision_image.landmarks.each do |landmark| %>
 							<div class="row">
-								<div class="col-xs-4" style="margin-top: 8px;">
-									<div class="label label-warning" style="font-size: 1.2em;"><%= landmark.name %></div>
+								<div class="col-xs-5" style="margin-top: 8px;">
+									<i class="fas fa-map-marker-alt fa-2x"></i> <strong><%= landmark.name %></strong>
 								</div>
 							</div>
 							<div class="row" style="margin: 20px 0;">
