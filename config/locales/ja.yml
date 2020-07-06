@@ -16,3 +16,5 @@ ja:
         name: ジャンル
       massage:
         content: メッセージ
+      vision_image:
+        image: 画像
