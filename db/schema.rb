@@ -131,7 +131,7 @@ ActiveRecord::Schema.define(version: 2020_07_04_093701) do
 
   create_table "tags", force: :cascade do |t|
     t.string "name"
-    t.decimal "score"
+    t.decimal "score", precision: 5, scale: 3
     t.integer "vision_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
